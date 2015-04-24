@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CF4FD00F1AEA1A0E00F989C4 /* Manuscript.h in Headers */ = {isa = PBXBuildFile; fileRef = CF4FD00E1AEA1A0E00F989C4 /* Manuscript.h */; };
 		CF4FD01D1AEA1A7F00F989C4 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4FD01C1AEA1A7F00F989C4 /* Tests.swift */; };
 		CF4FD01E1AEA1A7F00F989C4 /* Manuscript.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4FCFF21AEA197F00F989C4 /* Manuscript.framework */; };
+		CF4FD0271AEA1C7600F989C4 /* Manuscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4FD0261AEA1C7600F989C4 /* Manuscript.swift */; };
+		CF4FD0291AEA1CA200F989C4 /* LayoutProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4FD0281AEA1CA200F989C4 /* LayoutProxy.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -24,11 +25,13 @@
 
 /* Begin PBXFileReference section */
 		CF4FCFF21AEA197F00F989C4 /* Manuscript.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Manuscript.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CF4FD00E1AEA1A0E00F989C4 /* Manuscript.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Manuscript.h; path = Source/Manuscript.h; sourceTree = SOURCE_ROOT; };
 		CF4FD0101AEA1A1B00F989C4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Source/Info.plist; sourceTree = SOURCE_ROOT; };
 		CF4FD0181AEA1A7F00F989C4 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF4FD01B1AEA1A7F00F989C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF4FD01C1AEA1A7F00F989C4 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
+		CF4FD0261AEA1C7600F989C4 /* Manuscript.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Manuscript.swift; path = Source/Manuscript.swift; sourceTree = SOURCE_ROOT; };
+		CF4FD0281AEA1CA200F989C4 /* LayoutProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LayoutProxy.swift; path = Source/LayoutProxy.swift; sourceTree = SOURCE_ROOT; };
+		CF4FD02A1AEA1E9300F989C4 /* Manuscript.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Manuscript.h; path = Source/Manuscript.h; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,7 +74,9 @@
 		CF4FCFF41AEA197F00F989C4 /* Manuscript */ = {
 			isa = PBXGroup;
 			children = (
-				CF4FD00E1AEA1A0E00F989C4 /* Manuscript.h */,
+				CF4FD02A1AEA1E9300F989C4 /* Manuscript.h */,
+				CF4FD0261AEA1C7600F989C4 /* Manuscript.swift */,
+				CF4FD0281AEA1CA200F989C4 /* LayoutProxy.swift */,
 				CF4FCFF51AEA197F00F989C4 /* Supporting Files */,
 			);
 			path = Manuscript;
@@ -109,7 +114,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF4FD00F1AEA1A0E00F989C4 /* Manuscript.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -209,6 +213,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF4FD0291AEA1CA200F989C4 /* LayoutProxy.swift in Sources */,
+				CF4FD0271AEA1C7600F989C4 /* Manuscript.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,6 +329,7 @@
 		CF4FD0091AEA197F00F989C4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -332,12 +339,14 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		CF4FD00A1AEA197F00F989C4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
