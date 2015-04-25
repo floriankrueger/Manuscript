@@ -28,6 +28,8 @@ import UIKit
 
 extension Manuscript {
 
+  public typealias LayoutItem = (constraint: NSLayoutConstraint?, targetItem: UIView?)
+
   public class LayoutProxy: NSObject {
 
     let view: UIView
@@ -60,20 +62,20 @@ extension Manuscript {
 
     // MARK: DSL (set)
 
-    public func set(attribute: NSLayoutAttribute, to constant: Float) -> (constraint: NSLayoutConstraint?, targetItem: UIView?) {
+    public func set(attribute: NSLayoutAttribute, to constant: Float) -> LayoutItem {
       return self.set(self.view, attribute: attribute, constant: constant, priority: self.priority)
     }
 
     // MARK: DSL (make)
 
-    public func make(attribute: NSLayoutAttribute, equalTo relatedItem: AnyObject, s relatedAttribute: NSLayoutAttribute, times multiplier: Float = 1.0, plus constant: Float = 0.0, minus negativeConstant: Float = 0.0, on targetView: UIView? = nil) -> (constraint: NSLayoutConstraint?, targetItem: UIView?) {
+    public func make(attribute: NSLayoutAttribute, equalTo relatedItem: AnyObject, s relatedAttribute: NSLayoutAttribute, times multiplier: Float = 1.0, plus constant: Float = 0.0, minus negativeConstant: Float = 0.0, on targetView: UIView? = nil) -> LayoutItem {
       return self.make(self.view, attribute: attribute, relation: .Equal, relatedItem: relatedItem, relatedItemAttribute: relatedAttribute, multiplier: multiplier, constant: constant - negativeConstant, target: targetView, priority: self.priority)
     }
 
     // MARK: DSL (convenience)
 
-    public func alignAllEdges(to relatedItem: UIView) -> [(constraint: NSLayoutConstraint?, targetItem: UIView?)] {
-      var result: [(constraint: NSLayoutConstraint?, targetItem: UIView?)] = []
+    public func alignAllEdges(to relatedItem: UIView) -> [LayoutItem] {
+      var result: [LayoutItem] = []
       result.append(self.make(.Left,    equalTo: relatedItem, s: .Left))
       result.append(self.make(.Top,     equalTo: relatedItem, s: .Top))
       result.append(self.make(.Right,   equalTo: relatedItem, s: .Right))
@@ -81,21 +83,21 @@ extension Manuscript {
       return result
     }
 
-    public func centerIn(view: UIView) -> [(constraint: NSLayoutConstraint?, targetItem: UIView?)] {
-      var result: [(constraint: NSLayoutConstraint?, targetItem: UIView?)] = []
+    public func centerIn(view: UIView) -> [LayoutItem] {
+      var result: [LayoutItem] = []
       result.append(self.make(.CenterX, equalTo: view, s: .CenterX))
       result.append(self.make(.CenterY, equalTo: view, s: .CenterY))
       return result
     }
 
-    public func setSize(size: CGSize) -> [(constraint: NSLayoutConstraint?, targetItem: UIView?)] {
-      var result: [(constraint: NSLayoutConstraint?, targetItem: UIView?)] = []
+    public func setSize(size: CGSize) -> [LayoutItem] {
+      var result: [LayoutItem] = []
       result.append(self.set(.Height, to: Float(size.height)))
       result.append(self.set(.Width, to: Float(size.width)))
       return result
     }
 
-    public func makeVerticalHairline() -> (constraint: NSLayoutConstraint?, targetItem: UIView?) {
+    public func makeVerticalHairline() -> LayoutItem {
       if Manuscript.Util.isRetina() {
         return self.set(.Width, to: 0.5)
       } else {
@@ -103,7 +105,7 @@ extension Manuscript {
       }
     }
 
-    public func makeHorizontalHairline() -> (constraint: NSLayoutConstraint?, targetItem: UIView?) {
+    public func makeHorizontalHairline() -> LayoutItem {
       if Manuscript.Util.isRetina() {
         return self.set(.Height, to: 0.5)
       } else {
@@ -113,15 +115,15 @@ extension Manuscript {
 
     // MARK: Core
 
-    private func set(item: UIView, attribute: NSLayoutAttribute, constant: Float, priority: UILayoutPriority) -> (constraint: NSLayoutConstraint?, targetItem: UIView?) {
+    private func set(item: UIView, attribute: NSLayoutAttribute, constant: Float, priority: UILayoutPriority) -> LayoutItem {
       return self.createLayoutConstraint(item, attribute: attribute, relation: .Equal, relatedItem: nil, relatedItemAttribute: .NotAnAttribute, multiplier: 1.0, constant: constant, target: item, priority: priority)
     }
 
-    private func make(item: UIView, attribute: NSLayoutAttribute, relation: NSLayoutRelation, relatedItem: AnyObject, relatedItemAttribute: NSLayoutAttribute, multiplier: Float, constant: Float, target: UIView?, priority: UILayoutPriority) -> (constraint: NSLayoutConstraint?, targetItem: UIView?) {
+    private func make(item: UIView, attribute: NSLayoutAttribute, relation: NSLayoutRelation, relatedItem: AnyObject, relatedItemAttribute: NSLayoutAttribute, multiplier: Float, constant: Float, target: UIView?, priority: UILayoutPriority) -> LayoutItem {
       return self.createLayoutConstraint(item, attribute: attribute, relation: relation, relatedItem: relatedItem, relatedItemAttribute: relatedItemAttribute, multiplier: multiplier, constant: constant, target: target, priority: priority)
     }
 
-    private func createLayoutConstraint(item: UIView, attribute: NSLayoutAttribute, relation: NSLayoutRelation, relatedItem: AnyObject?, relatedItemAttribute: NSLayoutAttribute, multiplier: Float, constant: Float, target aTarget: UIView?, priority: UILayoutPriority) -> (constraint: NSLayoutConstraint?, targetItem: UIView?) {
+    private func createLayoutConstraint(item: UIView, attribute: NSLayoutAttribute, relation: NSLayoutRelation, relatedItem: AnyObject?, relatedItemAttribute: NSLayoutAttribute, multiplier: Float, constant: Float, target aTarget: UIView?, priority: UILayoutPriority) -> LayoutItem {
 
       let constraint = NSLayoutConstraint(
         item: item,
@@ -151,7 +153,7 @@ extension Manuscript {
       }
     }
 
-    private func installConstraint(constraint: NSLayoutConstraint, onTarget target: UIView) -> (constraint: NSLayoutConstraint?, targetItem: UIView?) {
+    private func installConstraint(constraint: NSLayoutConstraint, onTarget target: UIView) -> LayoutItem {
       target.addConstraint(constraint)
       return (constraint, target)
     }
