@@ -13,7 +13,7 @@ class SimpleButtonExampleViewController: UIViewController {
 
   // MARK: Private Properties
 
-  private let activeButton: UIButton? = nil
+  private var activeButton: UIButton? = nil
 
   private let optionA: UIButton = UIButton.buttonWithType(.System) as! UIButton
   private let optionB: UIButton = UIButton.buttonWithType(.System) as! UIButton
@@ -56,7 +56,45 @@ class SimpleButtonExampleViewController: UIViewController {
     }
 
     if let activeButton = self.activeButton {
-      self.shrinkButton(activeButton)
+      switch activeButton {
+      case self.optionA:
+        self.optionAHeight?.constant = 60.0
+        self.optionAWidth?.constant = 60.0
+        self.optionA.setNeedsLayout()
+      case self.optionB:
+        self.optionBHeight?.constant = 60.0
+        self.optionBWidth?.constant = 60.0
+        self.optionB.setNeedsLayout()
+      case self.optionC:
+        self.optionCHeight?.constant = 60.0
+        self.optionCWidth?.constant = 60.0
+        self.optionC.setNeedsLayout()
+      default:
+        println("active button is unknown")
+      }
+    }
+
+    switch sender {
+    case self.optionA:
+      self.optionAHeight?.constant = 80.0
+      self.optionAWidth?.constant = 80.0
+      self.optionA.setNeedsLayout()
+    case self.optionB:
+      self.optionBHeight?.constant = 80.0
+      self.optionBWidth?.constant = 80.0
+      self.optionB.setNeedsLayout()
+    case self.optionC:
+      self.optionCHeight?.constant = 80.0
+      self.optionCWidth?.constant = 80.0
+      self.optionC.setNeedsLayout()
+    default:
+      println("sender button is unknown")
+    }
+
+    self.activeButton = sender
+
+    UIView.animateWithDuration(0.25) {
+      self.view.layoutIfNeeded()
     }
   }
 
