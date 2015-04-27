@@ -28,7 +28,7 @@ import UIKit
 
 extension Manuscript {
 
-  public typealias LayoutItem = (constraint: NSLayoutConstraint?, targetItem: UIView?)
+  public typealias LayoutItem = (constraint: NSLayoutConstraint, targetItem: UIView)
 
   public class LayoutProxy: NSObject {
 
@@ -145,11 +145,10 @@ extension Manuscript {
         relatedView = aRelatedView
       }
 
-      let possibleTarget = Manuscript.findCommonSuperview(item, b: relatedView)
-      if let target = possibleTarget {
+      if let target = Manuscript.findCommonSuperview(item, b: relatedView) {
         return self.installConstraint(constraint, onTarget: target)
       } else {
-        return (nil, nil)
+        fatalError("couldn't find common ancestors for \(item) and \(relatedView) (while trying to install \(constraint))")
       }
     }
 

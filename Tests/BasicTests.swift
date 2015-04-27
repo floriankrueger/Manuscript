@@ -1,6 +1,6 @@
 //
-//  Tests.swift
-//  Tests
+//  Basic.swift
+//  Manuscript
 //
 //  Created by Florian Krüger on 24/04/15.
 //  Copyright (c) 2015 projectserver.org. All rights reserved.
@@ -25,29 +25,20 @@
 
 import UIKit
 import XCTest
+import Manuscript
 
-class Tests: XCTestCase {
-    
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-    
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
-    
-    func testExample() {
-        // This is an example of a functional test case.
-        XCTAssert(true, "Pass")
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock() {
-            // Put the code you want to measure the time of here.
-        }
-    }
-    
+class BasicTests: XCTestCase {
+
+  func testStopsTranslatingAutoresizingMasks() {
+    let view = UIView(frame: CGRectZero)
+
+    XCTAssertTrue(view.translatesAutoresizingMaskIntoConstraints(),
+      "Expected `translatesAutoresizingMaskIntoConstraints` to be `true` by default")
+
+    Manuscript.layout(view) { c in }
+
+    XCTAssertFalse(view.translatesAutoresizingMaskIntoConstraints(),
+      "Manuscript should have stopped translating autoresizingmasks into constraints")
+  }
+
 }
