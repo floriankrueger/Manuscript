@@ -40,5 +40,5 @@ class BasicTests: XCTestCase {
     XCTAssertFalse(view.translatesAutoresizingMaskIntoConstraints(),
       "Manuscript should have stopped translating autoresizingmasks into constraints")
   }
-
+  
 }

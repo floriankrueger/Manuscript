@@ -29,21 +29,35 @@ import Manuscript
 
 class TargetViewTests: XCTestCase {
 
-    func testCreatesUnrelatedConstraintOnTheGivenItemWhenUsingSet() {
+  func testCreatesUnrelatedConstraintOnTheGivenItemWhenUsingSet() {
+    let view = UIView(frame: CGRectZero)
+    var layoutItem: Manuscript.LayoutItem? = nil
 
-      let view = UIView(frame: CGRectZero)
-      var layoutItem: Manuscript.LayoutItem? = nil
-
-      Manuscript.layout(view) { c in
-        layoutItem = c.set(.Width, to: 100.0)
-      }
-
-      if let aLayoutItem = layoutItem {
-        XCTAssertEqual(aLayoutItem.targetItem, view, "")
-      } else {
-        XCTFail("expected a layout item to be created")
-      }
-
+    Manuscript.layout(view) { c in
+      layoutItem = c.set(.Width, to: 100.0)
     }
 
+    if let aLayoutItem = layoutItem {
+      XCTAssertEqual(aLayoutItem.targetItem, view, "")
+    } else {
+      XCTFail("expected a layout item to be created")
+    }
+  }
+
+  func testCreatedRelatedConstraintOnTheSpecifiedItemWhenUsingMakeOn() {
+    let parentView = UIView(frame: CGRectZero)
+    let childView = UIView(frame: CGRectZero)
+    parentView.addSubview(childView)
+
+    var layoutItem: Manuscript.LayoutItem? = nil
+
+    Manuscript.layout(childView) { c in
+      layoutItem = c.make(.Width, equalTo:parentView, s:.Width, on:parentView)
+    }
+
+    XCTAssertEqual(childView.constraints().count, 0, "")
+    XCTAssertEqual(parentView.constraints().count, 1, "")
+    XCTAssertEqual(parentView, layoutItem!.targetItem, "")
+  }
+    
 }
