@@ -59,5 +59,21 @@ class TargetViewTests: XCTestCase {
     XCTAssertEqual(parentView.constraints().count, 1, "")
     XCTAssertEqual(parentView, layoutItem!.targetItem, "")
   }
+
+  func testCreatedRelatedConstraintOnTheParentItemWhenUsingMake() {
+    let parentView = UIView(frame: CGRectZero)
+    let childView = UIView(frame: CGRectZero)
+    parentView.addSubview(childView)
+
+    var layoutItem: Manuscript.LayoutItem? = nil
+
+    Manuscript.layout(childView) { c in
+      layoutItem = c.make(.Width, equalTo:parentView, s:.Width)
+    }
+
+    XCTAssertEqual(childView.constraints().count, 0, "")
+    XCTAssertEqual(parentView.constraints().count, 1, "")
+    XCTAssertEqual(parentView, layoutItem!.targetItem, "")
+  }
     
 }
