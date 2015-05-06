@@ -89,6 +89,28 @@ class PriorityTests: XCTestCase {
       layoutItem = c.set(.Width, to: 100.0)
     }
 
-    XCTAssertEqual(layoutItem!.constraint.priority, 1000, "Expected Required Priority")
+    XCTAssertEqual(layoutItem!.constraint.priority, 1000, "Expected Required Priority (1000)")
+  }
+
+  func testSetPriorityDefaultHigh() {
+    var layoutItem: Manuscript.LayoutItem? = nil
+
+    Manuscript.layout(self.view) { c in
+      c.setPriorityDefaultHigh()
+      layoutItem = c.set(.Width, to: 100.0)
+    }
+
+    XCTAssertEqual(layoutItem!.constraint.priority, 750, "Expected Default High Priority (750)")
+  }
+
+  func testSetPriorityDefaultLow() {
+    var layoutItem: Manuscript.LayoutItem? = nil
+
+    Manuscript.layout(self.view) { c in
+      c.setPriorityDefaultLow()
+      layoutItem = c.set(.Width, to: 100.0)
+    }
+
+    XCTAssertEqual(layoutItem!.constraint.priority, 250, "Expected Default High Priority (250)")
   }
 }
