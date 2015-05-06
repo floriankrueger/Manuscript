@@ -113,4 +113,15 @@ class PriorityTests: XCTestCase {
 
     XCTAssertEqual(layoutItem!.constraint.priority, 250, "Expected Default High Priority (250)")
   }
+
+  func testSetPriorityFittingSizeLevel() {
+    var layoutItem: Manuscript.LayoutItem? = nil
+
+    Manuscript.layout(self.view) { c in
+      c.setPriorityFittingSizeLevel()
+      layoutItem = c.set(.Width, to: 100.0)
+    }
+
+    XCTAssertEqual(layoutItem!.constraint.priority, 50, "Expected Default High Priority (250)")
+  }
 }
