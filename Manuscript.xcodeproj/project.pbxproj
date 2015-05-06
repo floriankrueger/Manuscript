@@ -11,6 +11,8 @@
 		CF4FD01E1AEA1A7F00F989C4 /* Manuscript.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4FCFF21AEA197F00F989C4 /* Manuscript.framework */; };
 		CF4FD0271AEA1C7600F989C4 /* Manuscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4FD0261AEA1C7600F989C4 /* Manuscript.swift */; };
 		CF4FD0291AEA1CA200F989C4 /* LayoutProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4FD0281AEA1CA200F989C4 /* LayoutProxy.swift */; };
+		CF9634201AFA4DBB00861690 /* ConvenienceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF96341F1AFA4DBB00861690 /* ConvenienceTests.swift */; };
+		CF9634221AFA4E1500861690 /* TestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9634211AFA4E1500861690 /* TestHelper.swift */; };
 		CFC1CDD11AECE701007E7700 /* TargetViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC1CDD01AECE701007E7700 /* TargetViewTests.swift */; };
 		CFDFEEE51AF9FF6A00B9C31C /* PriorityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDFEEE41AF9FF6A00B9C31C /* PriorityTests.swift */; };
 		CFDFEEE71AFA179000B9C31C /* LayoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDFEEE61AFA179000B9C31C /* LayoutTests.swift */; };
@@ -35,6 +37,8 @@
 		CF4FD0261AEA1C7600F989C4 /* Manuscript.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Manuscript.swift; path = Source/Manuscript.swift; sourceTree = SOURCE_ROOT; };
 		CF4FD0281AEA1CA200F989C4 /* LayoutProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LayoutProxy.swift; path = Source/LayoutProxy.swift; sourceTree = SOURCE_ROOT; };
 		CF4FD02A1AEA1E9300F989C4 /* Manuscript.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Manuscript.h; path = Source/Manuscript.h; sourceTree = SOURCE_ROOT; };
+		CF96341F1AFA4DBB00861690 /* ConvenienceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConvenienceTests.swift; sourceTree = "<group>"; };
+		CF9634211AFA4E1500861690 /* TestHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestHelper.swift; sourceTree = "<group>"; };
 		CFC1CDD01AECE701007E7700 /* TargetViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetViewTests.swift; sourceTree = "<group>"; };
 		CFDFEEE41AF9FF6A00B9C31C /* PriorityTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriorityTests.swift; sourceTree = "<group>"; };
 		CFDFEEE61AFA179000B9C31C /* LayoutTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutTests.swift; sourceTree = "<group>"; };
@@ -103,6 +107,8 @@
 				CFC1CDD01AECE701007E7700 /* TargetViewTests.swift */,
 				CFDFEEE41AF9FF6A00B9C31C /* PriorityTests.swift */,
 				CFDFEEE61AFA179000B9C31C /* LayoutTests.swift */,
+				CF96341F1AFA4DBB00861690 /* ConvenienceTests.swift */,
+				CF9634211AFA4E1500861690 /* TestHelper.swift */,
 				CF4FD01A1AEA1A7F00F989C4 /* Supporting Files */,
 			);
 			path = Tests;
@@ -232,7 +238,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CFDFEEE51AF9FF6A00B9C31C /* PriorityTests.swift in Sources */,
+				CF9634201AFA4DBB00861690 /* ConvenienceTests.swift in Sources */,
 				CFDFEEE71AFA179000B9C31C /* LayoutTests.swift in Sources */,
+				CF9634221AFA4E1500861690 /* TestHelper.swift in Sources */,
 				CF4FD01D1AEA1A7F00F989C4 /* BasicTests.swift in Sources */,
 				CFC1CDD11AECE701007E7700 /* TargetViewTests.swift in Sources */,
 			);

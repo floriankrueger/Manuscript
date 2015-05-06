@@ -12,70 +12,10 @@ import Manuscript
 
 class LayoutTests: XCTestCase {
 
-  private let setAttributes: [NSLayoutAttribute] = [.Width, .Height]
-
-  override func setUp() {
-    super.setUp()
-    // Put setup code here. This method is called before the invocation of each test method in the class.
-  }
-
-  override func tearDown() {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
-    super.tearDown()
-  }
-
-  // MARK: - Helper
-
-  func checkConstraint(
-    constraint: NSLayoutConstraint,
-    item: UIView,
-    attribute: NSLayoutAttribute,
-    relation: NSLayoutRelation,
-    relatedItem: UIView? = nil,
-    relatedAttribute: NSLayoutAttribute = .NotAnAttribute,
-    multiplier: Float = 1.0,
-    constant: Float)
-  {
-    XCTAssertNotNil(constraint, "constraint must not be nil")
-    XCTAssertEqual(constraint.firstItem as! UIView, item,                 "")
-    XCTAssertEqual(constraint.firstAttribute,       attribute,            "")
-    XCTAssertEqual(constraint.relation,             relation,             "")
-
-    if let strongRelatedItem = relatedItem {
-      XCTAssertEqual(constraint.secondItem as! UIView, strongRelatedItem, "")
-    } else {
-      XCTAssertNil(constraint.secondItem,                                 "")
-    }
-
-    XCTAssertEqual(constraint.secondAttribute,      relatedAttribute,     "")
-    XCTAssertEqual(constraint.multiplier,           CGFloat(multiplier),  "")
-    XCTAssertEqual(constraint.constant,             CGFloat(constant),    "")
-  }
-
-  func randomFloat(min: Float = 0.0, max: Float) -> Float {
-    let random = Float(arc4random()) / Float(UInt32.max)
-    return random * (max - min) + min
-  }
-
-  func firstConstraint(view: UIView, withAttribute optionalAttribute: NSLayoutAttribute? = nil) -> NSLayoutConstraint? {
-    if view.constraints().count > 0 {
-      if let constraint = view.constraints().first as? NSLayoutConstraint {
-        if let attribute = optionalAttribute {
-          if constraint.firstAttribute == attribute {
-            return constraint
-          }
-        } else {
-          return constraint
-        }
-      }
-    }
-    return nil
-  }
-
   // MARK: - Tests: SET/EQUAL
 
   func meta_testSet(attribute: NSLayoutAttribute, relation: NSLayoutRelation = .Equal) {
-    let constant = self.randomFloat(max: 100.0)
+    let constant = Helper.randomFloat(max: 100.0)
     let view = UIView(frame: CGRectZero)
     let expectation = self.expectationWithDescription("constraints installed")
 
@@ -93,8 +33,8 @@ class LayoutTests: XCTestCase {
     }
 
     self.waitForExpectationsWithTimeout(0.1) { error in
-      if let constraint = self.firstConstraint(view) {
-        self.checkConstraint(constraint, item:view, attribute:attribute, relation:relation, constant:constant)
+      if let constraint = Helper.firstConstraint(view) {
+        Helper.checkConstraint(constraint, item:view, attribute:attribute, relation:relation, constant:constant)
       } else {
         XCTFail("view is expected to have at least one constraint")
       }
@@ -130,8 +70,8 @@ class LayoutTests: XCTestCase {
   // MARK: - Tests: MAKE/EQUAL
 
   func meta_testMake(attribute: NSLayoutAttribute, relation: NSLayoutRelation, relatedAttribute: NSLayoutAttribute, useTargetView: Bool) {
-    let constant = self.randomFloat(max: 100.0)
-    let multiplier = self.randomFloat(max: 2.0)
+    let constant = Helper.randomFloat(max: 100.0)
+    let multiplier = Helper.randomFloat(max: 2.0)
     let parentView = UIView(frame: CGRectZero)
     let childView = UIView(frame: CGRectZero)
     parentView.addSubview(childView)
@@ -147,8 +87,8 @@ class LayoutTests: XCTestCase {
     }
 
     self.waitForExpectationsWithTimeout(0.1) { error in
-      if let constraint = self.firstConstraint(parentView, withAttribute:attribute) {
-        self.checkConstraint(constraint, item:childView, attribute:attribute, relation:.Equal, relatedItem:parentView, relatedAttribute:relatedAttribute, multiplier:multiplier, constant:constant)
+      if let constraint = Helper.firstConstraint(parentView, withAttribute:attribute) {
+        Helper.checkConstraint(constraint, item:childView, attribute:attribute, relation:.Equal, relatedItem:parentView, relatedAttribute:relatedAttribute, multiplier:multiplier, constant:constant)
       } else {
         XCTFail("parentView is expected to have at least one constraint for attribute \(attribute)")
       }
