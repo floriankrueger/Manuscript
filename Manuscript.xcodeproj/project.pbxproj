@@ -13,6 +13,7 @@
 		CF4FD0291AEA1CA200F989C4 /* LayoutProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4FD0281AEA1CA200F989C4 /* LayoutProxy.swift */; };
 		CFC1CDD11AECE701007E7700 /* TargetViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC1CDD01AECE701007E7700 /* TargetViewTests.swift */; };
 		CFDFEEE51AF9FF6A00B9C31C /* PriorityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDFEEE41AF9FF6A00B9C31C /* PriorityTests.swift */; };
+		CFDFEEE71AFA179000B9C31C /* LayoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDFEEE61AFA179000B9C31C /* LayoutTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		CF4FD02A1AEA1E9300F989C4 /* Manuscript.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Manuscript.h; path = Source/Manuscript.h; sourceTree = SOURCE_ROOT; };
 		CFC1CDD01AECE701007E7700 /* TargetViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetViewTests.swift; sourceTree = "<group>"; };
 		CFDFEEE41AF9FF6A00B9C31C /* PriorityTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriorityTests.swift; sourceTree = "<group>"; };
+		CFDFEEE61AFA179000B9C31C /* LayoutTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 				CF4FD01C1AEA1A7F00F989C4 /* BasicTests.swift */,
 				CFC1CDD01AECE701007E7700 /* TargetViewTests.swift */,
 				CFDFEEE41AF9FF6A00B9C31C /* PriorityTests.swift */,
+				CFDFEEE61AFA179000B9C31C /* LayoutTests.swift */,
 				CF4FD01A1AEA1A7F00F989C4 /* Supporting Files */,
 			);
 			path = Tests;
@@ -229,6 +232,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CFDFEEE51AF9FF6A00B9C31C /* PriorityTests.swift in Sources */,
+				CFDFEEE71AFA179000B9C31C /* LayoutTests.swift in Sources */,
 				CF4FD01D1AEA1A7F00F989C4 /* BasicTests.swift in Sources */,
 				CFC1CDD11AECE701007E7700 /* TargetViewTests.swift in Sources */,
 			);
