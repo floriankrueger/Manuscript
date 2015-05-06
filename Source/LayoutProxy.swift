@@ -33,43 +33,55 @@ extension Manuscript {
   public class LayoutProxy: NSObject {
 
     let view: UIView
-    var priority: UILayoutPriority
+    var internalPriority: UILayoutPriority
 
     init(view: UIView) {
       self.view = view
       self.view.setTranslatesAutoresizingMaskIntoConstraints(false)
-      self.priority = 1000
+      self.internalPriority = 1000
       super.init()
     }
 
     // MARK: Priority
 
     public func setPriorityRequired() {
-      self.priority = 1000
+      self.internalPriority = 1000
     }
 
     public func setPriorityDefaultHigh() {
-      self.priority = 750
+      self.internalPriority = 750
     }
 
     public func setPriorityDefaultLow() {
-      self.priority = 250
+      self.internalPriority = 250
     }
 
     public func setPriorityFittingSizeLevel() {
-      self.priority = 50
+      self.internalPriority = 50
+    }
+
+    public func setPriority(priority: UILayoutPriority) {
+      if priority > 1000 {
+        self.internalPriority = 1000
+        println("UILayoutPriority only supports values between 1 and 1000. Setting to 1000 (while trying to set the priority to \(priority)).")
+      } else if priority <= 0 {
+        self.internalPriority = 1
+        println("UILayoutPriority only supports values between 1 and 1000. Setting to 1 (while trying to set the priority to \(priority)).")
+      } else {
+        self.internalPriority = priority
+      }
     }
 
     // MARK: DSL (set)
 
     public func set(attribute: NSLayoutAttribute, to constant: Float) -> LayoutItem {
-      return self.set(self.view, attribute: attribute, constant: constant, priority: self.priority)
+      return self.set(self.view, attribute: attribute, constant: constant, priority: self.internalPriority)
     }
 
     // MARK: DSL (make)
 
     public func make(attribute: NSLayoutAttribute, equalTo relatedItem: AnyObject, s relatedAttribute: NSLayoutAttribute, times multiplier: Float = 1.0, plus constant: Float = 0.0, minus negativeConstant: Float = 0.0, on targetView: UIView? = nil) -> LayoutItem {
-      return self.make(self.view, attribute: attribute, relation: .Equal, relatedItem: relatedItem, relatedItemAttribute: relatedAttribute, multiplier: multiplier, constant: constant - negativeConstant, target: targetView, priority: self.priority)
+      return self.make(self.view, attribute: attribute, relation: .Equal, relatedItem: relatedItem, relatedItemAttribute: relatedAttribute, multiplier: multiplier, constant: constant - negativeConstant, target: targetView, priority: self.internalPriority)
     }
 
     // MARK: DSL (convenience)
