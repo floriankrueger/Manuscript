@@ -81,4 +81,14 @@ class PriorityTests: XCTestCase {
     XCTAssertEqual(layoutItem!.constraint.priority, 1000, "Expected Required Priority")
   }
 
+  func testSetPriorityRequired() {
+    var layoutItem: Manuscript.LayoutItem? = nil
+
+    Manuscript.layout(self.view) { c in
+      c.setPriorityRequired()
+      layoutItem = c.set(.Width, to: 100.0)
+    }
+
+    XCTAssertEqual(layoutItem!.constraint.priority, 1000, "Expected Required Priority")
+  }
 }
