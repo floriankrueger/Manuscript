@@ -48,10 +48,16 @@ class LayoutTests: XCTestCase {
     return random * (max - min) + min
   }
 
-  func firstConstraint(view: UIView) -> NSLayoutConstraint? {
+  func firstConstraint(view: UIView, withAttribute optionalAttribute: NSLayoutAttribute? = nil) -> NSLayoutConstraint? {
     if view.constraints().count > 0 {
       if let constraint = view.constraints().first as? NSLayoutConstraint {
-        return constraint
+        if let attribute = optionalAttribute {
+          if constraint.firstAttribute == attribute {
+            return constraint
+          }
+        } else {
+          return constraint
+        }
       }
     }
     return nil
