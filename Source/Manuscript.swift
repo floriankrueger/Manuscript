@@ -26,6 +26,10 @@
 import Foundation
 import UIKit
 
+protocol ManuscriptUtils {
+  func isRetina() -> Bool
+}
+
 public struct Manuscript {
 
   public static func layout(view: UIView, block: (LayoutProxy) -> ()) -> Manuscript.LayoutProxy {
@@ -68,8 +72,8 @@ public struct Manuscript {
     }
   }
 
-  struct Util {
-    static func isRetina() -> Bool {
+  struct Util: ManuscriptUtils {
+    func isRetina() -> Bool {
       return UIScreen.mainScreen().scale > 1.0
     }
   }

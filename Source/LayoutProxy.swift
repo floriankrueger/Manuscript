@@ -33,12 +33,14 @@ extension Manuscript {
   public class LayoutProxy: NSObject {
 
     let view: UIView
+    let util: ManuscriptUtils
     var internalPriority: UILayoutPriority
 
-    init(view: UIView) {
+    init(view: UIView, util: ManuscriptUtils = Manuscript.Util()) {
       self.view = view
       self.view.setTranslatesAutoresizingMaskIntoConstraints(false)
       self.internalPriority = 1000
+      self.util = util
       super.init()
     }
 
@@ -126,7 +128,7 @@ extension Manuscript {
     }
 
     public func makeVerticalHairline() -> LayoutItem {
-      if Manuscript.Util.isRetina() {
+      if self.util.isRetina() {
         return self.set(.Width, to: 0.5)
       } else {
         return self.set(.Width, to: 1.0)
@@ -134,7 +136,7 @@ extension Manuscript {
     }
 
     public func makeHorizontalHairline() -> LayoutItem {
-      if Manuscript.Util.isRetina() {
+      if self.util.isRetina() {
         return self.set(.Height, to: 0.5)
       } else {
         return self.set(.Height, to: 1.0)
