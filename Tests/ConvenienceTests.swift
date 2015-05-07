@@ -77,4 +77,29 @@ class ConvenienceTests: XCTestCase {
     }
   }
 
+  func testCenterIn() {
+    let parentView = UIView(frame: CGRectZero)
+    let childView = UIView(frame: CGRectZero)
+    parentView.addSubview(childView)
+    let expectation = self.expectationWithDescription("constraints installed")
+
+    Manuscript.layout(childView) { c in
+      c.centerIn(parentView)
+      expectation.fulfill()
+    }
+
+    self.waitForExpectationsWithTimeout(0.1) { error in
+      for attribute in [NSLayoutAttribute.CenterX, NSLayoutAttribute.CenterY] {
+        if let constraint = Helper.firstConstraint(parentView, withAttribute:attribute) {
+          Helper.checkConstraint(constraint, item:childView, attribute:attribute, relation:.Equal, relatedItem:parentView, relatedAttribute:attribute, constant:0.0)
+        } else {
+          XCTFail("view is expected to have one constraint for \(attribute)")
+        }
+      }
+      XCTAssertEqual(2, parentView.constraints().count, "parentView is expected to have four constraint")
+      XCTAssertEqual(0, childView.constraints().count, "childView is expected to have no constraint")
+      XCTAssertNil(error, "")
+    }
+  }
+
 }
