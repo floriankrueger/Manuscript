@@ -102,12 +102,12 @@ extension Manuscript {
 
     // MARK: DSL (convenience)
 
-    public func alignAllEdges(to relatedItem: UIView) -> [LayoutItem] {
+    public func alignAllEdges(to relatedItem: UIView, withInsets insets: UIEdgeInsets = UIEdgeInsetsZero) -> [LayoutItem] {
       var result: [LayoutItem] = []
-      result.append(self.make(.Left,    equalTo: relatedItem, s: .Left))
-      result.append(self.make(.Top,     equalTo: relatedItem, s: .Top))
-      result.append(self.make(.Right,   equalTo: relatedItem, s: .Right))
-      result.append(self.make(.Bottom,  equalTo: relatedItem, s: .Bottom))
+      result.append(self.make(.Left,    equalTo: relatedItem, s: .Left,   plus:   Float(insets.left)))
+      result.append(self.make(.Top,     equalTo: relatedItem, s: .Top,    plus:   Float(insets.top)))
+      result.append(self.make(.Right,   equalTo: relatedItem, s: .Right,  minus:  Float(insets.right)))
+      result.append(self.make(.Bottom,  equalTo: relatedItem, s: .Bottom, minus:  Float(insets.bottom)))
       return result
     }
 
