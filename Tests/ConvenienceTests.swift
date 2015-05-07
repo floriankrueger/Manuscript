@@ -31,7 +31,7 @@ class ConvenienceTests: XCTestCase {
           XCTFail("view is expected to have one constraint for \(attribute)")
         }
       }
-      XCTAssertEqual(4, parentView.constraints().count, "parentView is expected to have four constraint")
+      XCTAssertEqual(4, parentView.constraints().count, "parentView is expected to have four constraints")
       XCTAssertEqual(0, childView.constraints().count, "childView is expected to have no constraint")
       XCTAssertNil(error, "")
     }
@@ -71,7 +71,7 @@ class ConvenienceTests: XCTestCase {
           XCTFail("view is expected to have one constraint for \(attribute)")
         }
       }
-      XCTAssertEqual(4, parentView.constraints().count, "parentView is expected to have four constraint")
+      XCTAssertEqual(4, parentView.constraints().count, "parentView is expected to have four constraints")
       XCTAssertEqual(0, childView.constraints().count, "childView is expected to have no constraint")
       XCTAssertNil(error, "")
     }
@@ -96,9 +96,42 @@ class ConvenienceTests: XCTestCase {
           XCTFail("view is expected to have one constraint for \(attribute)")
         }
       }
-      XCTAssertEqual(2, parentView.constraints().count, "parentView is expected to have four constraint")
+      XCTAssertEqual(2, parentView.constraints().count, "parentView is expected to have two constraints")
       XCTAssertEqual(0, childView.constraints().count, "childView is expected to have no constraint")
       XCTAssertNil(error, "")
+    }
+  }
+
+  func testSetSize() {
+    let view = UIView(frame: CGRectZero)
+    let width = 100.0
+    let height = 200.0
+    let expectation = self.expectationWithDescription("constraints installed")
+
+    Manuscript.layout(view) { c in
+      c.setSize(CGSize(width: width, height: height))
+      expectation.fulfill()
+    }
+
+    self.waitForExpectationsWithTimeout(0.1) { error in
+      for attribute in [NSLayoutAttribute.Width, NSLayoutAttribute.Height] {
+        if let constraint = Helper.firstConstraint(view, withAttribute:attribute) {
+          let constant: Float
+          switch attribute {
+          case .Width:
+            constant = Float(width)
+          case .Height:
+            constant = Float(height)
+          default:
+            constant = 0.0
+          }
+          Helper.checkConstraint(constraint, item:view, attribute:attribute, relation:.Equal, constant:constant)
+        } else {
+          XCTFail("view is expected to have one constraint for \(attribute)")
+        }
+        XCTAssertEqual(2, view.constraints().count, "view is expected to have two constraints")
+        XCTAssertNil(error, "")
+      }
     }
   }
 
