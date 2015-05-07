@@ -11,7 +11,7 @@
 		CF4FD01E1AEA1A7F00F989C4 /* Manuscript.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4FCFF21AEA197F00F989C4 /* Manuscript.framework */; };
 		CF4FD0271AEA1C7600F989C4 /* Manuscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4FD0261AEA1C7600F989C4 /* Manuscript.swift */; };
 		CF4FD0291AEA1CA200F989C4 /* LayoutProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4FD0281AEA1CA200F989C4 /* LayoutProxy.swift */; };
-		CF9634201AFA4DBB00861690 /* ConvenienceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF96341F1AFA4DBB00861690 /* ConvenienceTests.swift */; };
+		CF7756201AFB66A8004A9683 /* ConvenienceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF96341F1AFA4DBB00861690 /* ConvenienceTests.swift */; };
 		CF9634221AFA4E1500861690 /* TestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9634211AFA4E1500861690 /* TestHelper.swift */; };
 		CFC1CDD11AECE701007E7700 /* TargetViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFC1CDD01AECE701007E7700 /* TargetViewTests.swift */; };
 		CFDFEEE51AF9FF6A00B9C31C /* PriorityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDFEEE41AF9FF6A00B9C31C /* PriorityTests.swift */; };
@@ -238,11 +238,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				CFDFEEE51AF9FF6A00B9C31C /* PriorityTests.swift in Sources */,
-				CF9634201AFA4DBB00861690 /* ConvenienceTests.swift in Sources */,
 				CFDFEEE71AFA179000B9C31C /* LayoutTests.swift in Sources */,
 				CF9634221AFA4E1500861690 /* TestHelper.swift in Sources */,
 				CF4FD01D1AEA1A7F00F989C4 /* BasicTests.swift in Sources */,
 				CFC1CDD11AECE701007E7700 /* TargetViewTests.swift in Sources */,
+				CF7756201AFB66A8004A9683 /* ConvenienceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -32,11 +32,15 @@ public protocol ManuscriptUtils {
 
 public struct Manuscript {
 
-  public static func layout(view: UIView, utils: ManuscriptUtils = Manuscript.Util(), block: (LayoutProxy) -> ()) -> Manuscript.LayoutProxy {
-    let layoutProxy = LayoutProxy(view: view, utils: utils)
+  public static func makeLayout(@autoclosure #utils: () -> ManuscriptUtils)(_ view: UIView, block: (LayoutProxy) -> ()) -> Manuscript.LayoutProxy {
+    let aView = view
+    let aUtil = utils()
+    let layoutProxy = LayoutProxy(view: view, utils: utils())
     block(layoutProxy)
     return layoutProxy
   }
+
+  public static var layout = Manuscript.makeLayout(utils: Manuscript.Utils())
 
   static func findCommonSuperview(a: UIView, b: UIView?) -> UIView? {
 
@@ -72,7 +76,7 @@ public struct Manuscript {
     }
   }
 
-  struct Util: ManuscriptUtils {
+  struct Utils: ManuscriptUtils {
     func isRetina() -> Bool {
       return UIScreen.mainScreen().scale > 1.0
     }
