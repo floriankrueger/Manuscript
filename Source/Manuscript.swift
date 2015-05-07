@@ -26,14 +26,14 @@
 import Foundation
 import UIKit
 
-protocol ManuscriptUtils {
+public protocol ManuscriptUtils {
   func isRetina() -> Bool
 }
 
 public struct Manuscript {
 
-  public static func layout(view: UIView, block: (LayoutProxy) -> ()) -> Manuscript.LayoutProxy {
-    let layoutProxy = LayoutProxy(view: view)
+  public static func layout(view: UIView, utils: ManuscriptUtils = Manuscript.Util(), block: (LayoutProxy) -> ()) -> Manuscript.LayoutProxy {
+    let layoutProxy = LayoutProxy(view: view, utils: utils)
     block(layoutProxy)
     return layoutProxy
   }

@@ -135,4 +135,98 @@ class ConvenienceTests: XCTestCase {
     }
   }
 
+  func testHorizontalHairlineOnRetina() {
+    let view = UIView(frame: CGRectZero)
+    let expectation = self.expectationWithDescription("constraints installed")
+
+    Manuscript.layout(view, utils:RetinaUtils()) { c in
+      c.makeHorizontalHairline()
+      expectation.fulfill()
+    }
+
+    self.waitForExpectationsWithTimeout(0.1) { error in
+      if let constraint = Helper.firstConstraint(view, withAttribute:.Height) {
+        Helper.checkConstraint(constraint, item:view, attribute:.Height, relation:.Equal, constant:0.5)
+      } else {
+        XCTFail("view is expected to have one constraint for \(NSLayoutAttribute.Height)")
+      }
+      XCTAssertEqual(1, view.constraints().count, "view is expected to have one constraint")
+      XCTAssertNil(error, "")
+    }
+  }
+
+  func testHorizontalHairlineOnNonRetina() {
+    let view = UIView(frame: CGRectZero)
+    let expectation = self.expectationWithDescription("constraints installed")
+
+    Manuscript.layout(view, utils:NonRetinaUtils()) { c in
+      c.makeHorizontalHairline()
+      expectation.fulfill()
+    }
+
+    self.waitForExpectationsWithTimeout(0.1) { error in
+      if let constraint = Helper.firstConstraint(view, withAttribute:.Height) {
+        Helper.checkConstraint(constraint, item:view, attribute:.Height, relation:.Equal, constant:1.0)
+      } else {
+        XCTFail("view is expected to have one constraint for \(NSLayoutAttribute.Height)")
+      }
+      XCTAssertEqual(1, view.constraints().count, "view is expected to have one constraint")
+      XCTAssertNil(error, "")
+    }
+  }
+
+  func testVerticalHairlineOnRetina() {
+    let view = UIView(frame: CGRectZero)
+    let expectation = self.expectationWithDescription("constraints installed")
+
+    Manuscript.layout(view, utils:RetinaUtils()) { c in
+      c.makeVerticalHairline()
+      expectation.fulfill()
+    }
+
+    self.waitForExpectationsWithTimeout(0.1) { error in
+      if let constraint = Helper.firstConstraint(view, withAttribute:.Width) {
+        Helper.checkConstraint(constraint, item:view, attribute:.Width, relation:.Equal, constant:0.5)
+      } else {
+        XCTFail("view is expected to have one constraint for \(NSLayoutAttribute.Width)")
+      }
+      XCTAssertEqual(1, view.constraints().count, "view is expected to have one constraint")
+      XCTAssertNil(error, "")
+    }
+  }
+
+  func testVerticalHairlineOnNonRetina() {
+    let view = UIView(frame: CGRectZero)
+    let expectation = self.expectationWithDescription("constraints installed")
+
+    Manuscript.layout(view, utils:NonRetinaUtils()) { c in
+      c.makeVerticalHairline()
+      expectation.fulfill()
+    }
+
+    self.waitForExpectationsWithTimeout(0.1) { error in
+      if let constraint = Helper.firstConstraint(view, withAttribute:.Width) {
+        Helper.checkConstraint(constraint, item:view, attribute:.Width, relation:.Equal, constant:1.0)
+      } else {
+        XCTFail("view is expected to have one constraint for \(NSLayoutAttribute.Width)")
+      }
+      XCTAssertEqual(1, view.constraints().count, "view is expected to have one constraint")
+      XCTAssertNil(error, "")
+    }
+  }
+
+  // MARK: - Mocks
+
+  struct RetinaUtils: ManuscriptUtils {
+    func isRetina() -> Bool {
+      return true
+    }
+  }
+
+  struct NonRetinaUtils: ManuscriptUtils {
+    func isRetina() -> Bool {
+      return false
+    }
+  }
+
 }
