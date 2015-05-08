@@ -113,6 +113,21 @@ Manuscript.layout(container) { c in
 }
 ```
 
+### Hairlines
+
+There is a utility method to create hairlines which takes the screen scale into account.
+
+```swift
+Manuscript.layout(mySeparatorLine) { c in
+  c.make(.Left, equalTo: self.view, s: .Left)
+  c.make(.Right, equalTo: self.view, s: .Right)
+  c.make(.Top, equalTo: self.topLayoutGuide, s: .Baseline)
+
+  // sets the .Height to 1.0 on non-retina displays and to 0.5 on retina displays
+  c.makeHorizontalHairline()
+}
+```
+
 ### Work with the created Layout Constraints
 
 The functions `make` and `set` return a tuple of type `LayoutItem` which translates to
@@ -137,6 +152,8 @@ UIView.animateWithDuration(0.6) { in
   self.view.layoutIfNeeded()
 }
 ```
+
+### Convenience Methods
 
 The convenience methods return arrays of the mentioned tuples. These will be dictionaries or tuples
 in the future as well to provide easier access to the created constraints. Until then, check the
