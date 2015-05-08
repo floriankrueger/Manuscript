@@ -130,7 +130,7 @@ Manuscript.layout(container) { c in
 Afterwards, just modify the constraint's constant and apply the changes (this is plain AutoLayout).
 
 ```swift
-UIView.animateWithDuration(0.6) { () -> Void in
+UIView.animateWithDuration(0.6) { in
   self.topConstraint?.constant = 100
   self.view.layoutIfNeeded()
 }
@@ -139,3 +139,23 @@ UIView.animateWithDuration(0.6) { () -> Void in
 The convenience methods return arrays of the mentioned tuples. These will be dictionaries or tuples
 in the future as well to provide easier access to the created constraints. Until then, check the
 code for the order of the returned constraints.
+
+## Installation
+
+As for now, you can use [Carthage](https://github.com/Carthage/Carthage) to install Manuscript
+using a dependency manager or do it manually.
+
+### Carthage
+
+To integrate Manuscript into your Xcode project using Carthage, specify it in your `Cartfile`:
+
+```ogdl
+github "floriankrueger/Manuscript"
+```
+
+### Manually
+
+To do it 'by hand' take the following files and add them to your project:
+
+- `Source/Manuscript.swift`
+- `Source/LayoutProxy.swift`
