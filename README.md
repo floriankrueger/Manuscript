@@ -3,6 +3,8 @@
 It's like [AutoLayoutKit](https://github.com/floriankrueger/AutoLayoutKit) but written in Swift.
 For pure Swift projects. And it's super simple.
 
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+
 ## Features
 
 - [x] concise, simple and convenient API
