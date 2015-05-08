@@ -161,3 +161,7 @@ To do it 'by hand' take the following files and add them to your project:
 
 - `Source/Manuscript.swift`
 - `Source/LayoutProxy.swift`
+
+## License
+
+Manuscript is released under the [MIT License](LICENSE.md).
