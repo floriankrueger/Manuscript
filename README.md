@@ -117,19 +117,25 @@ The functions `make` and `set` return a tuple of type `LayoutItem` which transla
 `(constraint: NSLayoutConstraint?, targetItem: UIView?)`. The 'constraint' is the created
 `NSLayoutConstraint`, the 'targetItem' is the view to which the `NSLayoutConstraint` was added. It
 is the nearest common superview of the `UIView`s involved.
-AutoLayoutKit.layout(container) { c in
+
+```swift
+Manuscript.layout(container) { c in
   self.leftConstaint = c.make(.Left, equalTo: self.view, s: .Left).constraint
   self.rightConstaint = c.make(.Right, equalTo: self.view, s: .Right).constraint
   self.topConstaint = c.make(.Top, equalTo: self.topLayoutGuide, s: .Baseline).constraint
   self.bottomConstaint = c.make(.Bottom, equalTo: self.bottomLayoutGuide, s: .Baseline).constraint
 }
+```
 
-// afterwards, just modify the constraint's constant and apply the changes (this is plain AutoLayout)
+Afterwards, just modify the constraint's constant and apply the changes (this is plain AutoLayout).
+
+```swift
 UIView.animateWithDuration(0.6) { () -> Void in
   self.topConstraint?.constant = 100
   self.view.layoutIfNeeded()
 }
+```
 
-// The convenience methods return arrays of the mentioned tuples. These will be dictionaries or tuples
-// in the future as well to provide easier access to the created constraints. Until then, check the
-// code for the order of the returned constraints.
+The convenience methods return arrays of the mentioned tuples. These will be dictionaries or tuples
+in the future as well to provide easier access to the created constraints. Until then, check the
+code for the order of the returned constraints.
