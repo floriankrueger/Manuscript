@@ -2,10 +2,10 @@
 
 ## Version 0.0.2
 
-- [] Readme
+- [ ] Readme
 - [x] Changelog
-- [] Documentation for Base API
-- [] Documentation for Convenience API
+- [ ] Documentation for Base API
+- [ ] Documentation for Convenience API
 
 ## Version 0.0.1
 
