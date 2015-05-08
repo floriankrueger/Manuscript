@@ -7,6 +7,10 @@ It's like [AutoLayoutKit](https://github.com/floriankrueger/AutoLayoutKit) but w
 - [x] concise, simple and convenient API
 - [x] raw AutoLayout power
 - [x] no black magic involved
+- [] fully documented
+- [x] completely unit-tested
+
+Have a look at the [Changelog](CHANGELOG.md) for more details.
 
 ## Requirements
 
