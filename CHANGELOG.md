@@ -1,11 +1,18 @@
 # Changelog
 
-## Version 0.0.2
+## Version 0.0.4
 
-- [ ] Readme
-- [x] Changelog
 - [ ] Documentation for Base API
 - [ ] Documentation for Convenience API
+
+## Version 0.0.3
+
+- [ ] Automatically tested via Travis C.I.
+
+## Version 0.0.2
+
+- [x] Readme
+- [x] Changelog
 
 ## Version 0.0.1
 
