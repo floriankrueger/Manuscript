@@ -7,11 +7,11 @@
 
 ## Version 0.0.4
 
-- [ ] Automatically tested via Travis C.I.
+- [x] Automatically tested via Circle CI (still no Swift 1.2 support on Travis C.I.)
 
 ## Version 0.0.3
 
-- [ ] Changed public APIs from `Float` to `CGFloat`
+- [x] Changed public APIs from `Float` to `CGFloat`
 
 ## Version 0.0.2
 
