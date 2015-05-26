@@ -76,29 +76,29 @@ extension Manuscript {
 
     // MARK: DSL (set)
 
-    public func set(attribute: NSLayoutAttribute, to constant: Float) -> LayoutItem {
+    public func set(attribute: NSLayoutAttribute, to constant: CGFloat) -> LayoutItem {
       return self.set(self.view, attribute: attribute, relation: .Equal, constant: constant, priority: self.internalPriority)
     }
 
-    public func set(attribute: NSLayoutAttribute, toMoreThan constant: Float) -> LayoutItem {
+    public func set(attribute: NSLayoutAttribute, toMoreThan constant: CGFloat) -> LayoutItem {
       return self.set(self.view, attribute: attribute, relation: .GreaterThanOrEqual, constant: constant, priority: self.internalPriority)
     }
 
-    public func set(attribute: NSLayoutAttribute, toLessThan constant: Float) -> LayoutItem {
+    public func set(attribute: NSLayoutAttribute, toLessThan constant: CGFloat) -> LayoutItem {
       return self.set(self.view, attribute: attribute, relation: .LessThanOrEqual, constant: constant, priority: self.internalPriority)
     }
 
     // MARK: DSL (make)
 
-    public func make(attribute: NSLayoutAttribute, equalTo relatedItem: AnyObject, s relatedAttribute: NSLayoutAttribute, times multiplier: Float = 1.0, plus constant: Float = 0.0, minus negativeConstant: Float = 0.0, on targetView: UIView? = nil) -> LayoutItem {
+    public func make(attribute: NSLayoutAttribute, equalTo relatedItem: AnyObject, s relatedAttribute: NSLayoutAttribute, times multiplier: CGFloat = 1.0, plus constant: CGFloat = 0.0, minus negativeConstant: CGFloat = 0.0, on targetView: UIView? = nil) -> LayoutItem {
       return self.make(self.view, attribute: attribute, relation: .Equal, relatedItem: relatedItem, relatedItemAttribute: relatedAttribute, multiplier: multiplier, constant: constant - negativeConstant, target: targetView, priority: self.internalPriority)
     }
 
-    public func make(attribute: NSLayoutAttribute, greaterThan relatedItem: AnyObject, s relatedAttribute: NSLayoutAttribute, times multiplier: Float = 1.0, plus constant: Float = 0.0, minus negativeConstant: Float = 0.0, on targetView: UIView? = nil) -> LayoutItem {
+    public func make(attribute: NSLayoutAttribute, greaterThan relatedItem: AnyObject, s relatedAttribute: NSLayoutAttribute, times multiplier: CGFloat = 1.0, plus constant: CGFloat = 0.0, minus negativeConstant: CGFloat = 0.0, on targetView: UIView? = nil) -> LayoutItem {
       return self.make(self.view, attribute: attribute, relation: .GreaterThanOrEqual, relatedItem: relatedItem, relatedItemAttribute: relatedAttribute, multiplier: multiplier, constant: constant - negativeConstant, target: targetView, priority: self.internalPriority)
     }
 
-    public func make(attribute: NSLayoutAttribute, lessThan relatedItem: AnyObject, s relatedAttribute: NSLayoutAttribute, times multiplier: Float = 1.0, plus constant: Float = 0.0, minus negativeConstant: Float = 0.0, on targetView: UIView? = nil) -> LayoutItem {
+    public func make(attribute: NSLayoutAttribute, lessThan relatedItem: AnyObject, s relatedAttribute: NSLayoutAttribute, times multiplier: CGFloat = 1.0, plus constant: CGFloat = 0.0, minus negativeConstant: CGFloat = 0.0, on targetView: UIView? = nil) -> LayoutItem {
       return self.make(self.view, attribute: attribute, relation: .LessThanOrEqual, relatedItem: relatedItem, relatedItemAttribute: relatedAttribute, multiplier: multiplier, constant: constant - negativeConstant, target: targetView, priority: self.internalPriority)
     }
 
@@ -106,10 +106,10 @@ extension Manuscript {
 
     public func alignAllEdges(to relatedItem: UIView, withInsets insets: UIEdgeInsets = UIEdgeInsetsZero) -> [LayoutItem] {
       var result: [LayoutItem] = []
-      result.append(self.make(.Left,    equalTo: relatedItem, s: .Left,   plus:   Float(insets.left)))
-      result.append(self.make(.Top,     equalTo: relatedItem, s: .Top,    plus:   Float(insets.top)))
-      result.append(self.make(.Right,   equalTo: relatedItem, s: .Right,  minus:  Float(insets.right)))
-      result.append(self.make(.Bottom,  equalTo: relatedItem, s: .Bottom, minus:  Float(insets.bottom)))
+      result.append(self.make(.Left,    equalTo: relatedItem, s: .Left,   plus:   insets.left))
+      result.append(self.make(.Top,     equalTo: relatedItem, s: .Top,    plus:   insets.top))
+      result.append(self.make(.Right,   equalTo: relatedItem, s: .Right,  minus:  insets.right))
+      result.append(self.make(.Bottom,  equalTo: relatedItem, s: .Bottom, minus:  insets.bottom))
       return result
     }
 
@@ -122,8 +122,8 @@ extension Manuscript {
 
     public func setSize(size: CGSize) -> [LayoutItem] {
       var result: [LayoutItem] = []
-      result.append(self.set(.Height, to: Float(size.height)))
-      result.append(self.set(.Width, to: Float(size.width)))
+      result.append(self.set(.Height, to: size.height))
+      result.append(self.set(.Width, to: size.width))
       return result
     }
 
@@ -145,15 +145,15 @@ extension Manuscript {
 
     // MARK: Core
 
-    private func set(item: UIView, attribute: NSLayoutAttribute, relation: NSLayoutRelation, constant: Float, priority: UILayoutPriority) -> LayoutItem {
+    private func set(item: UIView, attribute: NSLayoutAttribute, relation: NSLayoutRelation, constant: CGFloat, priority: UILayoutPriority) -> LayoutItem {
       return self.createLayoutConstraint(item, attribute: attribute, relation: relation, relatedItem: nil, relatedItemAttribute: .NotAnAttribute, multiplier: 1.0, constant: constant, target: item, priority: priority)
     }
 
-    private func make(item: UIView, attribute: NSLayoutAttribute, relation: NSLayoutRelation, relatedItem: AnyObject, relatedItemAttribute: NSLayoutAttribute, multiplier: Float, constant: Float, target: UIView?, priority: UILayoutPriority) -> LayoutItem {
+    private func make(item: UIView, attribute: NSLayoutAttribute, relation: NSLayoutRelation, relatedItem: AnyObject, relatedItemAttribute: NSLayoutAttribute, multiplier: CGFloat, constant: CGFloat, target: UIView?, priority: UILayoutPriority) -> LayoutItem {
       return self.createLayoutConstraint(item, attribute: attribute, relation: relation, relatedItem: relatedItem, relatedItemAttribute: relatedItemAttribute, multiplier: multiplier, constant: constant, target: target, priority: priority)
     }
 
-    private func createLayoutConstraint(item: UIView, attribute: NSLayoutAttribute, relation: NSLayoutRelation, relatedItem: AnyObject?, relatedItemAttribute: NSLayoutAttribute, multiplier: Float, constant: Float, target aTarget: UIView?, priority: UILayoutPriority) -> LayoutItem {
+    private func createLayoutConstraint(item: UIView, attribute: NSLayoutAttribute, relation: NSLayoutRelation, relatedItem: AnyObject?, relatedItemAttribute: NSLayoutAttribute, multiplier: CGFloat, constant: CGFloat, target aTarget: UIView?, priority: UILayoutPriority) -> LayoutItem {
 
       let constraint = NSLayoutConstraint(
         item: item,
@@ -161,8 +161,8 @@ extension Manuscript {
         relatedBy: relation,
         toItem: relatedItem,
         attribute: relatedItemAttribute,
-        multiplier: CGFloat(multiplier),
-        constant: CGFloat(constant))
+        multiplier: multiplier,
+        constant: constant)
 
       constraint.priority = priority
 

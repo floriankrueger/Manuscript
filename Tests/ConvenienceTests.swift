@@ -70,16 +70,16 @@ class ConvenienceTests: XCTestCase {
     self.waitForExpectationsWithTimeout(0.1) { error in
       for attribute in [NSLayoutAttribute.Left, NSLayoutAttribute.Right, NSLayoutAttribute.Top, NSLayoutAttribute.Bottom] {
         if let constraint = Helper.firstConstraint(parentView, withAttribute:attribute) {
-          let constant: Float
+          let constant: CGFloat
           switch attribute {
           case .Left:
-            constant = Float(insets.left)
+            constant = insets.left
           case .Right:
-            constant = -1 * Float(insets.right)
+            constant = -1 * insets.right
           case .Top:
-            constant = Float(insets.top)
+            constant = insets.top
           case .Bottom:
-            constant = -1 * Float(insets.bottom)
+            constant = -1 * insets.bottom
           default:
             constant = 0.0
           }
@@ -121,8 +121,8 @@ class ConvenienceTests: XCTestCase {
 
   func testSetSize() {
     let view = UIView(frame: CGRectZero)
-    let width = 100.0
-    let height = 200.0
+    let width:CGFloat = 100.0
+    let height:CGFloat = 200.0
     let expectation = self.expectationWithDescription("constraints installed")
 
     Manuscript.layout(view) { c in
@@ -133,12 +133,12 @@ class ConvenienceTests: XCTestCase {
     self.waitForExpectationsWithTimeout(0.1) { error in
       for attribute in [NSLayoutAttribute.Width, NSLayoutAttribute.Height] {
         if let constraint = Helper.firstConstraint(view, withAttribute:attribute) {
-          let constant: Float
+          let constant: CGFloat
           switch attribute {
           case .Width:
-            constant = Float(width)
+            constant = width
           case .Height:
-            constant = Float(height)
+            constant = height
           default:
             constant = 0.0
           }
