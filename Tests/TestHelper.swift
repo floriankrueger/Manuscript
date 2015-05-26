@@ -35,27 +35,27 @@ struct Helper {
     relation: NSLayoutRelation,
     relatedItem: UIView? = nil,
     relatedAttribute: NSLayoutAttribute = .NotAnAttribute,
-    multiplier: Float = 1.0,
-    constant: Float)
+    multiplier: CGFloat = 1.0,
+    constant: CGFloat)
   {
     XCTAssertNotNil(constraint, "constraint must not be nil")
-    XCTAssertEqual(constraint.firstItem as! UIView, item,                 "")
-    XCTAssertEqual(constraint.firstAttribute,       attribute,            "")
-    XCTAssertEqual(constraint.relation,             relation,             "")
+    XCTAssertEqual(constraint.firstItem as! UIView, item, "")
+    XCTAssertEqual(constraint.firstAttribute, attribute, "")
+    XCTAssertEqual(constraint.relation, relation, "")
 
     if let strongRelatedItem = relatedItem {
       XCTAssertEqual(constraint.secondItem as! UIView, strongRelatedItem, "")
     } else {
-      XCTAssertNil(constraint.secondItem,                                 "")
+      XCTAssertNil(constraint.secondItem, "")
     }
 
-    XCTAssertEqual(constraint.secondAttribute,      relatedAttribute,     "")
-    XCTAssertEqual(constraint.multiplier,           CGFloat(multiplier),  "")
-    XCTAssertEqual(constraint.constant,             CGFloat(constant),    "")
+    XCTAssertEqual(constraint.secondAttribute, relatedAttribute, "")
+    XCTAssertEqualWithAccuracy(constraint.multiplier, multiplier, CGFloat(FLT_EPSILON), "")
+    XCTAssertEqual(constraint.constant, constant, "")
   }
 
-  static func randomFloat(min: Float = 0.0, max: Float) -> Float {
-    let random = Float(arc4random()) / Float(UInt32.max)
+  static func randomFloat(min: CGFloat = 0.0, max: CGFloat) -> CGFloat {
+    let random = CGFloat(arc4random()) / CGFloat(UInt32.max)
     return random * (max - min) + min
   }
 

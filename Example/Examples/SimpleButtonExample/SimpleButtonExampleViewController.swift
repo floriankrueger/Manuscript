@@ -36,6 +36,9 @@ class SimpleButtonExampleViewController: UIViewController {
   private let optionB: UIButton = UIButton.buttonWithType(.System) as! UIButton
   private let optionC: UIButton = UIButton.buttonWithType(.System) as! UIButton
 
+  private let buttonDimSmall:CGFloat = 60.0
+  private let buttonDimBig:CGFloat = 80.0
+
   private var optionAHeight: NSLayoutConstraint? = nil
   private var optionAWidth: NSLayoutConstraint? = nil
   private var optionBHeight: NSLayoutConstraint? = nil
@@ -75,16 +78,16 @@ class SimpleButtonExampleViewController: UIViewController {
     if let activeButton = self.activeButton {
       switch activeButton {
       case self.optionA:
-        self.optionAHeight?.constant = 60.0
-        self.optionAWidth?.constant = 60.0
+        self.optionAHeight?.constant = self.buttonDimSmall
+        self.optionAWidth?.constant = self.buttonDimSmall
         self.optionA.setNeedsLayout()
       case self.optionB:
-        self.optionBHeight?.constant = 60.0
-        self.optionBWidth?.constant = 60.0
+        self.optionBHeight?.constant = self.buttonDimSmall
+        self.optionBWidth?.constant = self.buttonDimSmall
         self.optionB.setNeedsLayout()
       case self.optionC:
-        self.optionCHeight?.constant = 60.0
-        self.optionCWidth?.constant = 60.0
+        self.optionCHeight?.constant = self.buttonDimSmall
+        self.optionCWidth?.constant = self.buttonDimSmall
         self.optionC.setNeedsLayout()
       default:
         println("active button is unknown")
@@ -93,16 +96,16 @@ class SimpleButtonExampleViewController: UIViewController {
 
     switch sender {
     case self.optionA:
-      self.optionAHeight?.constant = 80.0
-      self.optionAWidth?.constant = 80.0
+      self.optionAHeight?.constant = self.buttonDimBig
+      self.optionAWidth?.constant = self.buttonDimBig
       self.optionA.setNeedsLayout()
     case self.optionB:
-      self.optionBHeight?.constant = 80.0
-      self.optionBWidth?.constant = 80.0
+      self.optionBHeight?.constant = self.buttonDimBig
+      self.optionBWidth?.constant = self.buttonDimBig
       self.optionB.setNeedsLayout()
     case self.optionC:
-      self.optionCHeight?.constant = 80.0
-      self.optionCWidth?.constant = 80.0
+      self.optionCHeight?.constant = self.buttonDimBig
+      self.optionCWidth?.constant = self.buttonDimBig
       self.optionC.setNeedsLayout()
     default:
       println("sender button is unknown")
@@ -136,21 +139,21 @@ class SimpleButtonExampleViewController: UIViewController {
 
   private func setupLayout() {
     Manuscript.layout(self.optionA) { c in
-      self.optionAHeight = c.set(.Height, to:60.0).constraint
-      self.optionAWidth = c.set(.Width, to:60.0).constraint
+      self.optionAHeight = c.set(.Height, to:self.buttonDimSmall).constraint
+      self.optionAWidth = c.set(.Width, to:self.buttonDimSmall).constraint
       c.make(.Right, equalTo:self.optionB, s:.Left, minus: 10.0)
       c.make(.CenterY, equalTo:self.view, s:.CenterY)
     }
 
     Manuscript.layout(self.optionB) { c in
-      self.optionBHeight = c.set(.Height, to:60.0).constraint
-      self.optionBWidth = c.set(.Width, to:60.0).constraint
+      self.optionBHeight = c.set(.Height, to:self.buttonDimSmall).constraint
+      self.optionBWidth = c.set(.Width, to:self.buttonDimSmall).constraint
       c.centerIn(self.view)
     }
 
     Manuscript.layout(self.optionC) { c in
-      self.optionCHeight = c.set(.Height, to:60.0).constraint
-      self.optionCWidth = c.set(.Width, to:60.0).constraint
+      self.optionCHeight = c.set(.Height, to:self.buttonDimSmall).constraint
+      self.optionCWidth = c.set(.Width, to:self.buttonDimSmall).constraint
       c.make(.Left, equalTo:self.optionB, s:.Right, plus: 10.0)
       c.make(.CenterY, equalTo:self.view, s:.CenterY)
     }

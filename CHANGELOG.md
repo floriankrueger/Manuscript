@@ -1,13 +1,17 @@
 # Changelog
 
-## Version 0.0.4
+## Version 0.0.5
 
 - [ ] Documentation for Base API
 - [ ] Documentation for Convenience API
 
-## Version 0.0.3
+## Version 0.0.4
 
 - [ ] Automatically tested via Travis C.I.
+
+## Version 0.0.3
+
+- [ ] Changed public APIs from `Float` to `CGFloat`
 
 ## Version 0.0.2
 
