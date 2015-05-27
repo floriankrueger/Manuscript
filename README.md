@@ -3,7 +3,7 @@
 It's like [AutoLayoutKit](https://github.com/floriankrueger/AutoLayoutKit) but written in Swift.
 For pure Swift projects. And it's super simple.
 
-[![GitHub release](https://img.shields.io/github/release/floriankrueger/Manuscript.svg)](https://github.com/floriankrueger/Manuscript)  
+[![GitHub release](https://img.shields.io/github/release/floriankrueger/Manuscript.svg)](https://github.com/floriankrueger/Manuscript)
 [![CircleCI](https://img.shields.io/circleci/project/floriankrueger/Manuscript.svg)](https://circleci.com/gh/floriankrueger/Manuscript)
 [![Coveralls branch](https://img.shields.io/coveralls/floriankrueger/manuscript.svg)](https://coveralls.io/r/floriankrueger/Manuscript)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
