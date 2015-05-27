@@ -1,9 +1,13 @@
 # Changelog
 
-## Version 0.0.5
+## Version 0.0.6
 
 - [ ] Documentation for Base API
 - [ ] Documentation for Convenience API
+
+## Version 0.0.5
+
+- [x] Cocoapods compatibility
 
 ## Version 0.0.4
 
