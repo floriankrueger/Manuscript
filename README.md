@@ -162,7 +162,7 @@ code for the order of the returned constraints.
 
 ## Installation
 
-As for now, you can use [Carthage](https://github.com/Carthage/Carthage) to install Manuscript
+As for now, you can use [Carthage](https://github.com/Carthage/Carthage) or [Cocoapods](https://cocoapods.org) to install Manuscript
 using a dependency manager or do it manually.
 
 ### Carthage
@@ -172,6 +172,19 @@ To integrate Manuscript into your Xcode project using Carthage, specify it in yo
 ```ogdl
 github "floriankrueger/Manuscript"
 ```
+
+### Cocoapods
+
+Make sure your `Podfile` contains all of the following lines.
+
+```ruby
+use_frameworks!
+platform :ios, '8.0'
+
+pod 'Manuscript'
+```
+
+Then run `pod install`.
 
 ### Manually
 
