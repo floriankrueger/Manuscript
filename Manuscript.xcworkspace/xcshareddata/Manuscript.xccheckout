@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>964A6745-5529-44C3-AE83-4794CC5E75C5</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Manuscript</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>186F4D57BEBE4C6CAFA29E0A8D9F5EC65272FCEC</key>
+		<string>https://github.com/floriankrueger/Manuscript.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Manuscript.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>186F4D57BEBE4C6CAFA29E0A8D9F5EC65272FCEC</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/floriankrueger/Manuscript.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>186F4D57BEBE4C6CAFA29E0A8D9F5EC65272FCEC</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>186F4D57BEBE4C6CAFA29E0A8D9F5EC65272FCEC</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Manuscript</string>
+		</dict>
+	</array>
+</dict>
+</plist>
