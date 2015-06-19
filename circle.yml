@@ -3,6 +3,7 @@ general:
     ignore:
       - gh-pages
       - assets
+      - feature/swift2
 
 machine:
   xcode:
