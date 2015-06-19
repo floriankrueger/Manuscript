@@ -15,7 +15,7 @@ For pure Swift projects. And it's super simple.
 - [x] concise, simple and convenient API
 - [x] raw AutoLayout power
 - [x] no black magic involved
-- [ ] fully documented
+- [x] fully documented
 - [x] completely unit-tested
 
 Have a look at the [Changelog](CHANGELOG.md) for more details.
