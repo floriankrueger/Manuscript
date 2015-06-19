@@ -2,8 +2,8 @@
 
 ## Version 0.0.6
 
-- [ ] Documentation for Base API
-- [ ] Documentation for Convenience API
+- [x] Documentation for Base API
+- [x] Documentation for Convenience API
 
 ## Version 0.0.5
 
