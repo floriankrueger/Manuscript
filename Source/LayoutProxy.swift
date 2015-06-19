@@ -28,7 +28,15 @@ import UIKit
 
 extension Manuscript {
 
+  /// A Manuscript `LayoutItem` consists of two things:
+  ///
+  /// * the `constraint` that was generated through Manuscript
+  /// * the `targetItem` on which the constraint was installed. That is the nearest ancestor view
+  ///   of the views that are referenced by the constraint.
+
   public typealias LayoutItem = (constraint: NSLayoutConstraint, targetItem: UIView)
+
+  /// The `LayoutProxy` is responsible for creating all the constraints.
 
   public class LayoutProxy: NSObject {
 
@@ -46,21 +54,33 @@ extension Manuscript {
 
     // MARK: Priority
 
+    /// Set the priority for all constraints created *after* this call to `1000`
+
     public func setPriorityRequired() {
       self.internalPriority = 1000
     }
+
+    /// Set the priority for all constraints created *after* this call to `750`
 
     public func setPriorityDefaultHigh() {
       self.internalPriority = 750
     }
 
+    /// Set the priority for all constraints created *after* this call to `250`
+
     public func setPriorityDefaultLow() {
       self.internalPriority = 250
     }
 
+    /// Set the priority for all constraints created *after* this call to `50`
+
     public func setPriorityFittingSizeLevel() {
       self.internalPriority = 50
     }
+
+    /// Set the priority for all constraints created *after* this call to the given `priority`
+    ///
+    /// :param: priority A UILayoutPriority a.k.a. int between 0 and 1000
 
     public func setPriority(priority: UILayoutPriority) {
       if priority > 1000 {
@@ -76,13 +96,40 @@ extension Manuscript {
 
     // MARK: DSL (set)
 
+    /// Set a layout attribute to a specific constant using a `equalTo` relation. This is mostly
+    /// used for width and height. Constraints created by 'set' methods are always added to the
+    /// view itself so that `c.view == layoutItem.targetView`.
+    ///
+    /// :param: attribute the layout attribute to be set
+    /// :param: constant the constant to be used for the constraint
+    ///
+    /// :returns: a layout item whose target item is the view itself
+
     public func set(attribute: NSLayoutAttribute, to constant: CGFloat) -> LayoutItem {
       return self.set(self.view, attribute: attribute, relation: .Equal, constant: constant, priority: self.internalPriority)
     }
 
+    /// Set a layout attribute to a specific constant using a `greaterThan` relation. This is mostly
+    /// used for width and height. Constraints created by 'set' methods are always added to the
+    /// view itself so that `c.view == layoutItem.targetView`.
+    ///
+    /// :param: attribute the layout attribute to be set
+    /// :param: constant the constant to be used for the constraint
+    ///
+    /// :returns: a layout item whose target item is the view itself
+
     public func set(attribute: NSLayoutAttribute, toMoreThan constant: CGFloat) -> LayoutItem {
       return self.set(self.view, attribute: attribute, relation: .GreaterThanOrEqual, constant: constant, priority: self.internalPriority)
     }
+
+    /// Set a layout attribute to a specific constant using a `lessThan` relation. This is mostly
+    /// used for width and height. Constraints created by 'set' methods are always added to the
+    /// view itself so that `c.view == layoutItem.targetView`.
+    ///
+    /// :param: attribute the layout attribute to be set
+    /// :param: constant the constant to be used for the constraint
+    ///
+    /// :returns: a layout item whose target item is the view itself
 
     public func set(attribute: NSLayoutAttribute, toLessThan constant: CGFloat) -> LayoutItem {
       return self.set(self.view, attribute: attribute, relation: .LessThanOrEqual, constant: constant, priority: self.internalPriority)
@@ -90,19 +137,80 @@ extension Manuscript {
 
     // MARK: DSL (make)
 
+    /// Align a given attribute to another views attributes using a `equalTo` relation.
+    ///
+    /// :param: attribute the attribute on the layout proxies’ view
+    /// :param: relatedItem the item (view or layout guide) to relate to
+    /// :param: relatedAttribute the attribute on the related item
+    /// :param: multiplier a multiplier that is applied to the constraint
+    /// :param: constant a constant that is added to the constant of the constraint
+    /// :param: negativeConstant a constant that is subtracted from the constant of the constraint
+    /// :param: targetView the view on which the constraint should be installed. you should normally
+    ///                    not need to specify this. When this is `nil`, Manuscript looks for the
+    ///                    closest common ancestor view of the two views under operation and
+    ///                    installs the constraint there.
+    ///
+    /// :returns: a layout item containing the created constraint as well as the target view on
+    ///           which the constraint was installed
+
     public func make(attribute: NSLayoutAttribute, equalTo relatedItem: AnyObject, s relatedAttribute: NSLayoutAttribute, times multiplier: CGFloat = 1.0, plus constant: CGFloat = 0.0, minus negativeConstant: CGFloat = 0.0, on targetView: UIView? = nil) -> LayoutItem {
       return self.make(self.view, attribute: attribute, relation: .Equal, relatedItem: relatedItem, relatedItemAttribute: relatedAttribute, multiplier: multiplier, constant: constant - negativeConstant, target: targetView, priority: self.internalPriority)
     }
 
+    /// Align a given attribute to another views attributes using a `greaterThan` relation.
+    ///
+    /// :param: attribute the attribute on the layout proxies’ view
+    /// :param: relatedItem the item (view or layout guide) to relate to
+    /// :param: relatedAttribute the attribute on the related item
+    /// :param: multiplier a multiplier that is applied to the constraint
+    /// :param: constant a constant that is added to the constant of the constraint
+    /// :param: negativeConstant a constant that is subtracted from the constant of the constraint
+    /// :param: targetView the view on which the constraint should be installed. you should normally
+    ///                    not need to specify this. When this is `nil`, Manuscript looks for the
+    ///                    closest common ancestor view of the two views under operation and
+    ///                    installs the constraint there.
+    ///
+    /// :returns: a layout item containing the created constraint as well as the target view on
+    ///           which the constraint was installed
+
     public func make(attribute: NSLayoutAttribute, greaterThan relatedItem: AnyObject, s relatedAttribute: NSLayoutAttribute, times multiplier: CGFloat = 1.0, plus constant: CGFloat = 0.0, minus negativeConstant: CGFloat = 0.0, on targetView: UIView? = nil) -> LayoutItem {
       return self.make(self.view, attribute: attribute, relation: .GreaterThanOrEqual, relatedItem: relatedItem, relatedItemAttribute: relatedAttribute, multiplier: multiplier, constant: constant - negativeConstant, target: targetView, priority: self.internalPriority)
     }
+
+    /// Align a given attribute to another views attributes using a `lessThan` relation.
+    ///
+    /// :param: attribute the attribute on the layout proxies’ view
+    /// :param: relatedItem the item (view or layout guide) to relate to
+    /// :param: relatedAttribute the attribute on the related item
+    /// :param: multiplier a multiplier that is applied to the constraint
+    /// :param: constant a constant that is added to the constant of the constraint
+    /// :param: negativeConstant a constant that is subtracted from the constant of the constraint
+    /// :param: targetView the view on which the constraint should be installed. you should normally
+    ///                    not need to specify this. When this is `nil`, Manuscript looks for the
+    ///                    closest common ancestor view of the two views under operation and
+    ///                    installs the constraint there.
+    ///
+    /// :returns: a layout item containing the created constraint as well as the target view on
+    ///           which the constraint was installed
 
     public func make(attribute: NSLayoutAttribute, lessThan relatedItem: AnyObject, s relatedAttribute: NSLayoutAttribute, times multiplier: CGFloat = 1.0, plus constant: CGFloat = 0.0, minus negativeConstant: CGFloat = 0.0, on targetView: UIView? = nil) -> LayoutItem {
       return self.make(self.view, attribute: attribute, relation: .LessThanOrEqual, relatedItem: relatedItem, relatedItemAttribute: relatedAttribute, multiplier: multiplier, constant: constant - negativeConstant, target: targetView, priority: self.internalPriority)
     }
 
     // MARK: DSL (convenience)
+
+    /// Align all edges of the view under operation to the related view. This creates four
+    /// constraints:
+    ///
+    /// * left to left plus insets.left
+    /// * top to top plus insets.top
+    /// * right to right minus insets.right
+    /// * bottom to bottom minus insets.bottom
+    ///
+    /// :param: relatedItem the item to relate to
+    /// :param: insets the insets to use for the constraints, zero by default
+    ///
+    /// :returns: an array of layout items in the order mentinoned above (left, top, right, bottom)
 
     public func alignAllEdges(to relatedItem: UIView, withInsets insets: UIEdgeInsets = UIEdgeInsetsZero) -> [LayoutItem] {
       var result: [LayoutItem] = []
@@ -113,12 +221,31 @@ extension Manuscript {
       return result
     }
 
+    /// Align both vertical and horizontal centers to the related item. This creates two
+    /// constraints:
+    ///
+    /// * center x to center x
+    /// * center y to center y
+    ///
+    /// :param: view the view to be centered in
+    ///
+    /// :returns: an array of layout items in the order mentinoned above (center x, center y)
+
     public func centerIn(view: UIView) -> [LayoutItem] {
       var result: [LayoutItem] = []
       result.append(self.make(.CenterX, equalTo: view, s: .CenterX))
       result.append(self.make(.CenterY, equalTo: view, s: .CenterY))
       return result
     }
+
+    /// Set both width and height at once. This creates two constraints on the view itself:
+    ///
+    /// * width equal to `size.width`
+    /// * height equal to `size.height`
+    ///
+    /// :param: size the desired size of the view
+    ///
+    /// :returns: an array of layout items in the order mentioned above (width, height)
 
     public func setSize(size: CGSize) -> [LayoutItem] {
       var result: [LayoutItem] = []
@@ -127,6 +254,13 @@ extension Manuscript {
       return result
     }
 
+    /// Helper method to create a vertical (top to bottom) hairline, resolution independent. This
+    /// will create a single constraint on the view itself:
+    ///
+    /// * width equal to 1.0 on non-retina displays, 0.5 on retina displays
+    ///
+    /// :returns: a single layout item
+
     public func makeVerticalHairline() -> LayoutItem {
       if self.utils.isRetina() {
         return self.set(.Width, to: 0.5)
@@ -134,6 +268,13 @@ extension Manuscript {
         return self.set(.Width, to: 1.0)
       }
     }
+
+    /// Helper method to create a horizontal (left to right) hairline, resolution independent. This
+    /// will create a single constraint on the view itself:
+    ///
+    /// * height equal to 1.0 on non-retina displays, 0.5 on retina displays
+    ///
+    /// :returns: a single layout item
 
     public func makeHorizontalHairline() -> LayoutItem {
       if self.utils.isRetina() {

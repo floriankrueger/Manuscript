@@ -35,3 +35,7 @@ DerivedData
 # Carthage/Checkouts
 
 Carthage/Build
+
+# Jazzy
+#
+docs/
