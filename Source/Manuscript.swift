@@ -35,7 +35,7 @@ public protocol ManuscriptUtils {
 
   /// Check whether we're running on a system that has a so-called "Retina" display.
   ///
-  /// :returns: `true` if the `scale` of the main screen is greater than 1.0, `false` otherwise
+  /// - returns: `true` if the `scale` of the main screen is greater than 1.0, `false` otherwise
   
   func isRetina() -> Bool
 }
@@ -57,17 +57,15 @@ public struct Manuscript {
   /// This is just public for testing purposes and will be private in future releases when Xcode 7
   /// is out of beta.
   ///
-  /// :param: utils an instance of `ManuscriptUtils` which is provided by default if you use
+  /// - parameter utils: an instance of `ManuscriptUtils` which is provided by default if you use
   ///               `layout` method
-  /// :param: view the `UIView` that should be layouted
-  /// :param: block a block that is provided with a `LayoutProxy` that is already setup with the
+  /// - parameter view: the `UIView` that should be layouted
+  /// - parameter block: a block that is provided with a `LayoutProxy` that is already setup with the
   ///              given `view`. You can create AutoLayout constraints through this proxy.
   ///
-  /// :returns: the `LayoutProxy` instance that is also handed to the `block`
+  /// - returns: the `LayoutProxy` instance that is also handed to the `block`
 
-  public static func makeLayout(@autoclosure #utils: () -> ManuscriptUtils)(_ view: UIView, block: (LayoutProxy) -> ()) -> Manuscript.LayoutProxy {
-    let aView = view
-    let aUtil = utils()
+  public static func makeLayout(@autoclosure utils utils: () -> ManuscriptUtils)(_ view: UIView, block: (LayoutProxy) -> ()) -> Manuscript.LayoutProxy {
     let layoutProxy = LayoutProxy(view: view, utils: utils())
     block(layoutProxy)
     return layoutProxy
@@ -91,7 +89,7 @@ public struct Manuscript {
       if aSuper == bSuper { return aSuper }
 
       // None of those; run the general algorithm
-      var ancestorsOfA = NSSet(array: Array(ancestors(a)))
+      let ancestorsOfA = NSSet(array: Array(ancestors(a)))
       for ancestor in ancestors(b) {
         if ancestorsOfA.containsObject(ancestor) {
           return ancestor
@@ -103,10 +101,10 @@ public struct Manuscript {
     return a // b is nil
   }
 
-  static func ancestors(v: UIView) -> SequenceOf<UIView> {
-    return SequenceOf<UIView> { () -> GeneratorOf<UIView> in
+  static func ancestors(v: UIView) -> AnySequence<UIView> {
+    return AnySequence { () -> AnyGenerator<UIView> in
       var view: UIView? = v
-      return GeneratorOf {
+      return anyGenerator {
         let current = view
         view = view?.superview
         return current
