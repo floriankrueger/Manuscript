@@ -39,12 +39,12 @@ struct Helper {
     constant: CGFloat)
   {
     XCTAssertNotNil(constraint, "constraint must not be nil")
-    XCTAssertEqual(constraint.firstItem as! UIView, item, "")
+    XCTAssertEqual(constraint.firstItem as? UIView, item, "")
     XCTAssertEqual(constraint.firstAttribute, attribute, "")
     XCTAssertEqual(constraint.relation, relation, "")
 
     if let strongRelatedItem = relatedItem {
-      XCTAssertEqual(constraint.secondItem as! UIView, strongRelatedItem, "")
+      XCTAssertEqual(constraint.secondItem as? UIView, strongRelatedItem, "")
     } else {
       XCTAssertNil(constraint.secondItem, "")
     }

@@ -311,6 +311,37 @@ extension Manuscript {
         return self.installConstraint(constraint, onTarget: target)
       }
 
+      if #available(iOS 9.0, *) {
+        return self.iOS9_installConstraint(item: item, relatedItem: relatedItem, constraint: constraint)
+      } else {
+        return self.earlier_installConstraint(item: item, relatedItem: relatedItem, constraint: constraint)
+      }
+    }
+
+    private func iOS9_installConstraint(item item: UIView, relatedItem: AnyObject?, constraint: NSLayoutConstraint) -> LayoutItem {
+      if #available(iOS 9.0, *) {
+          switch relatedItem {
+          case let relatedView as UIView:
+            if let target = Manuscript.findCommonSuperview(item, b: relatedView) {
+              return self.installConstraint(constraint, onTarget: target)
+            } else {
+              fatalError("couldn't find common ancestors for \(item) and \(relatedView) (while trying to install \(constraint))")
+            }
+          case let relatedLayoutGuide as UILayoutGuide:
+            if let target = Manuscript.findCommonSuperview(item, b: relatedLayoutGuide.owningView) {
+              return self.installConstraint(constraint, onTarget: target)
+            } else {
+              fatalError("couldn't find common ancestors for \(item) and \(relatedLayoutGuide) (while trying to install \(constraint))")
+            }
+          default:
+            fatalError("the type of relatedItem is (currently) unsupported. If you think it should be, please file an issue on github.")
+          }
+      } else {
+          fatalError("the method `iOS9_installConstraint` does only work on iOS versions 9.0 and up. Don't call it directly.")
+      }
+    }
+
+    private func earlier_installConstraint(item item: UIView, relatedItem: AnyObject?, constraint: NSLayoutConstraint) -> LayoutItem {
       var relatedView: UIView? = nil
       if let aRelatedView = relatedItem as? UIView {
         relatedView = aRelatedView
