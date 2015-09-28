@@ -16,8 +16,8 @@ test:
         -workspace Manuscript.xcworkspace/
         -scheme Manuscript
         -sdk iphonesimulator
-        -destination 'platform=iOS Simulator,OS=8.4,name=iPhone 6'
-        clean test 
+        -destination 'platform=iOS Simulator,OS=9.0,name=iPhone 6'
+        clean test
         ONLY_ACTIVE_ARCH=NO
         TEST_AFTER_BUILD=YES
         GCC_INSTRUMENT_PROGRAM_FLOW_ARCS=YES
