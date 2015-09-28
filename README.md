@@ -25,6 +25,12 @@ Have a look at the [Changelog](CHANGELOG.md) for more details.
 - iOS 8.0+
 - Xcode 6.3
 
+### Bonus: Support for iOS 7.0+ and/or tvOS
+
+Although the cocoapods isn't able to install Manuscript for your iOS 7.0+ app or for your tvOS app
+(yet), you can use still Manuscript. Just follow the 'manual' installation or add Manuscript as a
+framework project to your workspace (that's what I do).
+
 ## What it looks like
 
 ```swift
