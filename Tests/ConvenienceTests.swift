@@ -48,8 +48,8 @@ class ConvenienceTests: XCTestCase {
           XCTFail("view is expected to have one constraint for \(attribute)")
         }
       }
-      XCTAssertEqual(4, parentView.constraints().count, "parentView is expected to have four constraints")
-      XCTAssertEqual(0, childView.constraints().count, "childView is expected to have no constraint")
+      XCTAssertEqual(4, parentView.constraints.count, "parentView is expected to have four constraints")
+      XCTAssertEqual(0, childView.constraints.count, "childView is expected to have no constraint")
       XCTAssertNil(error, "")
     }
   }
@@ -58,7 +58,6 @@ class ConvenienceTests: XCTestCase {
     let parentView = UIView(frame: CGRectZero)
     let childView = UIView(frame: CGRectZero)
     parentView.addSubview(childView)
-    let attributes = [NSLayoutAttribute.Left, NSLayoutAttribute.Right, NSLayoutAttribute.Top, NSLayoutAttribute.Bottom]
     let insets = UIEdgeInsets(top: 1.0, left: 2.0, bottom: 3.0, right: 4.0)
     let expectation = self.expectationWithDescription("constraints installed")
 
@@ -88,8 +87,8 @@ class ConvenienceTests: XCTestCase {
           XCTFail("view is expected to have one constraint for \(attribute)")
         }
       }
-      XCTAssertEqual(4, parentView.constraints().count, "parentView is expected to have four constraints")
-      XCTAssertEqual(0, childView.constraints().count, "childView is expected to have no constraint")
+      XCTAssertEqual(4, parentView.constraints.count, "parentView is expected to have four constraints")
+      XCTAssertEqual(0, childView.constraints.count, "childView is expected to have no constraint")
       XCTAssertNil(error, "")
     }
   }
@@ -113,8 +112,8 @@ class ConvenienceTests: XCTestCase {
           XCTFail("view is expected to have one constraint for \(attribute)")
         }
       }
-      XCTAssertEqual(2, parentView.constraints().count, "parentView is expected to have two constraints")
-      XCTAssertEqual(0, childView.constraints().count, "childView is expected to have no constraint")
+      XCTAssertEqual(2, parentView.constraints.count, "parentView is expected to have two constraints")
+      XCTAssertEqual(0, childView.constraints.count, "childView is expected to have no constraint")
       XCTAssertNil(error, "")
     }
   }
@@ -146,7 +145,7 @@ class ConvenienceTests: XCTestCase {
         } else {
           XCTFail("view is expected to have one constraint for \(attribute)")
         }
-        XCTAssertEqual(2, view.constraints().count, "view is expected to have two constraints")
+        XCTAssertEqual(2, view.constraints.count, "view is expected to have two constraints")
         XCTAssertNil(error, "")
       }
     }
@@ -167,7 +166,7 @@ class ConvenienceTests: XCTestCase {
       } else {
         XCTFail("view is expected to have one constraint for \(NSLayoutAttribute.Height)")
       }
-      XCTAssertEqual(1, view.constraints().count, "view is expected to have one constraint")
+      XCTAssertEqual(1, view.constraints.count, "view is expected to have one constraint")
       XCTAssertNil(error, "")
     }
   }
@@ -187,7 +186,7 @@ class ConvenienceTests: XCTestCase {
       } else {
         XCTFail("view is expected to have one constraint for \(NSLayoutAttribute.Height)")
       }
-      XCTAssertEqual(1, view.constraints().count, "view is expected to have one constraint")
+      XCTAssertEqual(1, view.constraints.count, "view is expected to have one constraint")
       XCTAssertNil(error, "")
     }
   }
@@ -207,7 +206,7 @@ class ConvenienceTests: XCTestCase {
       } else {
         XCTFail("view is expected to have one constraint for \(NSLayoutAttribute.Width)")
       }
-      XCTAssertEqual(1, view.constraints().count, "view is expected to have one constraint")
+      XCTAssertEqual(1, view.constraints.count, "view is expected to have one constraint")
       XCTAssertNil(error, "")
     }
   }
@@ -227,7 +226,7 @@ class ConvenienceTests: XCTestCase {
       } else {
         XCTFail("view is expected to have one constraint for \(NSLayoutAttribute.Width)")
       }
-      XCTAssertEqual(1, view.constraints().count, "view is expected to have one constraint")
+      XCTAssertEqual(1, view.constraints.count, "view is expected to have one constraint")
       XCTAssertNil(error, "")
     }
   }

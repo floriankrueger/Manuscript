@@ -55,8 +55,8 @@ class TargetViewTests: XCTestCase {
       layoutItem = c.make(.Width, equalTo:parentView, s:.Width, on:parentView)
     }
 
-    XCTAssertEqual(childView.constraints().count, 0, "")
-    XCTAssertEqual(parentView.constraints().count, 1, "")
+    XCTAssertEqual(childView.constraints.count, 0, "")
+    XCTAssertEqual(parentView.constraints.count, 1, "")
     XCTAssertEqual(parentView, layoutItem!.targetItem, "")
   }
 
@@ -71,8 +71,8 @@ class TargetViewTests: XCTestCase {
       layoutItem = c.make(.Width, equalTo:parentView, s:.Width)
     }
 
-    XCTAssertEqual(childView.constraints().count, 0, "")
-    XCTAssertEqual(parentView.constraints().count, 1, "")
+    XCTAssertEqual(childView.constraints.count, 0, "")
+    XCTAssertEqual(parentView.constraints.count, 1, "")
     XCTAssertEqual(parentView, layoutItem!.targetItem, "")
   }
 
@@ -89,9 +89,9 @@ class TargetViewTests: XCTestCase {
       layoutItem = c.make(.Width, equalTo:childView2, s:.Width)
     }
 
-    XCTAssertEqual(childView1.constraints().count, 0, "")
-    XCTAssertEqual(childView2.constraints().count, 0, "")
-    XCTAssertEqual(parentView.constraints().count, 1, "")
+    XCTAssertEqual(childView1.constraints.count, 0, "")
+    XCTAssertEqual(childView2.constraints.count, 0, "")
+    XCTAssertEqual(parentView.constraints.count, 1, "")
     XCTAssertEqual(parentView, layoutItem!.targetItem, "")
   }
 

@@ -39,18 +39,18 @@ struct Helper {
     constant: CGFloat)
   {
     XCTAssertNotNil(constraint, "constraint must not be nil")
-    XCTAssertEqual(constraint.firstItem as! UIView, item, "")
+    XCTAssertEqual(constraint.firstItem as? UIView, item, "")
     XCTAssertEqual(constraint.firstAttribute, attribute, "")
     XCTAssertEqual(constraint.relation, relation, "")
 
     if let strongRelatedItem = relatedItem {
-      XCTAssertEqual(constraint.secondItem as! UIView, strongRelatedItem, "")
+      XCTAssertEqual(constraint.secondItem as? UIView, strongRelatedItem, "")
     } else {
       XCTAssertNil(constraint.secondItem, "")
     }
 
     XCTAssertEqual(constraint.secondAttribute, relatedAttribute, "")
-    XCTAssertEqualWithAccuracy(constraint.multiplier, multiplier, CGFloat(FLT_EPSILON), "")
+    XCTAssertEqualWithAccuracy(constraint.multiplier, multiplier, accuracy: CGFloat(FLT_EPSILON), "")
     XCTAssertEqual(constraint.constant, constant, "")
   }
 
@@ -60,16 +60,14 @@ struct Helper {
   }
 
   static func firstConstraint(view: UIView, withAttribute optionalAttribute: NSLayoutAttribute? = nil) -> NSLayoutConstraint? {
-    if view.constraints().count > 0 {
-      for object in view.constraints() {
-        if let constraint = object as? NSLayoutConstraint {
-          if let attribute = optionalAttribute {
-            if constraint.firstAttribute == attribute {
-              return constraint
-            }
-          } else {
+    if view.constraints.count > 0 {
+      for constraint in view.constraints {
+        if let attribute = optionalAttribute {
+          if constraint.firstAttribute == attribute {
             return constraint
           }
+        } else {
+          return constraint
         }
       }
     }
@@ -77,7 +75,7 @@ struct Helper {
   }
 }
 
-extension NSLayoutAttribute : Printable {
+extension NSLayoutAttribute : CustomStringConvertible {
   public var description: String {
     switch self {
     case .Left:
