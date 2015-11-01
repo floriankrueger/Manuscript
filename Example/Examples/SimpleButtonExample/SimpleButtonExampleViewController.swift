@@ -32,9 +32,9 @@ class SimpleButtonExampleViewController: UIViewController {
 
   private var activeButton: UIButton? = nil
 
-  private let optionA: UIButton = UIButton.buttonWithType(.System) as! UIButton
-  private let optionB: UIButton = UIButton.buttonWithType(.System) as! UIButton
-  private let optionC: UIButton = UIButton.buttonWithType(.System) as! UIButton
+  private let optionA: UIButton = UIButton(type: .System)
+  private let optionB: UIButton = UIButton(type: .System)
+  private let optionC: UIButton = UIButton(type: .System)
 
   private let buttonDimSmall:CGFloat = 60.0
   private let buttonDimBig:CGFloat = 80.0
@@ -90,7 +90,7 @@ class SimpleButtonExampleViewController: UIViewController {
         self.optionCWidth?.constant = self.buttonDimSmall
         self.optionC.setNeedsLayout()
       default:
-        println("active button is unknown")
+        print("active button is unknown")
       }
     }
 
@@ -108,7 +108,7 @@ class SimpleButtonExampleViewController: UIViewController {
       self.optionCWidth?.constant = self.buttonDimBig
       self.optionC.setNeedsLayout()
     default:
-      println("sender button is unknown")
+      print("sender button is unknown")
     }
 
     self.activeButton = sender
