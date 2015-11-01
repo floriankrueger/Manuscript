@@ -70,7 +70,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
   override func viewDidAppear(animated: Bool) {
     super.viewDidAppear(animated)
 
-    if let selectedIndexPath = self.tableView.indexPathForSelectedRow() {
+    if let selectedIndexPath = self.tableView.indexPathForSelectedRow {
       self.tableView.deselectRowAtIndexPath(selectedIndexPath, animated: animated)
     }
   }
@@ -90,7 +90,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
   }
 
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    if let cell = tableView.dequeueReusableCellWithIdentifier(menuItemCellIdentifier) as? UITableViewCell {
+    if let cell = tableView.dequeueReusableCellWithIdentifier(menuItemCellIdentifier) {
       if let menuItem = menuItems[indexPath.row] {
         cell.textLabel?.text = menuItem.title
         cell.accessoryType = .DisclosureIndicator
