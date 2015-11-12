@@ -54,6 +54,11 @@ public protocol ManuscriptUtils {
 
 public struct Manuscript {
 
+  /// The identifier that is set on all created constraints if the user doesn't provide an identifier. This serves at
+  /// least the purpose that the user is aware which constraints are created by Manuscript.
+
+  public static let defaultIdentifier = "MNSCRPT"
+
   /// This is just public for testing purposes and will be private in future releases when Xcode 7
   /// is out of beta.
   ///
@@ -116,6 +121,11 @@ public struct Manuscript {
     func isRetina() -> Bool {
       return UIScreen.mainScreen().scale > 1.0
     }
+  }
+
+  static func suffixedIdFromId(identifier: String?, suffix: String) -> String {
+    let id = identifier ?? Manuscript.defaultIdentifier
+    return "\(id)_\(suffix)"
   }
 
 }

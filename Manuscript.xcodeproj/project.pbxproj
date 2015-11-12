@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CF0EF4481B8EF9B000BCD5B0 /* LayoutGuideTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0EF4471B8EF9B000BCD5B0 /* LayoutGuideTests.swift */; };
+		CF2116811BF4B06700879272 /* IdentifierTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2116801BF4B06700879272 /* IdentifierTests.swift */; };
 		CF4FD01D1AEA1A7F00F989C4 /* BasicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4FD01C1AEA1A7F00F989C4 /* BasicTests.swift */; };
 		CF4FD01E1AEA1A7F00F989C4 /* Manuscript.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4FCFF21AEA197F00F989C4 /* Manuscript.framework */; };
 		CF4FD0271AEA1C7600F989C4 /* Manuscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4FD0261AEA1C7600F989C4 /* Manuscript.swift */; };
@@ -31,6 +32,7 @@
 
 /* Begin PBXFileReference section */
 		CF0EF4471B8EF9B000BCD5B0 /* LayoutGuideTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutGuideTests.swift; sourceTree = "<group>"; };
+		CF2116801BF4B06700879272 /* IdentifierTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentifierTests.swift; sourceTree = "<group>"; };
 		CF4FCFF21AEA197F00F989C4 /* Manuscript.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Manuscript.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF4FD0101AEA1A1B00F989C4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Source/Info.plist; sourceTree = SOURCE_ROOT; };
 		CF4FD0181AEA1A7F00F989C4 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -112,6 +114,7 @@
 				CF96341F1AFA4DBB00861690 /* ConvenienceTests.swift */,
 				CF9634211AFA4E1500861690 /* TestHelper.swift */,
 				CF0EF4471B8EF9B000BCD5B0 /* LayoutGuideTests.swift */,
+				CF2116801BF4B06700879272 /* IdentifierTests.swift */,
 				CF4FD01A1AEA1A7F00F989C4 /* Supporting Files */,
 			);
 			path = Tests;
@@ -248,6 +251,7 @@
 				CF4FD01D1AEA1A7F00F989C4 /* BasicTests.swift in Sources */,
 				CFC1CDD11AECE701007E7700 /* TargetViewTests.swift in Sources */,
 				CF0EF4481B8EF9B000BCD5B0 /* LayoutGuideTests.swift in Sources */,
+				CF2116811BF4B06700879272 /* IdentifierTests.swift in Sources */,
 				CF7756201AFB66A8004A9683 /* ConvenienceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
