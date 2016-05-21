@@ -2,9 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:Manuscript.playground">
+      location = "container:Manuscript.xcodeproj">
    </FileRef>
    <FileRef
-      location = "container:Manuscript.xcodeproj">
+      location = "group:Manuscript.playground">
    </FileRef>
 </Workspace>

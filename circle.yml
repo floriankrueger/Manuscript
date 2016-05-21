@@ -7,15 +7,15 @@ general:
 
 machine:
   xcode:
-    version: "7.0"
+    version: "7.3"
 
 test:
   override:
     - set -o pipefail &&
       xcodebuild
         -workspace Manuscript.xcworkspace/
-        -scheme Manuscript
-        -sdk iphonesimulator
+        -scheme Manuscript-iOS
+        -sdk iphonesimulator9.3
         -destination 'platform=iOS Simulator,OS=9.0,name=iPhone 6'
         clean test
         ONLY_ACTIVE_ARCH=NO

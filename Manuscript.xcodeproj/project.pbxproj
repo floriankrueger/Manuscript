@@ -78,6 +78,7 @@
 		DF1CE0071CF096F10006B594 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		DF1CE0091CF096F10006B594 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		DF1CE00F1CF097000006B594 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		DF1CE0131CF0B3430006B594 /* circle.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = circle.yml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +163,7 @@
 		DF1CDF771CF094450006B594 /* Metadata */ = {
 			isa = PBXGroup;
 			children = (
+				DF1CE0131CF0B3430006B594 /* circle.yml */,
 				DF1CDF841CF0947A0006B594 /* README.md */,
 				DF1CDF851CF0947A0006B594 /* CHANGELOG.md */,
 				DF1CDF861CF0947A0006B594 /* LICENSE */,
