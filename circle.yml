@@ -25,4 +25,4 @@ test:
       tee $CIRCLE_ARTIFACTS/xcode_raw_ios.log |
       xcpretty --color --report junit --output $CIRCLE_TEST_REPORTS/xcode/ios-results.xml
   post:
-    - bash <(curl -s https://codecov.io/bash)
+    - bash <(curl -s https://codecov.io/bash) -J Manuscript
