@@ -25,7 +25,7 @@
 
 import UIKit
 import XCTest
-import Manuscript
+@testable import Manuscript
 
 class TargetViewTests: XCTestCase {
 
@@ -93,6 +93,36 @@ class TargetViewTests: XCTestCase {
     XCTAssertEqual(childView2.constraints.count, 0, "")
     XCTAssertEqual(parentView.constraints.count, 1, "")
     XCTAssertEqual(parentView, layoutItem!.targetItem, "")
+  }
+  
+  func testSimpleFindCommonSuperview() {
+    let parentView = UIView()
+    let childView = UIView()
+    
+    parentView.addSubview(childView)
+    
+    XCTAssertEqual(parentView, Manuscript.findCommonSuperview(childView, b: parentView))
+    XCTAssertEqual(parentView, Manuscript.findCommonSuperview(parentView, b: childView))
+  }
+  
+  func testTransitiveFindCommonSuperview() {
+    let parentView = UIView()
+    let childView = UIView()
+    let subChildView = UIView()
+    
+    parentView.addSubview(childView)
+    childView.addSubview(subChildView)
+    
+    XCTAssertEqual(parentView, Manuscript.findCommonSuperview(subChildView, b: parentView))
+    XCTAssertEqual(parentView, Manuscript.findCommonSuperview(parentView, b: subChildView))
+  }
+  
+  func testFailingFindCommonSuperview() {
+    let view1 = UIView()
+    let view2 = UIView()
+    
+    XCTAssertEqual(view1, Manuscript.findCommonSuperview(view1, b: nil))
+    XCTAssertNil(Manuscript.findCommonSuperview(view1, b: view2))
   }
 
 }

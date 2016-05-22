@@ -32,6 +32,7 @@
 		DF1CE0171CF1AC6D0006B594 /* ManuscriptUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1CE0141CF0B9FA0006B594 /* ManuscriptUtils.swift */; };
 		DF1CE01A1CF1ACA70006B594 /* LayoutItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1CE0181CF1ACA20006B594 /* LayoutItem.swift */; };
 		DF1CE01B1CF1ACA70006B594 /* LayoutItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1CE0181CF1ACA20006B594 /* LayoutItem.swift */; };
+		DF1CE01E1CF1B1900006B594 /* IdentifierTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1CE01D1CF1B1900006B594 /* IdentifierTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,7 @@
 		DF1CE0131CF0B3430006B594 /* circle.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = circle.yml; sourceTree = "<group>"; };
 		DF1CE0141CF0B9FA0006B594 /* ManuscriptUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManuscriptUtils.swift; sourceTree = "<group>"; };
 		DF1CE0181CF1ACA20006B594 /* LayoutItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutItem.swift; sourceTree = "<group>"; };
+		DF1CE01D1CF1B1900006B594 /* IdentifierTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentifierTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,12 +200,13 @@
 			children = (
 				DF1CDFF11CF096950006B594 /* BasicTests.swift */,
 				DF1CDFF21CF096950006B594 /* ConvenienceTests.swift */,
+				DF1CE01D1CF1B1900006B594 /* IdentifierTests.swift */,
+				DF1CDFD51CF095EF0006B594 /* Info.plist */,
 				DF1CDFF31CF096950006B594 /* LayoutGuideTests.swift */,
 				DF1CDFF41CF096950006B594 /* LayoutTests.swift */,
 				DF1CDFF51CF096950006B594 /* PriorityTests.swift */,
 				DF1CDFF61CF096950006B594 /* TargetViewTests.swift */,
 				DF1CDFF71CF096950006B594 /* TestHelper.swift */,
-				DF1CDFD51CF095EF0006B594 /* Info.plist */,
 			);
 			path = "Manuscript-iOSTests";
 			sourceTree = "<group>";
@@ -475,6 +478,7 @@
 				DF1CDFFE1CF096950006B594 /* TestHelper.swift in Sources */,
 				DF1CDFFC1CF096950006B594 /* PriorityTests.swift in Sources */,
 				DF1CDFFB1CF096950006B594 /* LayoutTests.swift in Sources */,
+				DF1CE01E1CF1B1900006B594 /* IdentifierTests.swift in Sources */,
 				DF1CDFF91CF096950006B594 /* ConvenienceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

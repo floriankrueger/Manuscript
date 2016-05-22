@@ -40,6 +40,12 @@ import UIKit
 
 public struct Manuscript {
 
+  /// The identifier that is set on all created constraints if the user doesn't provide an 
+  /// identifier. This serves at least the purpose that the user is aware which constraints are 
+  /// created by Manuscript.
+  
+  public static let defaultIdentifier = "MNSCRPT"
+  
   /// Use this to define your AutoLayout constraints in your code.
   ///
   /// - parameter view: the `UIView` that should be layouted
@@ -99,4 +105,8 @@ public struct Manuscript {
     }
   }
 
+  static func suffixedIdFromId(identifier: String?, suffix: String) -> String {
+    let id = identifier ?? Manuscript.defaultIdentifier
+    return "\(id)_\(suffix)"
+  }
 }
