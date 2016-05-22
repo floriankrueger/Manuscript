@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "Manuscript"
-  s.version          = "1.2.0"
+  s.version          = "2.0.0"
   s.summary          = "AutoLayoutKit in pure Swift."
   s.description      = <<-DESC
                         It's like AutoLayoutKit but written in Swift. For pure Swift projects. And it's super simple.
