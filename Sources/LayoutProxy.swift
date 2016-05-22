@@ -28,14 +28,6 @@ import UIKit
 
 extension Manuscript {
 
-  /// A Manuscript `LayoutItem` consists of two things:
-  ///
-  /// * the `constraint` that was generated through Manuscript
-  /// * the `targetItem` on which the constraint was installed. That is the nearest ancestor view
-  ///   of the views that are referenced by the constraint.
-
-  public typealias LayoutItem = (constraint: NSLayoutConstraint, targetItem: UIView)
-
   /// The `LayoutProxy` is responsible for creating all the constraints.
 
   public class LayoutProxy: NSObject {

@@ -28,6 +28,10 @@
 		DF1CE00C1CF096F10006B594 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF1CE0071CF096F10006B594 /* Images.xcassets */; };
 		DF1CE00E1CF096F10006B594 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1CE0091CF096F10006B594 /* MainViewController.swift */; };
 		DF1CE0111CF097000006B594 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = DF1CE00F1CF097000006B594 /* LaunchScreen.xib */; };
+		DF1CE0161CF1AC6C0006B594 /* ManuscriptUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1CE0141CF0B9FA0006B594 /* ManuscriptUtils.swift */; };
+		DF1CE0171CF1AC6D0006B594 /* ManuscriptUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1CE0141CF0B9FA0006B594 /* ManuscriptUtils.swift */; };
+		DF1CE01A1CF1ACA70006B594 /* LayoutItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1CE0181CF1ACA20006B594 /* LayoutItem.swift */; };
+		DF1CE01B1CF1ACA70006B594 /* LayoutItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1CE0181CF1ACA20006B594 /* LayoutItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +83,8 @@
 		DF1CE0091CF096F10006B594 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		DF1CE00F1CF097000006B594 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		DF1CE0131CF0B3430006B594 /* circle.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = circle.yml; sourceTree = "<group>"; };
+		DF1CE0141CF0B9FA0006B594 /* ManuscriptUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManuscriptUtils.swift; sourceTree = "<group>"; };
+		DF1CE0181CF1ACA20006B594 /* LayoutItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +162,8 @@
 				DF1CDF6F1CF0937E0006B594 /* Info-tvOS.plist */,
 				DF1CDFEB1CF0964D0006B594 /* LayoutProxy.swift */,
 				DF1CDFEC1CF0964D0006B594 /* Manuscript.swift */,
+				DF1CE0141CF0B9FA0006B594 /* ManuscriptUtils.swift */,
+				DF1CE0181CF1ACA20006B594 /* LayoutItem.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -429,7 +437,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF1CE01B1CF1ACA70006B594 /* LayoutItem.swift in Sources */,
 				DF1CDFEF1CF0964D0006B594 /* Manuscript.swift in Sources */,
+				DF1CE0171CF1AC6D0006B594 /* ManuscriptUtils.swift in Sources */,
 				DF1CDFED1CF0964D0006B594 /* LayoutProxy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -438,7 +448,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF1CE01A1CF1ACA70006B594 /* LayoutItem.swift in Sources */,
 				DF1CDFEE1CF0964D0006B594 /* LayoutProxy.swift in Sources */,
+				DF1CE0161CF1AC6C0006B594 /* ManuscriptUtils.swift in Sources */,
 				DF1CDFF01CF0964D0006B594 /* Manuscript.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

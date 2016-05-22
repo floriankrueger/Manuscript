@@ -18,7 +18,7 @@ class LayoutGuideTests : XCTestCase {
     let aView = UIView(frame: CGRectZero)
     viewController.view.addSubview(aView)
 
-    var topLayoutItem: Manuscript.LayoutItem? = nil
+    var topLayoutItem: LayoutItem? = nil
 
     // make Layout Constraints
 

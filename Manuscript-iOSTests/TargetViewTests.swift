@@ -31,7 +31,7 @@ class TargetViewTests: XCTestCase {
 
   func testCreatesUnrelatedConstraintOnTheGivenItemWhenUsingSet() {
     let view = UIView(frame: CGRectZero)
-    var layoutItem: Manuscript.LayoutItem? = nil
+    var layoutItem: LayoutItem? = nil
 
     Manuscript.layout(view) { c in
       layoutItem = c.set(.Width, to: 100.0)
@@ -49,7 +49,7 @@ class TargetViewTests: XCTestCase {
     let childView = UIView(frame: CGRectZero)
     parentView.addSubview(childView)
 
-    var layoutItem: Manuscript.LayoutItem? = nil
+    var layoutItem: LayoutItem? = nil
 
     Manuscript.layout(childView) { c in
       layoutItem = c.make(.Width, equalTo:parentView, s:.Width, on:parentView)
@@ -65,7 +65,7 @@ class TargetViewTests: XCTestCase {
     let childView = UIView(frame: CGRectZero)
     parentView.addSubview(childView)
 
-    var layoutItem: Manuscript.LayoutItem? = nil
+    var layoutItem: LayoutItem? = nil
 
     Manuscript.layout(childView) { c in
       layoutItem = c.make(.Width, equalTo:parentView, s:.Width)
@@ -83,7 +83,7 @@ class TargetViewTests: XCTestCase {
     parentView.addSubview(childView1)
     parentView.addSubview(childView2)
 
-    var layoutItem: Manuscript.LayoutItem? = nil
+    var layoutItem: LayoutItem? = nil
 
     Manuscript.layout(childView1) { c in
       layoutItem = c.make(.Width, equalTo:childView2, s:.Width)

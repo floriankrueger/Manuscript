@@ -26,20 +26,6 @@
 import Foundation
 import UIKit
 
-/// A bunch of utils that Manuscript uses internally (OK, it's only one util for now but there may
-/// be more later).
-///
-/// This has been extracted as a protocol to provide testability.
-
-public protocol ManuscriptUtils {
-
-  /// Check whether we're running on a system that has a so-called "Retina" display.
-  ///
-  /// - returns: `true` if the `scale` of the main screen is greater than 1.0, `false` otherwise
-  
-  func isRetina() -> Bool
-}
-
 /// This is `Manuscript`. You should only need to interact with this part of the framework directly.
 ///
 /// Usage:
@@ -54,29 +40,24 @@ public protocol ManuscriptUtils {
 
 public struct Manuscript {
 
-  /// This is just public for testing purposes and will be private in future releases when Xcode 7
-  /// is out of beta.
+  /// Use this to define your AutoLayout constraints in your code.
   ///
-  /// - parameter utils: an instance of `ManuscriptUtils` which is provided by default if you use
-  ///               `layout` method
   /// - parameter view: the `UIView` that should be layouted
+  /// - parameter utils: an instance of `ManuscriptUtils`, you can ignore this parameter.
   /// - parameter block: a block that is provided with a `LayoutProxy` that is already setup with the
   ///              given `view`. You can create AutoLayout constraints through this proxy.
   ///
   /// - returns: the `LayoutProxy` instance that is also handed to the `block`
-
-  public static func makeLayout(@autoclosure utils utils: () -> ManuscriptUtils)(_ view: UIView, block: (LayoutProxy) -> ()) -> Manuscript.LayoutProxy {
-    let layoutProxy = LayoutProxy(view: view, utils: utils())
+  
+  public static func layout(view: UIView,
+                            utils: ManuscriptUtils = Utils(),
+                            block: (LayoutProxy) -> ()
+    ) -> Manuscript.LayoutProxy
+  {
+    let layoutProxy = LayoutProxy(view: view, utils: utils)
     block(layoutProxy)
     return layoutProxy
   }
-
-  /// Use this to define your AutoLayout constraints in your code. Calls `makeLayout` with the
-  /// default `ManuscriptUtils` implementation.
-  ///
-  /// see `makeLayout` for additional details on the parameters
-
-  public static var layout = Manuscript.makeLayout(utils: Manuscript.Utils())
 
   static func findCommonSuperview(a: UIView, b: UIView?) -> UIView? {
 
