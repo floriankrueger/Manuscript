@@ -155,7 +155,7 @@ class ConvenienceTests: XCTestCase {
     let view = UIView(frame: CGRectZero)
     let expectation = self.expectationWithDescription("constraints installed")
 
-    Manuscript.makeLayout(utils: RetinaUtils())(view) { c in
+    Manuscript.layout(view, utils: RetinaUtils()) { c in
       c.makeHorizontalHairline()
       expectation.fulfill()
     }
@@ -175,7 +175,7 @@ class ConvenienceTests: XCTestCase {
     let view = UIView(frame: CGRectZero)
     let expectation = self.expectationWithDescription("constraints installed")
 
-    Manuscript.makeLayout(utils: NonRetinaUtils())(view) { c in
+    Manuscript.layout(view, utils: NonRetinaUtils()) { c in
       c.makeHorizontalHairline()
       expectation.fulfill()
     }
@@ -195,7 +195,7 @@ class ConvenienceTests: XCTestCase {
     let view = UIView(frame: CGRectZero)
     let expectation = self.expectationWithDescription("constraints installed")
 
-    Manuscript.makeLayout(utils: RetinaUtils())(view) { c in
+    Manuscript.layout(view, utils: RetinaUtils()) { c in
       c.makeVerticalHairline()
       expectation.fulfill()
     }
@@ -215,7 +215,7 @@ class ConvenienceTests: XCTestCase {
     let view = UIView(frame: CGRectZero)
     let expectation = self.expectationWithDescription("constraints installed")
 
-    Manuscript.makeLayout(utils: NonRetinaUtils())(view) { c in
+    Manuscript.layout(view, utils: NonRetinaUtils()) { c in
       c.makeVerticalHairline()
       expectation.fulfill()
     }

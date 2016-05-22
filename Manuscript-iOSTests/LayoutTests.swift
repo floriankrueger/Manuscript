@@ -95,17 +95,28 @@ class LayoutTests: XCTestCase {
     let expectation = self.expectationWithDescription("constraints installed")
 
     Manuscript.layout(childView) { c in
-      if useTargetView {
+      
+      switch (relation, useTargetView) {
+      case (.Equal, true):
         c.make(attribute, equalTo:parentView, s:relatedAttribute, times:multiplier, plus:constant, on:parentView)
-      } else {
+      case (.Equal, false):
         c.make(attribute, equalTo:parentView, s:relatedAttribute, times:multiplier, plus:constant)
+      case (.GreaterThanOrEqual, true):
+        c.make(attribute, greaterThan:parentView, s:relatedAttribute, times:multiplier, plus:constant, on:parentView)
+      case (.GreaterThanOrEqual, false):
+        c.make(attribute, greaterThan:parentView, s:relatedAttribute, times:multiplier, plus:constant)
+      case (.LessThanOrEqual, true):
+        c.make(attribute, lessThan:parentView, s:relatedAttribute, times:multiplier, plus:constant, on:parentView)
+      case (.LessThanOrEqual, false):
+        c.make(attribute, lessThan:parentView, s:relatedAttribute, times:multiplier, plus:constant)
       }
+      
       expectation.fulfill()
     }
 
     self.waitForExpectationsWithTimeout(0.1) { error in
       if let constraint = Helper.firstConstraint(parentView, withAttribute:attribute) {
-        Helper.checkConstraint(constraint, item:childView, attribute:attribute, relation:.Equal, relatedItem:parentView, relatedAttribute:relatedAttribute, multiplier:multiplier, constant:constant)
+        Helper.checkConstraint(constraint, item:childView, attribute:attribute, relation:relation, relatedItem:parentView, relatedAttribute:relatedAttribute, multiplier:multiplier, constant:constant)
       } else {
         XCTFail("parentView is expected to have at least one constraint for attribute \(attribute)")
       }

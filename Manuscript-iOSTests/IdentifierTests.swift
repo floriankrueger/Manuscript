@@ -24,7 +24,7 @@ class IdentifierTests: XCTestCase {
   }
 
   func testDefaultIdentifier() {
-    var layoutItem: Manuscript.LayoutItem? = nil
+    var layoutItem: LayoutItem? = nil
 
     Manuscript.layout(self.view) { c in
       layoutItem = c.set(.Width, to: 100.0)
@@ -35,7 +35,7 @@ class IdentifierTests: XCTestCase {
 
   func testCustomIdentifier() {
     let identifier = "CUSTOM_IDENTIFIER"
-    var layoutItem: Manuscript.LayoutItem? = nil
+    var layoutItem: LayoutItem? = nil
 
     Manuscript.layout(self.view) { c in
       c.setPriority(123)
@@ -59,7 +59,7 @@ class IdentifierTests: XCTestCase {
     parentView.addSubview(childView)
     let expectation = self.expectationWithDescription("constraints installed")
 
-    var layoutItems: [Manuscript.LayoutItem]? = nil
+    var layoutItems: [LayoutItem]? = nil
 
     Manuscript.layout(childView) { c in
       layoutItems = c.alignAllEdges(to: parentView, identifier: prefix)
@@ -92,7 +92,7 @@ class IdentifierTests: XCTestCase {
     parentView.addSubview(childView)
     let expectation = self.expectationWithDescription("constraints installed")
 
-    var layoutItems: [Manuscript.LayoutItem]? = nil
+    var layoutItems: [LayoutItem]? = nil
 
     Manuscript.layout(childView) { c in
       layoutItems = c.centerIn(parentView, identifier: prefix)
@@ -123,7 +123,7 @@ class IdentifierTests: XCTestCase {
     let height:CGFloat = 200.0
     let expectation = self.expectationWithDescription("constraints installed")
 
-    var layoutItems: [Manuscript.LayoutItem]? = nil
+    var layoutItems: [LayoutItem]? = nil
 
     Manuscript.layout(view) { c in
       layoutItems = c.setSize(CGSize(width: width, height: height), identifier: prefix)
