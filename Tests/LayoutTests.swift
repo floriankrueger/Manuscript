@@ -180,11 +180,11 @@ class LayoutTests: XCTestCase {
   }
 
   func testMakeLeftEqualBaseline() {
-    meta_testMake(.Left, relation:.Equal, relatedAttribute:.Baseline, useTargetView:false)
+    meta_testMake(.Left, relation:.Equal, relatedAttribute:.LastBaseline, useTargetView:false)
   }
 
   func testMakeLeftEqualBaselineOnTargetView() {
-    meta_testMake(.Left, relation:.Equal, relatedAttribute:.Baseline, useTargetView:true)
+    meta_testMake(.Left, relation:.Equal, relatedAttribute:.LastBaseline, useTargetView:true)
   }
 
   func testMakeRightEqualLeft() {
@@ -236,11 +236,11 @@ class LayoutTests: XCTestCase {
   }
 
   func testMakeRightEqualBaseline() {
-    meta_testMake(.Right, relation:.Equal, relatedAttribute:.Baseline, useTargetView:false)
+    meta_testMake(.Right, relation:.Equal, relatedAttribute:.LastBaseline, useTargetView:false)
   }
 
   func testMakeRightEqualBaselineOnTargetView() {
-    meta_testMake(.Right, relation:.Equal, relatedAttribute:.Baseline, useTargetView:true)
+    meta_testMake(.Right, relation:.Equal, relatedAttribute:.LastBaseline, useTargetView:true)
   }
 
   func testMakeTopEqualLeft() {
@@ -308,11 +308,11 @@ class LayoutTests: XCTestCase {
   }
 
   func testMakeTopEqualBaseline() {
-    meta_testMake(.Top, relation:.Equal, relatedAttribute:.Baseline, useTargetView:false)
+    meta_testMake(.Top, relation:.Equal, relatedAttribute:.LastBaseline, useTargetView:false)
   }
 
   func testMakeTopEqualBaselineOnTargetView() {
-    meta_testMake(.Top, relation:.Equal, relatedAttribute:.Baseline, useTargetView:true)
+    meta_testMake(.Top, relation:.Equal, relatedAttribute:.LastBaseline, useTargetView:true)
   }
 
   func testMakeBottomEqualLeft() {
@@ -380,11 +380,11 @@ class LayoutTests: XCTestCase {
   }
 
   func testMakeBottomEqualBaseline() {
-    meta_testMake(.Bottom, relation:.Equal, relatedAttribute:.Baseline, useTargetView:false)
+    meta_testMake(.Bottom, relation:.Equal, relatedAttribute:.LastBaseline, useTargetView:false)
   }
 
   func testMakeBottomEqualBaselineOnTargetView() {
-    meta_testMake(.Bottom, relation:.Equal, relatedAttribute:.Baseline, useTargetView:true)
+    meta_testMake(.Bottom, relation:.Equal, relatedAttribute:.LastBaseline, useTargetView:true)
   }
 
   func testMakeLeadingEqualTop() {
@@ -436,11 +436,11 @@ class LayoutTests: XCTestCase {
   }
 
   func testMakeLeadingEqualBaseline() {
-    meta_testMake(.Leading, relation:.Equal, relatedAttribute:.Baseline, useTargetView:false)
+    meta_testMake(.Leading, relation:.Equal, relatedAttribute:.LastBaseline, useTargetView:false)
   }
 
   func testMakeLeadingEqualBaselineOnTargetView() {
-    meta_testMake(.Leading, relation:.Equal, relatedAttribute:.Baseline, useTargetView:true)
+    meta_testMake(.Leading, relation:.Equal, relatedAttribute:.LastBaseline, useTargetView:true)
   }
 
   func testMakeTrailingEqualTop() {
@@ -492,11 +492,11 @@ class LayoutTests: XCTestCase {
   }
 
   func testMakeTrailingEqualBaseline() {
-    meta_testMake(.Trailing, relation:.Equal, relatedAttribute:.Baseline, useTargetView:false)
+    meta_testMake(.Trailing, relation:.Equal, relatedAttribute:.LastBaseline, useTargetView:false)
   }
 
   func testMakeTrailingEqualBaselineOnTargetView() {
-    meta_testMake(.Trailing, relation:.Equal, relatedAttribute:.Baseline, useTargetView:true)
+    meta_testMake(.Trailing, relation:.Equal, relatedAttribute:.LastBaseline, useTargetView:true)
   }
 
   func testMakeHeightEqualWidth() {
@@ -580,11 +580,11 @@ class LayoutTests: XCTestCase {
   }
 
   func testMakeCenterXEqualBaseline() {
-    meta_testMake(.CenterX, relation:.Equal, relatedAttribute:.Baseline, useTargetView:false)
+    meta_testMake(.CenterX, relation:.Equal, relatedAttribute:.LastBaseline, useTargetView:false)
   }
 
   func testMakeCenterXEqualBaselineOnTargetView() {
-    meta_testMake(.CenterX, relation:.Equal, relatedAttribute:.Baseline, useTargetView:true)
+    meta_testMake(.CenterX, relation:.Equal, relatedAttribute:.LastBaseline, useTargetView:true)
   }
 
   func testMakeCenterYEqualLeft() {
@@ -652,83 +652,83 @@ class LayoutTests: XCTestCase {
   }
 
   func testMakeCenterYEqualBaseline() {
-    meta_testMake(.CenterY, relation:.Equal, relatedAttribute:.Baseline, useTargetView:false)
+    meta_testMake(.CenterY, relation:.Equal, relatedAttribute:.LastBaseline, useTargetView:false)
   }
 
   func testMakeCenterYEqualBaselineOnTargetView() {
-    meta_testMake(.CenterY, relation:.Equal, relatedAttribute:.Baseline, useTargetView:true)
+    meta_testMake(.CenterY, relation:.Equal, relatedAttribute:.LastBaseline, useTargetView:true)
   }
 
   func testMakeBaselineEqualLeft() {
-    meta_testMake(.Baseline, relation:.Equal, relatedAttribute:.Left, useTargetView:false)
+    meta_testMake(.LastBaseline, relation:.Equal, relatedAttribute:.Left, useTargetView:false)
   }
 
   func testMakeBaselineEqualLeftOnTargetView() {
-    meta_testMake(.Baseline, relation:.Equal, relatedAttribute:.Left, useTargetView:true)
+    meta_testMake(.LastBaseline, relation:.Equal, relatedAttribute:.Left, useTargetView:true)
   }
 
   func testMakeBaselineEqualRight() {
-    meta_testMake(.Baseline, relation:.Equal, relatedAttribute:.Right, useTargetView:false)
+    meta_testMake(.LastBaseline, relation:.Equal, relatedAttribute:.Right, useTargetView:false)
   }
 
   func testMakeBaselineEqualRightOnTargetView() {
-    meta_testMake(.Baseline, relation:.Equal, relatedAttribute:.Right, useTargetView:true)
+    meta_testMake(.LastBaseline, relation:.Equal, relatedAttribute:.Right, useTargetView:true)
   }
 
   func testMakeBaselineEqualTop() {
-    meta_testMake(.Baseline, relation:.Equal, relatedAttribute:.Top, useTargetView:false)
+    meta_testMake(.LastBaseline, relation:.Equal, relatedAttribute:.Top, useTargetView:false)
   }
 
   func testMakeBaselineEqualTopOnTargetView() {
-    meta_testMake(.Baseline, relation:.Equal, relatedAttribute:.Top, useTargetView:true)
+    meta_testMake(.LastBaseline, relation:.Equal, relatedAttribute:.Top, useTargetView:true)
   }
 
   func testMakeBaselineEqualBottom() {
-    meta_testMake(.Baseline, relation:.Equal, relatedAttribute:.Bottom, useTargetView:false)
+    meta_testMake(.LastBaseline, relation:.Equal, relatedAttribute:.Bottom, useTargetView:false)
   }
 
   func testMakeBaselineEqualBottomOnTargetView() {
-    meta_testMake(.Baseline, relation:.Equal, relatedAttribute:.Bottom, useTargetView:true)
+    meta_testMake(.LastBaseline, relation:.Equal, relatedAttribute:.Bottom, useTargetView:true)
   }
 
   func testMakeBaselineEqualLeading() {
-    meta_testMake(.Baseline, relation:.Equal, relatedAttribute:.Leading, useTargetView:false)
+    meta_testMake(.LastBaseline, relation:.Equal, relatedAttribute:.Leading, useTargetView:false)
   }
 
   func testMakeBaselineEqualLeadingOnTargetView() {
-    meta_testMake(.Baseline, relation:.Equal, relatedAttribute:.Leading, useTargetView:true)
+    meta_testMake(.LastBaseline, relation:.Equal, relatedAttribute:.Leading, useTargetView:true)
   }
   
   func testMakeBaselineEqualTrailing() {
-    meta_testMake(.Baseline, relation:.Equal, relatedAttribute:.Trailing, useTargetView:false)
+    meta_testMake(.LastBaseline, relation:.Equal, relatedAttribute:.Trailing, useTargetView:false)
   }
   
   func testMakeBaselineEqualTrailingOnTargetView() {
-    meta_testMake(.Baseline, relation:.Equal, relatedAttribute:.Trailing, useTargetView:true)
+    meta_testMake(.LastBaseline, relation:.Equal, relatedAttribute:.Trailing, useTargetView:true)
   }
   
   func testMakeBaselineEqualCenterX() {
-    meta_testMake(.Baseline, relation:.Equal, relatedAttribute:.CenterX, useTargetView:false)
+    meta_testMake(.LastBaseline, relation:.Equal, relatedAttribute:.CenterX, useTargetView:false)
   }
   
   func testMakeBaselineEqualCenterXOnTargetView() {
-    meta_testMake(.Baseline, relation:.Equal, relatedAttribute:.CenterX, useTargetView:true)
+    meta_testMake(.LastBaseline, relation:.Equal, relatedAttribute:.CenterX, useTargetView:true)
   }
   
   func testMakeBaselineEqualCenterY() {
-    meta_testMake(.Baseline, relation:.Equal, relatedAttribute:.CenterY, useTargetView:false)
+    meta_testMake(.LastBaseline, relation:.Equal, relatedAttribute:.CenterY, useTargetView:false)
   }
   
   func testMakeBaselineEqualCenterYOnTargetView() {
-    meta_testMake(.Baseline, relation:.Equal, relatedAttribute:.CenterY, useTargetView:true)
+    meta_testMake(.LastBaseline, relation:.Equal, relatedAttribute:.CenterY, useTargetView:true)
   }
   
   func testMakeBaselineEqualBaseline() {
-    meta_testMake(.Baseline, relation:.Equal, relatedAttribute:.Baseline, useTargetView:false)
+    meta_testMake(.LastBaseline, relation:.Equal, relatedAttribute:.LastBaseline, useTargetView:false)
   }
   
   func testMakeBaselineEqualBaselineOnTargetView() {
-    meta_testMake(.Baseline, relation:.Equal, relatedAttribute:.Baseline, useTargetView:true)
+    meta_testMake(.LastBaseline, relation:.Equal, relatedAttribute:.LastBaseline, useTargetView:true)
   }
 
   // MARK: - TESTS: MAKE/GREATERTHAN
@@ -782,11 +782,11 @@ class LayoutTests: XCTestCase {
   }
 
   func testMakeLeftGreaterThanBaseline() {
-    meta_testMake(.Left, relation:.GreaterThanOrEqual, relatedAttribute:.Baseline, useTargetView:false)
+    meta_testMake(.Left, relation:.GreaterThanOrEqual, relatedAttribute:.LastBaseline, useTargetView:false)
   }
 
   func testMakeLeftGreaterThanBaselineOnTargetView() {
-    meta_testMake(.Left, relation:.GreaterThanOrEqual, relatedAttribute:.Baseline, useTargetView:true)
+    meta_testMake(.Left, relation:.GreaterThanOrEqual, relatedAttribute:.LastBaseline, useTargetView:true)
   }
 
   func testMakeRightGreaterThanLeft() {
@@ -838,11 +838,11 @@ class LayoutTests: XCTestCase {
   }
 
   func testMakeRightGreaterThanBaseline() {
-    meta_testMake(.Right, relation:.GreaterThanOrEqual, relatedAttribute:.Baseline, useTargetView:false)
+    meta_testMake(.Right, relation:.GreaterThanOrEqual, relatedAttribute:.LastBaseline, useTargetView:false)
   }
 
   func testMakeRightGreaterThanBaselineOnTargetView() {
-    meta_testMake(.Right, relation:.GreaterThanOrEqual, relatedAttribute:.Baseline, useTargetView:true)
+    meta_testMake(.Right, relation:.GreaterThanOrEqual, relatedAttribute:.LastBaseline, useTargetView:true)
   }
 
   func testMakeTopGreaterThanLeft() {
@@ -910,11 +910,11 @@ class LayoutTests: XCTestCase {
   }
 
   func testMakeTopGreaterThanBaseline() {
-    meta_testMake(.Top, relation:.GreaterThanOrEqual, relatedAttribute:.Baseline, useTargetView:false)
+    meta_testMake(.Top, relation:.GreaterThanOrEqual, relatedAttribute:.LastBaseline, useTargetView:false)
   }
 
   func testMakeTopGreaterThanBaselineOnTargetView() {
-    meta_testMake(.Top, relation:.GreaterThanOrEqual, relatedAttribute:.Baseline, useTargetView:true)
+    meta_testMake(.Top, relation:.GreaterThanOrEqual, relatedAttribute:.LastBaseline, useTargetView:true)
   }
 
   func testMakeBottomGreaterThanLeft() {
@@ -982,11 +982,11 @@ class LayoutTests: XCTestCase {
   }
 
   func testMakeBottomGreaterThanBaseline() {
-    meta_testMake(.Bottom, relation:.GreaterThanOrEqual, relatedAttribute:.Baseline, useTargetView:false)
+    meta_testMake(.Bottom, relation:.GreaterThanOrEqual, relatedAttribute:.LastBaseline, useTargetView:false)
   }
 
   func testMakeBottomGreaterThanBaselineOnTargetView() {
-    meta_testMake(.Bottom, relation:.GreaterThanOrEqual, relatedAttribute:.Baseline, useTargetView:true)
+    meta_testMake(.Bottom, relation:.GreaterThanOrEqual, relatedAttribute:.LastBaseline, useTargetView:true)
   }
 
   func testMakeLeadingGreaterThanTop() {
@@ -1038,11 +1038,11 @@ class LayoutTests: XCTestCase {
   }
 
   func testMakeLeadingGreaterThanBaseline() {
-    meta_testMake(.Leading, relation:.GreaterThanOrEqual, relatedAttribute:.Baseline, useTargetView:false)
+    meta_testMake(.Leading, relation:.GreaterThanOrEqual, relatedAttribute:.LastBaseline, useTargetView:false)
   }
 
   func testMakeLeadingGreaterThanBaselineOnTargetView() {
-    meta_testMake(.Leading, relation:.GreaterThanOrEqual, relatedAttribute:.Baseline, useTargetView:true)
+    meta_testMake(.Leading, relation:.GreaterThanOrEqual, relatedAttribute:.LastBaseline, useTargetView:true)
   }
 
   func testMakeTrailingGreaterThanTop() {
@@ -1094,11 +1094,11 @@ class LayoutTests: XCTestCase {
   }
 
   func testMakeTrailingGreaterThanBaseline() {
-    meta_testMake(.Trailing, relation:.GreaterThanOrEqual, relatedAttribute:.Baseline, useTargetView:false)
+    meta_testMake(.Trailing, relation:.GreaterThanOrEqual, relatedAttribute:.LastBaseline, useTargetView:false)
   }
 
   func testMakeTrailingGreaterThanBaselineOnTargetView() {
-    meta_testMake(.Trailing, relation:.GreaterThanOrEqual, relatedAttribute:.Baseline, useTargetView:true)
+    meta_testMake(.Trailing, relation:.GreaterThanOrEqual, relatedAttribute:.LastBaseline, useTargetView:true)
   }
 
   func testMakeWidthGreaterThanWidth() {
@@ -1198,11 +1198,11 @@ class LayoutTests: XCTestCase {
   }
 
   func testMakeCenterXGreaterThanBaseline() {
-    meta_testMake(.CenterX, relation:.GreaterThanOrEqual, relatedAttribute:.Baseline, useTargetView:false)
+    meta_testMake(.CenterX, relation:.GreaterThanOrEqual, relatedAttribute:.LastBaseline, useTargetView:false)
   }
 
   func testMakeCenterXGreaterThanBaselineOnTargetView() {
-    meta_testMake(.CenterX, relation:.GreaterThanOrEqual, relatedAttribute:.Baseline, useTargetView:true)
+    meta_testMake(.CenterX, relation:.GreaterThanOrEqual, relatedAttribute:.LastBaseline, useTargetView:true)
   }
 
   func testMakeCenterYGreaterThanLeft() {
@@ -1270,83 +1270,83 @@ class LayoutTests: XCTestCase {
   }
 
   func testMakeCenterYGreaterThanBaseline() {
-    meta_testMake(.CenterY, relation:.GreaterThanOrEqual, relatedAttribute:.Baseline, useTargetView:false)
+    meta_testMake(.CenterY, relation:.GreaterThanOrEqual, relatedAttribute:.LastBaseline, useTargetView:false)
   }
 
   func testMakeCenterYGreaterThanBaselineOnTargetView() {
-    meta_testMake(.CenterY, relation:.GreaterThanOrEqual, relatedAttribute:.Baseline, useTargetView:true)
+    meta_testMake(.CenterY, relation:.GreaterThanOrEqual, relatedAttribute:.LastBaseline, useTargetView:true)
   }
 
   func testMakeBaselineGreaterThanLeft() {
-    meta_testMake(.Baseline, relation:.GreaterThanOrEqual, relatedAttribute:.Left, useTargetView:false)
+    meta_testMake(.LastBaseline, relation:.GreaterThanOrEqual, relatedAttribute:.Left, useTargetView:false)
   }
 
   func testMakeBaselineGreaterThanLeftOnTargetView() {
-    meta_testMake(.Baseline, relation:.GreaterThanOrEqual, relatedAttribute:.Left, useTargetView:true)
+    meta_testMake(.LastBaseline, relation:.GreaterThanOrEqual, relatedAttribute:.Left, useTargetView:true)
   }
 
   func testMakeBaselineGreaterThanRight() {
-    meta_testMake(.Baseline, relation:.GreaterThanOrEqual, relatedAttribute:.Right, useTargetView:false)
+    meta_testMake(.LastBaseline, relation:.GreaterThanOrEqual, relatedAttribute:.Right, useTargetView:false)
   }
 
   func testMakeBaselineGreaterThanRightOnTargetView() {
-    meta_testMake(.Baseline, relation:.GreaterThanOrEqual, relatedAttribute:.Right, useTargetView:true)
+    meta_testMake(.LastBaseline, relation:.GreaterThanOrEqual, relatedAttribute:.Right, useTargetView:true)
   }
 
   func testMakeBaselineGreaterThanTop() {
-    meta_testMake(.Baseline, relation:.GreaterThanOrEqual, relatedAttribute:.Top, useTargetView:false)
+    meta_testMake(.LastBaseline, relation:.GreaterThanOrEqual, relatedAttribute:.Top, useTargetView:false)
   }
 
   func testMakeBaselineGreaterThanTopOnTargetView() {
-    meta_testMake(.Baseline, relation:.GreaterThanOrEqual, relatedAttribute:.Top, useTargetView:true)
+    meta_testMake(.LastBaseline, relation:.GreaterThanOrEqual, relatedAttribute:.Top, useTargetView:true)
   }
 
   func testMakeBaselineGreaterThanBottom() {
-    meta_testMake(.Baseline, relation:.GreaterThanOrEqual, relatedAttribute:.Bottom, useTargetView:false)
+    meta_testMake(.LastBaseline, relation:.GreaterThanOrEqual, relatedAttribute:.Bottom, useTargetView:false)
   }
 
   func testMakeBaselineGreaterThanBottomOnTargetView() {
-    meta_testMake(.Baseline, relation:.GreaterThanOrEqual, relatedAttribute:.Bottom, useTargetView:true)
+    meta_testMake(.LastBaseline, relation:.GreaterThanOrEqual, relatedAttribute:.Bottom, useTargetView:true)
   }
 
   func testMakeBaselineGreaterThanLeading() {
-    meta_testMake(.Baseline, relation:.GreaterThanOrEqual, relatedAttribute:.Leading, useTargetView:false)
+    meta_testMake(.LastBaseline, relation:.GreaterThanOrEqual, relatedAttribute:.Leading, useTargetView:false)
   }
 
   func testMakeBaselineGreaterThanLeadingOnTargetView() {
-    meta_testMake(.Baseline, relation:.GreaterThanOrEqual, relatedAttribute:.Leading, useTargetView:true)
+    meta_testMake(.LastBaseline, relation:.GreaterThanOrEqual, relatedAttribute:.Leading, useTargetView:true)
   }
 
   func testMakeBaselineGreaterThanTrailing() {
-    meta_testMake(.Baseline, relation:.GreaterThanOrEqual, relatedAttribute:.Trailing, useTargetView:false)
+    meta_testMake(.LastBaseline, relation:.GreaterThanOrEqual, relatedAttribute:.Trailing, useTargetView:false)
   }
 
   func testMakeBaselineGreaterThanTrailingOnTargetView() {
-    meta_testMake(.Baseline, relation:.GreaterThanOrEqual, relatedAttribute:.Trailing, useTargetView:true)
+    meta_testMake(.LastBaseline, relation:.GreaterThanOrEqual, relatedAttribute:.Trailing, useTargetView:true)
   }
 
   func testMakeBaselineGreaterThanCenterX() {
-    meta_testMake(.Baseline, relation:.GreaterThanOrEqual, relatedAttribute:.CenterX, useTargetView:false)
+    meta_testMake(.LastBaseline, relation:.GreaterThanOrEqual, relatedAttribute:.CenterX, useTargetView:false)
   }
 
   func testMakeBaselineGreaterThanCenterXOnTargetView() {
-    meta_testMake(.Baseline, relation:.GreaterThanOrEqual, relatedAttribute:.CenterX, useTargetView:true)
+    meta_testMake(.LastBaseline, relation:.GreaterThanOrEqual, relatedAttribute:.CenterX, useTargetView:true)
   }
 
   func testMakeBaselineGreaterThanCenterY() {
-    meta_testMake(.Baseline, relation:.GreaterThanOrEqual, relatedAttribute:.CenterY, useTargetView:false)
+    meta_testMake(.LastBaseline, relation:.GreaterThanOrEqual, relatedAttribute:.CenterY, useTargetView:false)
   }
 
   func testMakeBaselineGreaterThanCenterYOnTargetView() {
-    meta_testMake(.Baseline, relation:.GreaterThanOrEqual, relatedAttribute:.CenterY, useTargetView:true)
+    meta_testMake(.LastBaseline, relation:.GreaterThanOrEqual, relatedAttribute:.CenterY, useTargetView:true)
   }
 
   func testMakeBaselineGreaterThanBaseline() {
-    meta_testMake(.Baseline, relation:.GreaterThanOrEqual, relatedAttribute:.Baseline, useTargetView:false)
+    meta_testMake(.LastBaseline, relation:.GreaterThanOrEqual, relatedAttribute:.LastBaseline, useTargetView:false)
   }
 
   func testMakeBaselineGreaterThanBaselineOnTargetView() {
-    meta_testMake(.Baseline, relation:.GreaterThanOrEqual, relatedAttribute:.Baseline, useTargetView:true)
+    meta_testMake(.LastBaseline, relation:.GreaterThanOrEqual, relatedAttribute:.LastBaseline, useTargetView:true)
   }
 
   // MARK: - TESTS: MAKE/LESSTHAN
@@ -1402,11 +1402,11 @@ class LayoutTests: XCTestCase {
   }
 
   func testMakeLeftLessThanBaseline() {
-    meta_testMake(.Left, relation:.LessThanOrEqual, relatedAttribute:.Baseline, useTargetView:false)
+    meta_testMake(.Left, relation:.LessThanOrEqual, relatedAttribute:.LastBaseline, useTargetView:false)
   }
 
   func testMakeLeftLessThanBaselineOnTargetView() {
-    meta_testMake(.Left, relation:.LessThanOrEqual, relatedAttribute:.Baseline, useTargetView:true)
+    meta_testMake(.Left, relation:.LessThanOrEqual, relatedAttribute:.LastBaseline, useTargetView:true)
   }
 
   func testMakeRightLessThanLeft() {
@@ -1458,11 +1458,11 @@ class LayoutTests: XCTestCase {
   }
 
   func testMakeRightLessThanBaseline() {
-    meta_testMake(.Right, relation:.LessThanOrEqual, relatedAttribute:.Baseline, useTargetView:false)
+    meta_testMake(.Right, relation:.LessThanOrEqual, relatedAttribute:.LastBaseline, useTargetView:false)
   }
 
   func testMakeRightLessThanBaselineOnTargetView() {
-    meta_testMake(.Right, relation:.LessThanOrEqual, relatedAttribute:.Baseline, useTargetView:true)
+    meta_testMake(.Right, relation:.LessThanOrEqual, relatedAttribute:.LastBaseline, useTargetView:true)
   }
 
   func testMakeTopLessThanLeft() {
@@ -1530,11 +1530,11 @@ class LayoutTests: XCTestCase {
   }
 
   func testMakeTopLessThanBaseline() {
-    meta_testMake(.Top, relation:.LessThanOrEqual, relatedAttribute:.Baseline, useTargetView:false)
+    meta_testMake(.Top, relation:.LessThanOrEqual, relatedAttribute:.LastBaseline, useTargetView:false)
   }
 
   func testMakeTopLessThanBaselineOnTargetView() {
-    meta_testMake(.Top, relation:.LessThanOrEqual, relatedAttribute:.Baseline, useTargetView:true)
+    meta_testMake(.Top, relation:.LessThanOrEqual, relatedAttribute:.LastBaseline, useTargetView:true)
   }
 
   func testMakeBottomLessThanLeft() {
@@ -1602,11 +1602,11 @@ class LayoutTests: XCTestCase {
   }
 
   func testMakeBottomLessThanBaseline() {
-    meta_testMake(.Bottom, relation:.LessThanOrEqual, relatedAttribute:.Baseline, useTargetView:false)
+    meta_testMake(.Bottom, relation:.LessThanOrEqual, relatedAttribute:.LastBaseline, useTargetView:false)
   }
 
   func testMakeBottomLessThanBaselineOnTargetView() {
-    meta_testMake(.Bottom, relation:.LessThanOrEqual, relatedAttribute:.Baseline, useTargetView:true)
+    meta_testMake(.Bottom, relation:.LessThanOrEqual, relatedAttribute:.LastBaseline, useTargetView:true)
   }
 
   func testMakeLeadingLessThanTop() {
@@ -1658,11 +1658,11 @@ class LayoutTests: XCTestCase {
   }
 
   func testMakeLeadingLessThanBaseline() {
-    meta_testMake(.Leading, relation:.LessThanOrEqual, relatedAttribute:.Baseline, useTargetView:false)
+    meta_testMake(.Leading, relation:.LessThanOrEqual, relatedAttribute:.LastBaseline, useTargetView:false)
   }
 
   func testMakeLeadingLessThanBaselineOnTargetView() {
-    meta_testMake(.Leading, relation:.LessThanOrEqual, relatedAttribute:.Baseline, useTargetView:true)
+    meta_testMake(.Leading, relation:.LessThanOrEqual, relatedAttribute:.LastBaseline, useTargetView:true)
   }
 
   func testMakeTrailingLessThanTop() {
@@ -1714,11 +1714,11 @@ class LayoutTests: XCTestCase {
   }
 
   func testMakeTrailingLessThanBaseline() {
-    meta_testMake(.Trailing, relation:.LessThanOrEqual, relatedAttribute:.Baseline, useTargetView:false)
+    meta_testMake(.Trailing, relation:.LessThanOrEqual, relatedAttribute:.LastBaseline, useTargetView:false)
   }
 
   func testMakeTrailingLessThanBaselineOnTargetView() {
-    meta_testMake(.Trailing, relation:.LessThanOrEqual, relatedAttribute:.Baseline, useTargetView:true)
+    meta_testMake(.Trailing, relation:.LessThanOrEqual, relatedAttribute:.LastBaseline, useTargetView:true)
   }
 
   func testMakeWidthLessThanWidth() {
@@ -1818,11 +1818,11 @@ class LayoutTests: XCTestCase {
   }
 
   func testMakeCenterXLessThanBaseline() {
-    meta_testMake(.CenterX, relation:.LessThanOrEqual, relatedAttribute:.Baseline, useTargetView:false)
+    meta_testMake(.CenterX, relation:.LessThanOrEqual, relatedAttribute:.LastBaseline, useTargetView:false)
   }
 
   func testMakeCenterXLessThanBaselineOnTargetView() {
-    meta_testMake(.CenterX, relation:.LessThanOrEqual, relatedAttribute:.Baseline, useTargetView:true)
+    meta_testMake(.CenterX, relation:.LessThanOrEqual, relatedAttribute:.LastBaseline, useTargetView:true)
   }
 
   func testMakeCenterYLessThanLeft() {
@@ -1890,83 +1890,83 @@ class LayoutTests: XCTestCase {
   }
 
   func testMakeCenterYLessThanBaseline() {
-    meta_testMake(.CenterY, relation:.LessThanOrEqual, relatedAttribute:.Baseline, useTargetView:false)
+    meta_testMake(.CenterY, relation:.LessThanOrEqual, relatedAttribute:.LastBaseline, useTargetView:false)
   }
 
   func testMakeCenterYLessThanBaselineOnTargetView() {
-    meta_testMake(.CenterY, relation:.LessThanOrEqual, relatedAttribute:.Baseline, useTargetView:true)
+    meta_testMake(.CenterY, relation:.LessThanOrEqual, relatedAttribute:.LastBaseline, useTargetView:true)
   }
 
   func testMakeBaselineLessThanLeft() {
-    meta_testMake(.Baseline, relation:.LessThanOrEqual, relatedAttribute:.Left, useTargetView:false)
+    meta_testMake(.LastBaseline, relation:.LessThanOrEqual, relatedAttribute:.Left, useTargetView:false)
   }
   
   func testMakeBaselineLessThanLeftOnTargetView() {
-    meta_testMake(.Baseline, relation:.LessThanOrEqual, relatedAttribute:.Left, useTargetView:true)
+    meta_testMake(.LastBaseline, relation:.LessThanOrEqual, relatedAttribute:.Left, useTargetView:true)
   }
   
   func testMakeBaselineLessThanRight() {
-    meta_testMake(.Baseline, relation:.LessThanOrEqual, relatedAttribute:.Right, useTargetView:false)
+    meta_testMake(.LastBaseline, relation:.LessThanOrEqual, relatedAttribute:.Right, useTargetView:false)
   }
   
   func testMakeBaselineLessThanRightOnTargetView() {
-    meta_testMake(.Baseline, relation:.LessThanOrEqual, relatedAttribute:.Right, useTargetView:true)
+    meta_testMake(.LastBaseline, relation:.LessThanOrEqual, relatedAttribute:.Right, useTargetView:true)
   }
   
   func testMakeBaselineLessThanTop() {
-    meta_testMake(.Baseline, relation:.LessThanOrEqual, relatedAttribute:.Top, useTargetView:false)
+    meta_testMake(.LastBaseline, relation:.LessThanOrEqual, relatedAttribute:.Top, useTargetView:false)
   }
   
   func testMakeBaselineLessThanTopOnTargetView() {
-    meta_testMake(.Baseline, relation:.LessThanOrEqual, relatedAttribute:.Top, useTargetView:true)
+    meta_testMake(.LastBaseline, relation:.LessThanOrEqual, relatedAttribute:.Top, useTargetView:true)
   }
   
   func testMakeBaselineLessThanBottom() {
-    meta_testMake(.Baseline, relation:.LessThanOrEqual, relatedAttribute:.Bottom, useTargetView:false)
+    meta_testMake(.LastBaseline, relation:.LessThanOrEqual, relatedAttribute:.Bottom, useTargetView:false)
   }
   
   func testMakeBaselineLessThanBottomOnTargetView() {
-    meta_testMake(.Baseline, relation:.LessThanOrEqual, relatedAttribute:.Bottom, useTargetView:true)
+    meta_testMake(.LastBaseline, relation:.LessThanOrEqual, relatedAttribute:.Bottom, useTargetView:true)
   }
   
   func testMakeBaselineLessThanLeading() {
-    meta_testMake(.Baseline, relation:.LessThanOrEqual, relatedAttribute:.Leading, useTargetView:false)
+    meta_testMake(.LastBaseline, relation:.LessThanOrEqual, relatedAttribute:.Leading, useTargetView:false)
   }
   
   func testMakeBaselineLessThanLeadingOnTargetView() {
-    meta_testMake(.Baseline, relation:.LessThanOrEqual, relatedAttribute:.Leading, useTargetView:true)
+    meta_testMake(.LastBaseline, relation:.LessThanOrEqual, relatedAttribute:.Leading, useTargetView:true)
   }
   
   func testMakeBaselineLessThanTrailing() {
-    meta_testMake(.Baseline, relation:.LessThanOrEqual, relatedAttribute:.Trailing, useTargetView:false)
+    meta_testMake(.LastBaseline, relation:.LessThanOrEqual, relatedAttribute:.Trailing, useTargetView:false)
   }
   
   func testMakeBaselineLessThanTrailingOnTargetView() {
-    meta_testMake(.Baseline, relation:.LessThanOrEqual, relatedAttribute:.Trailing, useTargetView:true)
+    meta_testMake(.LastBaseline, relation:.LessThanOrEqual, relatedAttribute:.Trailing, useTargetView:true)
   }
   
   func testMakeBaselineLessThanCenterX() {
-    meta_testMake(.Baseline, relation:.LessThanOrEqual, relatedAttribute:.CenterX, useTargetView:false)
+    meta_testMake(.LastBaseline, relation:.LessThanOrEqual, relatedAttribute:.CenterX, useTargetView:false)
   }
   
   func testMakeBaselineLessThanCenterXOnTargetView() {
-    meta_testMake(.Baseline, relation:.LessThanOrEqual, relatedAttribute:.CenterX, useTargetView:true)
+    meta_testMake(.LastBaseline, relation:.LessThanOrEqual, relatedAttribute:.CenterX, useTargetView:true)
   }
   
   func testMakeBaselineLessThanCenterY() {
-    meta_testMake(.Baseline, relation:.LessThanOrEqual, relatedAttribute:.CenterY, useTargetView:false)
+    meta_testMake(.LastBaseline, relation:.LessThanOrEqual, relatedAttribute:.CenterY, useTargetView:false)
   }
   
   func testMakeBaselineLessThanCenterYOnTargetView() {
-    meta_testMake(.Baseline, relation:.LessThanOrEqual, relatedAttribute:.CenterY, useTargetView:true)
+    meta_testMake(.LastBaseline, relation:.LessThanOrEqual, relatedAttribute:.CenterY, useTargetView:true)
   }
   
   func testMakeBaselineLessThanBaseline() {
-    meta_testMake(.Baseline, relation:.LessThanOrEqual, relatedAttribute:.Baseline, useTargetView:false)
+    meta_testMake(.LastBaseline, relation:.LessThanOrEqual, relatedAttribute:.LastBaseline, useTargetView:false)
   }
   
   func testMakeBaselineLessThanBaselineOnTargetView() {
-    meta_testMake(.Baseline, relation:.LessThanOrEqual, relatedAttribute:.Baseline, useTargetView:true)
+    meta_testMake(.LastBaseline, relation:.LessThanOrEqual, relatedAttribute:.LastBaseline, useTargetView:true)
   }
 
 }

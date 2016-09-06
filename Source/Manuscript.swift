@@ -104,7 +104,7 @@ public struct Manuscript {
   static func ancestors(v: UIView) -> AnySequence<UIView> {
     return AnySequence { () -> AnyGenerator<UIView> in
       var view: UIView? = v
-      return anyGenerator {
+      return AnyGenerator {
         let current = view
         view = view?.superview
         return current

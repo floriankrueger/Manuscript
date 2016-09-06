@@ -23,7 +23,7 @@ class LayoutGuideTests : XCTestCase {
     // make Layout Constraints
 
     Manuscript.layout(aView) { c in
-      topLayoutItem = c.make(.Top, equalTo: viewController.topLayoutGuide, s: .Baseline, plus: 10.0)
+      topLayoutItem = c.make(.Top, equalTo: viewController.topLayoutGuide, s: .LastBaseline, plus: 10.0)
     }
 
     XCTAssertNotNil(topLayoutItem)
