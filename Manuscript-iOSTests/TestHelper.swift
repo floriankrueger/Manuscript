@@ -98,7 +98,7 @@ extension NSLayoutAttribute : CustomStringConvertible {
       return "CenterX"
     case .CenterY:
       return "CenterY"
-    case .Baseline:
+    case .LastBaseline:
       return "Baseline"
     case .FirstBaseline:
       return "FirstBaseline"
