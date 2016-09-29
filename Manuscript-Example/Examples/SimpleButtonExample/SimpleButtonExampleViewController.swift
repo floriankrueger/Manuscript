@@ -123,17 +123,17 @@ class SimpleButtonExampleViewController: UIViewController {
   private func setupSubviews() {
     self.optionA.backgroundColor = UIColor.whiteColor()
     self.optionA.setTitle("A", forState: .Normal)
-    self.optionA.addTarget(self, action: "buttonPressed:", forControlEvents: .TouchUpInside)
+    self.optionA.addTarget(self, action: #selector(SimpleButtonExampleViewController.buttonPressed(_:)), forControlEvents: .TouchUpInside)
     self.view.addSubview(self.optionA)
 
     self.optionB.backgroundColor = UIColor.whiteColor()
     self.optionB.setTitle("B", forState: .Normal)
-    self.optionB.addTarget(self, action: "buttonPressed:", forControlEvents: .TouchUpInside)
+    self.optionB.addTarget(self, action: #selector(SimpleButtonExampleViewController.buttonPressed(_:)), forControlEvents: .TouchUpInside)
     self.view.addSubview(self.optionB)
 
     self.optionC.backgroundColor = UIColor.whiteColor()
     self.optionC.setTitle("C", forState: .Normal)
-    self.optionC.addTarget(self, action: "buttonPressed:", forControlEvents: .TouchUpInside)
+    self.optionC.addTarget(self, action: #selector(SimpleButtonExampleViewController.buttonPressed(_:)), forControlEvents: .TouchUpInside)
     self.view.addSubview(self.optionC)
   }
 
