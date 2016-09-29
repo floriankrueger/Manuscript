@@ -1,5 +1,11 @@
 # Changelog
 
+## Version 2.0.0
+
+- [x] New Repository structure
+- [x] Swift 3 compatibility (as far as we know for now)
+- [x] Custom identifiers for Constraints for easier debugging
+
 ## Version 0.0.6
 
 - [x] Documentation for Base API

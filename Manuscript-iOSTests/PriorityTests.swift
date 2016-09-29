@@ -42,7 +42,7 @@ class PriorityTests: XCTestCase {
   }
 
   func testDefaultPriority() {
-    var layoutItem: Manuscript.LayoutItem? = nil
+    var layoutItem: LayoutItem? = nil
 
     Manuscript.layout(self.view) { c in
       layoutItem = c.set(.Width, to: 100.0)
@@ -52,7 +52,7 @@ class PriorityTests: XCTestCase {
   }
 
   func testSetPriorityExplicit() {
-    var layoutItem: Manuscript.LayoutItem? = nil
+    var layoutItem: LayoutItem? = nil
 
     Manuscript.layout(self.view) { c in
       c.setPriority(123)
@@ -63,7 +63,7 @@ class PriorityTests: XCTestCase {
   }
 
   func testSetPriorityLowerBoundTo1() {
-    var layoutItem: Manuscript.LayoutItem? = nil
+    var layoutItem: LayoutItem? = nil
 
     Manuscript.layout(self.view) { c in
       c.setPriority(0)
@@ -74,7 +74,7 @@ class PriorityTests: XCTestCase {
   }
 
   func testSetPriorityUpperBoundTo1000() {
-    var layoutItem: Manuscript.LayoutItem? = nil
+    var layoutItem: LayoutItem? = nil
 
     Manuscript.layout(self.view) { c in
       c.setPriority(1001)
@@ -85,7 +85,7 @@ class PriorityTests: XCTestCase {
   }
 
   func testResetPriority() {
-    var layoutItem: Manuscript.LayoutItem? = nil
+    var layoutItem: LayoutItem? = nil
 
     Manuscript.layout(self.view) { c in
       c.setPriority(123)
@@ -99,7 +99,7 @@ class PriorityTests: XCTestCase {
   }
 
   func testSetPriorityRequired() {
-    var layoutItem: Manuscript.LayoutItem? = nil
+    var layoutItem: LayoutItem? = nil
 
     Manuscript.layout(self.view) { c in
       c.setPriorityRequired()
@@ -110,7 +110,7 @@ class PriorityTests: XCTestCase {
   }
 
   func testSetPriorityDefaultHigh() {
-    var layoutItem: Manuscript.LayoutItem? = nil
+    var layoutItem: LayoutItem? = nil
 
     Manuscript.layout(self.view) { c in
       c.setPriorityDefaultHigh()
@@ -121,7 +121,7 @@ class PriorityTests: XCTestCase {
   }
 
   func testSetPriorityDefaultLow() {
-    var layoutItem: Manuscript.LayoutItem? = nil
+    var layoutItem: LayoutItem? = nil
 
     Manuscript.layout(self.view) { c in
       c.setPriorityDefaultLow()
@@ -132,7 +132,7 @@ class PriorityTests: XCTestCase {
   }
 
   func testSetPriorityFittingSizeLevel() {
-    var layoutItem: Manuscript.LayoutItem? = nil
+    var layoutItem: LayoutItem? = nil
 
     Manuscript.layout(self.view) { c in
       c.setPriorityFittingSizeLevel()

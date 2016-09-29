@@ -3,19 +3,18 @@ general:
     ignore:
       - gh-pages
       - assets
-      - feature/swift2
 
 machine:
   xcode:
-    version: "7.0"
+    version: "7.3"
 
 test:
   override:
     - set -o pipefail &&
       xcodebuild
         -workspace Manuscript.xcworkspace/
-        -scheme Manuscript
-        -sdk iphonesimulator
+        -scheme Manuscript-iOS
+        -sdk iphonesimulator9.3
         -destination 'platform=iOS Simulator,OS=9.0,name=iPhone 6'
         clean test
         ONLY_ACTIVE_ARCH=NO
@@ -24,3 +23,5 @@ test:
         GCC_GENERATE_TEST_COVERAGE_FILES=YES |
       tee $CIRCLE_ARTIFACTS/xcode_raw_ios.log |
       xcpretty --color --report junit --output $CIRCLE_TEST_REPORTS/xcode/ios-results.xml
+  post:
+    - bash <(curl -s https://codecov.io/bash) -J Manuscript

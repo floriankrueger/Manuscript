@@ -25,13 +25,13 @@
 
 import UIKit
 import XCTest
-import Manuscript
+@testable import Manuscript
 
 class TargetViewTests: XCTestCase {
 
   func testCreatesUnrelatedConstraintOnTheGivenItemWhenUsingSet() {
     let view = UIView(frame: CGRectZero)
-    var layoutItem: Manuscript.LayoutItem? = nil
+    var layoutItem: LayoutItem? = nil
 
     Manuscript.layout(view) { c in
       layoutItem = c.set(.Width, to: 100.0)
@@ -49,7 +49,7 @@ class TargetViewTests: XCTestCase {
     let childView = UIView(frame: CGRectZero)
     parentView.addSubview(childView)
 
-    var layoutItem: Manuscript.LayoutItem? = nil
+    var layoutItem: LayoutItem? = nil
 
     Manuscript.layout(childView) { c in
       layoutItem = c.make(.Width, equalTo:parentView, s:.Width, on:parentView)
@@ -65,7 +65,7 @@ class TargetViewTests: XCTestCase {
     let childView = UIView(frame: CGRectZero)
     parentView.addSubview(childView)
 
-    var layoutItem: Manuscript.LayoutItem? = nil
+    var layoutItem: LayoutItem? = nil
 
     Manuscript.layout(childView) { c in
       layoutItem = c.make(.Width, equalTo:parentView, s:.Width)
@@ -83,7 +83,7 @@ class TargetViewTests: XCTestCase {
     parentView.addSubview(childView1)
     parentView.addSubview(childView2)
 
-    var layoutItem: Manuscript.LayoutItem? = nil
+    var layoutItem: LayoutItem? = nil
 
     Manuscript.layout(childView1) { c in
       layoutItem = c.make(.Width, equalTo:childView2, s:.Width)
@@ -93,6 +93,36 @@ class TargetViewTests: XCTestCase {
     XCTAssertEqual(childView2.constraints.count, 0, "")
     XCTAssertEqual(parentView.constraints.count, 1, "")
     XCTAssertEqual(parentView, layoutItem!.targetItem, "")
+  }
+  
+  func testSimpleFindCommonSuperview() {
+    let parentView = UIView()
+    let childView = UIView()
+    
+    parentView.addSubview(childView)
+    
+    XCTAssertEqual(parentView, Manuscript.findCommonSuperview(childView, b: parentView))
+    XCTAssertEqual(parentView, Manuscript.findCommonSuperview(parentView, b: childView))
+  }
+  
+  func testTransitiveFindCommonSuperview() {
+    let parentView = UIView()
+    let childView = UIView()
+    let subChildView = UIView()
+    
+    parentView.addSubview(childView)
+    childView.addSubview(subChildView)
+    
+    XCTAssertEqual(parentView, Manuscript.findCommonSuperview(subChildView, b: parentView))
+    XCTAssertEqual(parentView, Manuscript.findCommonSuperview(parentView, b: subChildView))
+  }
+  
+  func testFailingFindCommonSuperview() {
+    let view1 = UIView()
+    let view2 = UIView()
+    
+    XCTAssertEqual(view1, Manuscript.findCommonSuperview(view1, b: nil))
+    XCTAssertNil(Manuscript.findCommonSuperview(view1, b: view2))
   }
 
 }

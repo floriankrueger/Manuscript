@@ -1,8 +1,8 @@
 //
-//  Manuscript.h
+//  LayoutItem.swift
 //  Manuscript
 //
-//  Created by Florian Krüger on 17/11/14.
+//  Created by Florian Krüger on 22/05/16.
 //  Copyright (c) 2014 projectserver.org. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -23,12 +23,12 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#import <UIKit/UIKit.h>
+import Foundation
 
-//! Project version number for Manuscript.
-FOUNDATION_EXPORT double ManuscriptVersionNumber;
+/// A Manuscript `LayoutItem` consists of two things:
+///
+/// * the `constraint` that was generated through Manuscript
+/// * the `targetItem` on which the constraint was installed. That is the nearest ancestor view
+///   of the views that are referenced by the constraint.
 
-//! Project version string for Manuscript.
-FOUNDATION_EXPORT const unsigned char ManuscriptVersionString[];
-
-// In this header, you should import all the public headers of your framework using statements like #import <Manuscript/PublicHeader.h>
+public typealias LayoutItem = (constraint: NSLayoutConstraint, targetItem: UIView)
