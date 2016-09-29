@@ -182,6 +182,12 @@ To integrate Manuscript into your Xcode project using Carthage, specify it in yo
 ```ogdl
 github "floriankrueger/Manuscript"
 ```
+ 
+If you need to support Swift 2.3 then please use the last compatible version 2.1.0
+ 
+```ogdl
+github "floriankrueger/Manuscript" == 2.1.0
+```
 
 ### CocoaPods
 
