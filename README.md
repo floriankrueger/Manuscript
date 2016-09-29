@@ -23,7 +23,8 @@ Have a look at the [Changelog](CHANGELOG.md) for more details.
 ## Requirements
 
 - iOS 8.0+
-- Xcode 6.3
+- Xcode 8.x
+- Swift 3
 
 ### Bonus: Support for iOS 7.0+ and/or tvOS
 
