@@ -15,7 +15,7 @@ class LayoutGuideTests : XCTestCase {
   func testCreateConstraintWithLayoutGuide() {
 
     let viewController = UIViewController(nibName: nil, bundle: nil)
-    let aView = UIView(frame: CGRectZero)
+    let aView = UIView(frame: CGRect.zero)
     viewController.view.addSubview(aView)
 
     var topLayoutItem: LayoutItem? = nil
@@ -23,7 +23,7 @@ class LayoutGuideTests : XCTestCase {
     // make Layout Constraints
 
     Manuscript.layout(aView) { c in
-      topLayoutItem = c.make(.Top, equalTo: viewController.topLayoutGuide, s: .LastBaseline, plus: 10.0)
+      topLayoutItem = c.make(.top, equalTo: viewController.topLayoutGuide, s: .lastBaseline, plus: 10.0)
     }
 
     XCTAssertNotNil(topLayoutItem)

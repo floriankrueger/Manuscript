@@ -55,7 +55,7 @@ public struct Manuscript {
   ///
   /// - returns: the `LayoutProxy` instance that is also handed to the `block`
   
-  public static func layout(view: UIView,
+  @discardableResult public static func layout(_ view: UIView,
                             utils: ManuscriptUtils = Utils(),
                             block: (LayoutProxy) -> ()
     ) -> Manuscript.LayoutProxy
@@ -65,7 +65,7 @@ public struct Manuscript {
     return layoutProxy
   }
 
-  static func findCommonSuperview(a: UIView, b: UIView?) -> UIView? {
+  static func findCommonSuperview(_ a: UIView, b: UIView?) -> UIView? {
 
     if let b = b {
 
@@ -78,7 +78,7 @@ public struct Manuscript {
       // None of those; run the general algorithm
       let ancestorsOfA = NSSet(array: Array(ancestors(a)))
       for ancestor in ancestors(b) {
-        if ancestorsOfA.containsObject(ancestor) {
+        if ancestorsOfA.contains(ancestor) {
           return ancestor
         }
       }
@@ -88,10 +88,10 @@ public struct Manuscript {
     return a // b is nil
   }
 
-  static func ancestors(v: UIView) -> AnySequence<UIView> {
-    return AnySequence { () -> AnyGenerator<UIView> in
+  static func ancestors(_ v: UIView) -> AnySequence<UIView> {
+    return AnySequence { () -> AnyIterator<UIView> in
       var view: UIView? = v
-      return AnyGenerator {
+      return AnyIterator {
         let current = view
         view = view?.superview
         return current
@@ -101,11 +101,11 @@ public struct Manuscript {
 
   struct Utils: ManuscriptUtils {
     func isRetina() -> Bool {
-      return UIScreen.mainScreen().scale > 1.0
+      return UIScreen.main.scale > 1.0
     }
   }
 
-  static func suffixedIdFromId(identifier: String?, suffix: String) -> String {
+  static func suffixedIdFromId(_ identifier: String?, suffix: String) -> String {
     let id = identifier ?? Manuscript.defaultIdentifier
     return "\(id)_\(suffix)"
   }

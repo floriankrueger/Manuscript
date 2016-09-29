@@ -30,11 +30,11 @@ import XCTest
 class TargetViewTests: XCTestCase {
 
   func testCreatesUnrelatedConstraintOnTheGivenItemWhenUsingSet() {
-    let view = UIView(frame: CGRectZero)
+    let view = UIView(frame: CGRect.zero)
     var layoutItem: LayoutItem? = nil
 
     Manuscript.layout(view) { c in
-      layoutItem = c.set(.Width, to: 100.0)
+      layoutItem = c.set(.width, to: 100.0)
     }
 
     if let aLayoutItem = layoutItem {
@@ -45,14 +45,14 @@ class TargetViewTests: XCTestCase {
   }
 
   func testCreatedRelatedConstraintOnTheSpecifiedItemWhenUsingMakeOn() {
-    let parentView = UIView(frame: CGRectZero)
-    let childView = UIView(frame: CGRectZero)
+    let parentView = UIView(frame: CGRect.zero)
+    let childView = UIView(frame: CGRect.zero)
     parentView.addSubview(childView)
 
     var layoutItem: LayoutItem? = nil
 
     Manuscript.layout(childView) { c in
-      layoutItem = c.make(.Width, equalTo:parentView, s:.Width, on:parentView)
+      layoutItem = c.make(.width, equalTo:parentView, s:.width, on:parentView)
     }
 
     XCTAssertEqual(childView.constraints.count, 0, "")
@@ -61,14 +61,14 @@ class TargetViewTests: XCTestCase {
   }
 
   func testCreatedRelatedConstraintOnTheParentItemWhenUsingMake() {
-    let parentView = UIView(frame: CGRectZero)
-    let childView = UIView(frame: CGRectZero)
+    let parentView = UIView(frame: CGRect.zero)
+    let childView = UIView(frame: CGRect.zero)
     parentView.addSubview(childView)
 
     var layoutItem: LayoutItem? = nil
 
     Manuscript.layout(childView) { c in
-      layoutItem = c.make(.Width, equalTo:parentView, s:.Width)
+      layoutItem = c.make(.width, equalTo:parentView, s:.width)
     }
 
     XCTAssertEqual(childView.constraints.count, 0, "")
@@ -77,16 +77,16 @@ class TargetViewTests: XCTestCase {
   }
 
   func testCreatedRelatedConstraintOnTheCommonParentItemWhenUsingMake() {
-    let parentView = UIView(frame: CGRectZero)
-    let childView1 = UIView(frame: CGRectZero)
-    let childView2 = UIView(frame: CGRectZero)
+    let parentView = UIView(frame: CGRect.zero)
+    let childView1 = UIView(frame: CGRect.zero)
+    let childView2 = UIView(frame: CGRect.zero)
     parentView.addSubview(childView1)
     parentView.addSubview(childView2)
 
     var layoutItem: LayoutItem? = nil
 
     Manuscript.layout(childView1) { c in
-      layoutItem = c.make(.Width, equalTo:childView2, s:.Width)
+      layoutItem = c.make(.width, equalTo:childView2, s:.width)
     }
 
     XCTAssertEqual(childView1.constraints.count, 0, "")
