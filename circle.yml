@@ -6,7 +6,7 @@ general:
 
 machine:
   xcode:
-    version: "7.3"
+    version: "8.0"
 
 test:
   override:
