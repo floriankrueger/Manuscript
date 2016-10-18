@@ -50,7 +50,7 @@ class SimpleButtonExampleViewController: UIViewController {
 
   init() {
     super.init(nibName: nil, bundle: nil)
-    self.title = "Buttons"
+    title = "Buttons"
   }
 
   required init(coder aDecoder: NSCoder) {
@@ -62,56 +62,56 @@ class SimpleButtonExampleViewController: UIViewController {
   override func loadView() {
     super.loadView()
 
-    self.view.backgroundColor = UIColor.gray
+    view.backgroundColor = UIColor.gray
 
-    self.setupSubviews()
-    self.setupLayout()
+    setupSubviews()
+    setupLayout()
   }
 
   // MARK: - Target
 
   func buttonPressed(_ sender: UIButton) {
-    if sender == self.activeButton {
+    if sender == activeButton {
       return;
     }
 
-    if let activeButton = self.activeButton {
+    if let activeButton = activeButton {
       switch activeButton {
-      case self.optionA:
-        self.optionAHeight?.constant = self.buttonDimSmall
-        self.optionAWidth?.constant = self.buttonDimSmall
-        self.optionA.setNeedsLayout()
-      case self.optionB:
-        self.optionBHeight?.constant = self.buttonDimSmall
-        self.optionBWidth?.constant = self.buttonDimSmall
-        self.optionB.setNeedsLayout()
-      case self.optionC:
-        self.optionCHeight?.constant = self.buttonDimSmall
-        self.optionCWidth?.constant = self.buttonDimSmall
-        self.optionC.setNeedsLayout()
+      case optionA:
+        optionAHeight?.constant = buttonDimSmall
+        optionAWidth?.constant = buttonDimSmall
+        optionA.setNeedsLayout()
+      case optionB:
+        optionBHeight?.constant = buttonDimSmall
+        optionBWidth?.constant = buttonDimSmall
+        optionB.setNeedsLayout()
+      case optionC:
+        optionCHeight?.constant = buttonDimSmall
+        optionCWidth?.constant = buttonDimSmall
+        optionC.setNeedsLayout()
       default:
         print("active button is unknown")
       }
     }
 
     switch sender {
-    case self.optionA:
-      self.optionAHeight?.constant = self.buttonDimBig
-      self.optionAWidth?.constant = self.buttonDimBig
-      self.optionA.setNeedsLayout()
-    case self.optionB:
-      self.optionBHeight?.constant = self.buttonDimBig
-      self.optionBWidth?.constant = self.buttonDimBig
-      self.optionB.setNeedsLayout()
-    case self.optionC:
-      self.optionCHeight?.constant = self.buttonDimBig
-      self.optionCWidth?.constant = self.buttonDimBig
-      self.optionC.setNeedsLayout()
+    case optionA:
+      optionAHeight?.constant = buttonDimBig
+      optionAWidth?.constant = buttonDimBig
+      optionA.setNeedsLayout()
+    case optionB:
+      optionBHeight?.constant = buttonDimBig
+      optionBWidth?.constant = buttonDimBig
+      optionB.setNeedsLayout()
+    case optionC:
+      optionCHeight?.constant = buttonDimBig
+      optionCWidth?.constant = buttonDimBig
+      optionC.setNeedsLayout()
     default:
       print("sender button is unknown")
     }
 
-    self.activeButton = sender
+    activeButton = sender
 
     UIView.animate(withDuration: 0.25, animations: {
       self.view.layoutIfNeeded()
@@ -121,41 +121,41 @@ class SimpleButtonExampleViewController: UIViewController {
   // MARK: - Setup & Layout
 
   fileprivate func setupSubviews() {
-    self.optionA.backgroundColor = UIColor.white
-    self.optionA.setTitle("A", for: UIControlState())
-    self.optionA.addTarget(self, action: #selector(SimpleButtonExampleViewController.buttonPressed(_:)), for: .touchUpInside)
-    self.view.addSubview(self.optionA)
+    optionA.backgroundColor = UIColor.white
+    optionA.setTitle("A", for: UIControlState())
+    optionA.addTarget(self, action: #selector(SimpleButtonExampleViewController.buttonPressed(_:)), for: .touchUpInside)
+    view.addSubview(optionA)
 
-    self.optionB.backgroundColor = UIColor.white
-    self.optionB.setTitle("B", for: UIControlState())
-    self.optionB.addTarget(self, action: #selector(SimpleButtonExampleViewController.buttonPressed(_:)), for: .touchUpInside)
-    self.view.addSubview(self.optionB)
+    optionB.backgroundColor = UIColor.white
+    optionB.setTitle("B", for: UIControlState())
+    optionB.addTarget(self, action: #selector(SimpleButtonExampleViewController.buttonPressed(_:)), for: .touchUpInside)
+    view.addSubview(optionB)
 
-    self.optionC.backgroundColor = UIColor.white
-    self.optionC.setTitle("C", for: UIControlState())
-    self.optionC.addTarget(self, action: #selector(SimpleButtonExampleViewController.buttonPressed(_:)), for: .touchUpInside)
-    self.view.addSubview(self.optionC)
+    optionC.backgroundColor = UIColor.white
+    optionC.setTitle("C", for: UIControlState())
+    optionC.addTarget(self, action: #selector(SimpleButtonExampleViewController.buttonPressed(_:)), for: .touchUpInside)
+    view.addSubview(optionC)
   }
 
   fileprivate func setupLayout() {
-    Manuscript.layout(self.optionA) { c in
-      self.optionAHeight = c.set(.height, to:self.buttonDimSmall).constraint
-      self.optionAWidth = c.set(.width, to:self.buttonDimSmall).constraint
-      c.make(.right, equalTo:self.optionB, s:.left, minus: 10.0)
-      c.make(.centerY, equalTo:self.view, s:.centerY)
+    Manuscript.layout(optionA) { c in
+      optionAHeight = c.set(.height, to:buttonDimSmall).constraint
+      optionAWidth = c.set(.width, to:buttonDimSmall).constraint
+      c.make(.right, equalTo:optionB, s:.left, minus: 10.0)
+      c.make(.centerY, equalTo:view, s:.centerY)
     }
 
-    Manuscript.layout(self.optionB) { c in
-      self.optionBHeight = c.set(.height, to:self.buttonDimSmall).constraint
-      self.optionBWidth = c.set(.width, to:self.buttonDimSmall).constraint
-      c.centerIn(self.view)
+    Manuscript.layout(optionB) { c in
+      optionBHeight = c.set(.height, to:buttonDimSmall).constraint
+      optionBWidth = c.set(.width, to:buttonDimSmall).constraint
+      c.centerIn(view)
     }
 
-    Manuscript.layout(self.optionC) { c in
-      self.optionCHeight = c.set(.height, to:self.buttonDimSmall).constraint
-      self.optionCWidth = c.set(.width, to:self.buttonDimSmall).constraint
-      c.make(.left, equalTo:self.optionB, s:.right, plus: 10.0)
-      c.make(.centerY, equalTo:self.view, s:.centerY)
+    Manuscript.layout(optionC) { c in
+      optionCHeight = c.set(.height, to:buttonDimSmall).constraint
+      optionCWidth = c.set(.width, to:buttonDimSmall).constraint
+      c.make(.left, equalTo:optionB, s:.right, plus: 10.0)
+      c.make(.centerY, equalTo:view, s:.centerY)
     }
   }
 

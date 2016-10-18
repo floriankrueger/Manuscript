@@ -53,8 +53,8 @@ Center a UIView 'childView' in self.view and make it 30 by 30 in size
 
 ```swift
 Manuscript.layout(childView) { c in
-  c.make(.CenterX, equalTo: self.view, s: .CenterX)
-  c.make(.CenterY, equalTo: self.view, s: .CenterY)
+  c.make(.CenterX, equalTo: view, s: .CenterX)
+  c.make(.CenterY, equalTo: view, s: .CenterY)
   c.set(.Width, to: 30.0)
   c.set(.Height, to: 30.0)
 }
@@ -64,7 +64,7 @@ The same, but using the convenience methods
 
 ```swift
 Manuscript.layout(childView) { c in
-  c.centerIn(self.view)
+  c.centerIn(view)
   c.setSize(CGSize(width: 30.0, height: 30.0))
 }
 ```
@@ -75,10 +75,10 @@ Align a UIView 'container' to all edges of self.view
 
 ```swift
 Manuscript.layout(container) { c in
-  c.make(.Left, equalTo: self.view, s: .Left)
-  c.make(.Right, equalTo: self.view, s: .Right)
-  c.make(.Top, equalTo: self.view, s: .Top)
-  c.make(.Bottom, equalTo: self.view, s: .Bottom)
+  c.make(.Left, equalTo: view, s: .Left)
+  c.make(.Right, equalTo: view, s: .Right)
+  c.make(.Top, equalTo: view, s: .Top)
+  c.make(.Bottom, equalTo: view, s: .Bottom)
 }
 ```
 
@@ -86,7 +86,7 @@ The same, but using the convenience methods
 
 ```swift
 Manuscript.layout(container) { c in
-  c.alignAllEdges(to: self.view)
+  c.alignAllEdges(to: view)
 }
 ```
 
@@ -97,10 +97,10 @@ container.
 
 ```swift
 Manuscript.layout(container) { c in
-  c.make(.Left, equalTo: self.view, s: .Left, plus: 30.0)
-  c.make(.Right, equalTo: self.view, s: .Right, minus: 30.0)
-  c.make(.Top, equalTo: self.view, s: .Top, plus: 30.0)
-  c.make(.Bottom, equalTo: self.view, s: .Bottom, minus: 30.0)
+  c.make(.Left, equalTo: view, s: .Left, plus: 30.0)
+  c.make(.Right, equalTo: view, s: .Right, minus: 30.0)
+  c.make(.Top, equalTo: view, s: .Top, plus: 30.0)
+  c.make(.Bottom, equalTo: view, s: .Bottom, minus: 30.0)
 }
 ```
 
@@ -108,7 +108,7 @@ The same, but using convenience methods.
 
 ```swift
 Manuscript.layout(container) { c in
-  c.alignAllEdges(to: self.view, withInsets: UIEdgeInsets(top: 30.0, left: 30.0, bottom: 30.0, right: 30.0))
+  c.alignAllEdges(to: view, withInsets: UIEdgeInsets(top: 30.0, left: 30.0, bottom: 30.0, right: 30.0))
 }
 ```
 
@@ -118,10 +118,10 @@ Make use of the LayoutGuides provided by UIViewController.
 
 ```swift
 Manuscript.layout(container) { c in
-  c.make(.Left, equalTo: self.view, s: .Left)
-  c.make(.Right, equalTo: self.view, s: .Right)
-  c.make(.Top, equalTo: self.topLayoutGuide, s: .Baseline)
-  c.make(.Bottom, equalTo: self.bottomLayoutGuide, s: .Baseline)
+  c.make(.Left, equalTo: view, s: .Left)
+  c.make(.Right, equalTo: view, s: .Right)
+  c.make(.Top, equalTo: topLayoutGuide, s: .Baseline)
+  c.make(.Bottom, equalTo: bottomLayoutGuide, s: .Baseline)
 }
 ```
 
@@ -131,9 +131,9 @@ There is a utility method to create hairlines which takes the screen scale into 
 
 ```swift
 Manuscript.layout(mySeparatorLine) { c in
-  c.make(.Left, equalTo: self.view, s: .Left)
-  c.make(.Right, equalTo: self.view, s: .Right)
-  c.make(.Top, equalTo: self.topLayoutGuide, s: .Baseline)
+  c.make(.Left, equalTo: view, s: .Left)
+  c.make(.Right, equalTo: view, s: .Right)
+  c.make(.Top, equalTo: topLayoutGuide, s: .Baseline)
 
   // sets the .Height to 1.0 on non-retina displays and to 0.5 on retina displays
   c.makeHorizontalHairline()
@@ -149,10 +149,10 @@ is the nearest common superview of the `UIView`s involved.
 
 ```swift
 Manuscript.layout(container) { c in
-  self.leftConstaint = c.make(.Left, equalTo: self.view, s: .Left).constraint
-  self.rightConstaint = c.make(.Right, equalTo: self.view, s: .Right).constraint
-  self.topConstaint = c.make(.Top, equalTo: self.topLayoutGuide, s: .Baseline).constraint
-  self.bottomConstaint = c.make(.Bottom, equalTo: self.bottomLayoutGuide, s: .Baseline).constraint
+  leftConstaint = c.make(.Left, equalTo: view, s: .Left).constraint
+  rightConstaint = c.make(.Right, equalTo: view, s: .Right).constraint
+  topConstaint = c.make(.Top, equalTo: topLayoutGuide, s: .Baseline).constraint
+  bottomConstaint = c.make(.Bottom, equalTo: bottomLayoutGuide, s: .Baseline).constraint
 }
 ```
 
@@ -160,8 +160,8 @@ Afterwards, just modify the constraint's constant and apply the changes (this is
 
 ```swift
 UIView.animateWithDuration(0.6) { in
-  self.topConstraint?.constant = 100
-  self.view.layoutIfNeeded()
+  topConstraint?.constant = 100
+  view.layoutIfNeeded()
 }
 ```
 
@@ -183,9 +183,9 @@ To integrate Manuscript into your Xcode project using Carthage, specify it in yo
 ```ogdl
 github "floriankrueger/Manuscript"
 ```
- 
+
 If you need to support Swift 2.3 then please use the last compatible version 2.1.0
- 
+
 ```ogdl
 github "floriankrueger/Manuscript" == 2.1.0
 ```
