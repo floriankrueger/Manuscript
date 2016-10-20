@@ -3,6 +3,7 @@
 [![Coveralls branch](https://img.shields.io/coveralls/floriankrueger/manuscript.svg)](https://coveralls.io/r/floriankrueger/Manuscript)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![CocoaPods](https://img.shields.io/cocoapods/v/Manuscript.svg)](https://github.com/floriankrueger/Manuscript)
+[![Swift](https://img.shields.io/badge/Swift-3.0-orange.svg)](https://swift.org)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/floriankrueger/Manuscript/master/LICENSE)
 
 ![Manuscript: Dead-Simple AutoLayout](https://raw.githubusercontent.com/floriankrueger/Manuscript/assets/manuscript.png)

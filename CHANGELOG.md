@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 3.0.0
+
+- [x] Swift 3 compatibility
+
 ## Version 2.0.0
 
 - [x] New Repository structure
