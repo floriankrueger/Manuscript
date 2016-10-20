@@ -6,7 +6,7 @@ general:
 
 machine:
   xcode:
-    version: "7.3"
+    version: "8.0"
 
 test:
   override:
@@ -14,8 +14,8 @@ test:
       xcodebuild
         -workspace Manuscript.xcworkspace/
         -scheme Manuscript-iOS
-        -sdk iphonesimulator9.3
-        -destination 'platform=iOS Simulator,OS=9.0,name=iPhone 6'
+        -sdk iphonesimulator10.0
+        -destination 'platform=iOS Simulator,OS=10.0,name=iPhone 7'
         clean test
         ONLY_ACTIVE_ARCH=NO
         TEST_AFTER_BUILD=YES

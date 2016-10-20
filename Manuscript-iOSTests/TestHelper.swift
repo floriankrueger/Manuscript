@@ -29,12 +29,12 @@ import XCTest
 
 struct Helper {
   static func checkConstraint(
-    constraint: NSLayoutConstraint,
+    _ constraint: NSLayoutConstraint,
     item: UIView,
     attribute: NSLayoutAttribute,
     relation: NSLayoutRelation,
     relatedItem: UIView? = nil,
-    relatedAttribute: NSLayoutAttribute = .NotAnAttribute,
+    relatedAttribute: NSLayoutAttribute = .notAnAttribute,
     multiplier: CGFloat = 1.0,
     constant: CGFloat)
   {
@@ -54,12 +54,12 @@ struct Helper {
     XCTAssertEqual(constraint.constant, constant, "")
   }
 
-  static func randomFloat(min: CGFloat = 0.0, max: CGFloat) -> CGFloat {
+  static func randomFloat(_ min: CGFloat = 0.0, max: CGFloat) -> CGFloat {
     let random = CGFloat(arc4random()) / CGFloat(UInt32.max)
     return random * (max - min) + min
   }
 
-  static func firstConstraint(view: UIView, withAttribute optionalAttribute: NSLayoutAttribute? = nil) -> NSLayoutConstraint? {
+  static func firstConstraint(_ view: UIView, withAttribute optionalAttribute: NSLayoutAttribute? = nil) -> NSLayoutConstraint? {
     if view.constraints.count > 0 {
       for constraint in view.constraints {
         if let attribute = optionalAttribute {
@@ -78,47 +78,47 @@ struct Helper {
 extension NSLayoutAttribute : CustomStringConvertible {
   public var description: String {
     switch self {
-    case .Left:
+    case .left:
       return "Left"
-    case .Right:
+    case .right:
       return "Right"
-    case .Top:
+    case .top:
       return "Top"
-    case .Bottom:
+    case .bottom:
       return "Bottom"
-    case .Leading:
+    case .leading:
       return "Leading"
-    case .Trailing:
+    case .trailing:
       return "Trailing"
-    case .Width:
+    case .width:
       return "Width"
-    case .Height:
+    case .height:
       return "Height"
-    case .CenterX:
+    case .centerX:
       return "CenterX"
-    case .CenterY:
+    case .centerY:
       return "CenterY"
-    case .LastBaseline:
+    case .lastBaseline:
       return "Baseline"
-    case .FirstBaseline:
+    case .firstBaseline:
       return "FirstBaseline"
-    case .LeftMargin:
+    case .leftMargin:
       return "LeftMargin"
-    case .RightMargin:
+    case .rightMargin:
       return "RightMargin"
-    case .TopMargin:
+    case .topMargin:
       return "TopMargin"
-    case .BottomMargin:
+    case .bottomMargin:
       return "BottomMargin"
-    case .LeadingMargin:
+    case .leadingMargin:
       return "LeadingMargin"
-    case .TrailingMargin:
+    case .trailingMargin:
       return "TrailingMargin"
-    case .CenterXWithinMargins:
+    case .centerXWithinMargins:
       return "CenterXWithinMargins"
-    case .CenterYWithinMargins:
+    case .centerYWithinMargins:
       return "CenterYWithinMargins"
-    case .NotAnAttribute:
+    case .notAnAttribute:
       return "NotAnAttribute"
     }
   }

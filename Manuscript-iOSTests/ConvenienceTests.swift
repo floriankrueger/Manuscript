@@ -30,20 +30,20 @@ import Manuscript
 class ConvenienceTests: XCTestCase {
 
   func testAlignAllEdges() {
-    let parentView = UIView(frame: CGRectZero)
-    let childView = UIView(frame: CGRectZero)
+    let parentView = UIView(frame: CGRect.zero)
+    let childView = UIView(frame: CGRect.zero)
     parentView.addSubview(childView)
-    let expectation = self.expectationWithDescription("constraints installed")
+    let expectation = self.expectation(description: "constraints installed")
 
     Manuscript.layout(childView) { c in
       c.alignAllEdges(to: parentView)
       expectation.fulfill()
     }
 
-    self.waitForExpectationsWithTimeout(0.1) { error in
-      for attribute in [NSLayoutAttribute.Left, NSLayoutAttribute.Right, NSLayoutAttribute.Top, NSLayoutAttribute.Bottom] {
+    self.waitForExpectations(timeout: 0.1) { error in
+      for attribute in [NSLayoutAttribute.left, NSLayoutAttribute.right, NSLayoutAttribute.top, NSLayoutAttribute.bottom] {
         if let constraint = Helper.firstConstraint(parentView, withAttribute:attribute) {
-          Helper.checkConstraint(constraint, item:childView, attribute:attribute, relation:.Equal, relatedItem:parentView, relatedAttribute:attribute, constant:0.0)
+          Helper.checkConstraint(constraint, item:childView, attribute:attribute, relation:.equal, relatedItem:parentView, relatedAttribute:attribute, constant:0.0)
         } else {
           XCTFail("view is expected to have one constraint for \(attribute)")
         }
@@ -55,34 +55,34 @@ class ConvenienceTests: XCTestCase {
   }
 
   func testAlignAllEdgesWithInsets() {
-    let parentView = UIView(frame: CGRectZero)
-    let childView = UIView(frame: CGRectZero)
+    let parentView = UIView(frame: CGRect.zero)
+    let childView = UIView(frame: CGRect.zero)
     parentView.addSubview(childView)
     let insets = UIEdgeInsets(top: 1.0, left: 2.0, bottom: 3.0, right: 4.0)
-    let expectation = self.expectationWithDescription("constraints installed")
+    let expectation = self.expectation(description: "constraints installed")
 
     Manuscript.layout(childView) { c in
       c.alignAllEdges(to: parentView, withInsets: insets)
       expectation.fulfill()
     }
 
-    self.waitForExpectationsWithTimeout(0.1) { error in
-      for attribute in [NSLayoutAttribute.Left, NSLayoutAttribute.Right, NSLayoutAttribute.Top, NSLayoutAttribute.Bottom] {
+    self.waitForExpectations(timeout: 0.1) { error in
+      for attribute in [NSLayoutAttribute.left, NSLayoutAttribute.right, NSLayoutAttribute.top, NSLayoutAttribute.bottom] {
         if let constraint = Helper.firstConstraint(parentView, withAttribute:attribute) {
           let constant: CGFloat
           switch attribute {
-          case .Left:
+          case .left:
             constant = insets.left
-          case .Right:
+          case .right:
             constant = -1 * insets.right
-          case .Top:
+          case .top:
             constant = insets.top
-          case .Bottom:
+          case .bottom:
             constant = -1 * insets.bottom
           default:
             constant = 0.0
           }
-          Helper.checkConstraint(constraint, item:childView, attribute:attribute, relation:.Equal, relatedItem:parentView, relatedAttribute:attribute, constant:constant)
+          Helper.checkConstraint(constraint, item:childView, attribute:attribute, relation:.equal, relatedItem:parentView, relatedAttribute:attribute, constant:constant)
         } else {
           XCTFail("view is expected to have one constraint for \(attribute)")
         }
@@ -94,20 +94,20 @@ class ConvenienceTests: XCTestCase {
   }
 
   func testCenterIn() {
-    let parentView = UIView(frame: CGRectZero)
-    let childView = UIView(frame: CGRectZero)
+    let parentView = UIView(frame: CGRect.zero)
+    let childView = UIView(frame: CGRect.zero)
     parentView.addSubview(childView)
-    let expectation = self.expectationWithDescription("constraints installed")
+    let expectation = self.expectation(description: "constraints installed")
 
     Manuscript.layout(childView) { c in
       c.centerIn(parentView)
       expectation.fulfill()
     }
 
-    self.waitForExpectationsWithTimeout(0.1) { error in
-      for attribute in [NSLayoutAttribute.CenterX, NSLayoutAttribute.CenterY] {
+    self.waitForExpectations(timeout: 0.1) { error in
+      for attribute in [NSLayoutAttribute.centerX, NSLayoutAttribute.centerY] {
         if let constraint = Helper.firstConstraint(parentView, withAttribute:attribute) {
-          Helper.checkConstraint(constraint, item:childView, attribute:attribute, relation:.Equal, relatedItem:parentView, relatedAttribute:attribute, constant:0.0)
+          Helper.checkConstraint(constraint, item:childView, attribute:attribute, relation:.equal, relatedItem:parentView, relatedAttribute:attribute, constant:0.0)
         } else {
           XCTFail("view is expected to have one constraint for \(attribute)")
         }
@@ -119,29 +119,29 @@ class ConvenienceTests: XCTestCase {
   }
 
   func testSetSize() {
-    let view = UIView(frame: CGRectZero)
+    let view = UIView(frame: CGRect.zero)
     let width:CGFloat = 100.0
     let height:CGFloat = 200.0
-    let expectation = self.expectationWithDescription("constraints installed")
+    let expectation = self.expectation(description: "constraints installed")
 
     Manuscript.layout(view) { c in
       c.setSize(CGSize(width: width, height: height))
       expectation.fulfill()
     }
 
-    self.waitForExpectationsWithTimeout(0.1) { error in
-      for attribute in [NSLayoutAttribute.Width, NSLayoutAttribute.Height] {
+    self.waitForExpectations(timeout: 0.1) { error in
+      for attribute in [NSLayoutAttribute.width, NSLayoutAttribute.height] {
         if let constraint = Helper.firstConstraint(view, withAttribute:attribute) {
           let constant: CGFloat
           switch attribute {
-          case .Width:
+          case .width:
             constant = width
-          case .Height:
+          case .height:
             constant = height
           default:
             constant = 0.0
           }
-          Helper.checkConstraint(constraint, item:view, attribute:attribute, relation:.Equal, constant:constant)
+          Helper.checkConstraint(constraint, item:view, attribute:attribute, relation:.equal, constant:constant)
         } else {
           XCTFail("view is expected to have one constraint for \(attribute)")
         }
@@ -152,19 +152,19 @@ class ConvenienceTests: XCTestCase {
   }
 
   func testHorizontalHairlineOnRetina() {
-    let view = UIView(frame: CGRectZero)
-    let expectation = self.expectationWithDescription("constraints installed")
+    let view = UIView(frame: CGRect.zero)
+    let expectation = self.expectation(description: "constraints installed")
 
     Manuscript.layout(view, utils: RetinaUtils()) { c in
       c.makeHorizontalHairline()
       expectation.fulfill()
     }
 
-    self.waitForExpectationsWithTimeout(0.1) { error in
-      if let constraint = Helper.firstConstraint(view, withAttribute:.Height) {
-        Helper.checkConstraint(constraint, item:view, attribute:.Height, relation:.Equal, constant:0.5)
+    self.waitForExpectations(timeout: 0.1) { error in
+      if let constraint = Helper.firstConstraint(view, withAttribute:.height) {
+        Helper.checkConstraint(constraint, item:view, attribute:.height, relation:.equal, constant:0.5)
       } else {
-        XCTFail("view is expected to have one constraint for \(NSLayoutAttribute.Height)")
+        XCTFail("view is expected to have one constraint for \(NSLayoutAttribute.height)")
       }
       XCTAssertEqual(1, view.constraints.count, "view is expected to have one constraint")
       XCTAssertNil(error, "")
@@ -172,19 +172,19 @@ class ConvenienceTests: XCTestCase {
   }
 
   func testHorizontalHairlineOnNonRetina() {
-    let view = UIView(frame: CGRectZero)
-    let expectation = self.expectationWithDescription("constraints installed")
+    let view = UIView(frame: CGRect.zero)
+    let expectation = self.expectation(description: "constraints installed")
 
     Manuscript.layout(view, utils: NonRetinaUtils()) { c in
       c.makeHorizontalHairline()
       expectation.fulfill()
     }
 
-    self.waitForExpectationsWithTimeout(0.1) { error in
-      if let constraint = Helper.firstConstraint(view, withAttribute:.Height) {
-        Helper.checkConstraint(constraint, item:view, attribute:.Height, relation:.Equal, constant:1.0)
+    self.waitForExpectations(timeout: 0.1) { error in
+      if let constraint = Helper.firstConstraint(view, withAttribute:.height) {
+        Helper.checkConstraint(constraint, item:view, attribute:.height, relation:.equal, constant:1.0)
       } else {
-        XCTFail("view is expected to have one constraint for \(NSLayoutAttribute.Height)")
+        XCTFail("view is expected to have one constraint for \(NSLayoutAttribute.height)")
       }
       XCTAssertEqual(1, view.constraints.count, "view is expected to have one constraint")
       XCTAssertNil(error, "")
@@ -192,19 +192,19 @@ class ConvenienceTests: XCTestCase {
   }
 
   func testVerticalHairlineOnRetina() {
-    let view = UIView(frame: CGRectZero)
-    let expectation = self.expectationWithDescription("constraints installed")
+    let view = UIView(frame: CGRect.zero)
+    let expectation = self.expectation(description: "constraints installed")
 
     Manuscript.layout(view, utils: RetinaUtils()) { c in
       c.makeVerticalHairline()
       expectation.fulfill()
     }
 
-    self.waitForExpectationsWithTimeout(0.1) { error in
-      if let constraint = Helper.firstConstraint(view, withAttribute:.Width) {
-        Helper.checkConstraint(constraint, item:view, attribute:.Width, relation:.Equal, constant:0.5)
+    self.waitForExpectations(timeout: 0.1) { error in
+      if let constraint = Helper.firstConstraint(view, withAttribute:.width) {
+        Helper.checkConstraint(constraint, item:view, attribute:.width, relation:.equal, constant:0.5)
       } else {
-        XCTFail("view is expected to have one constraint for \(NSLayoutAttribute.Width)")
+        XCTFail("view is expected to have one constraint for \(NSLayoutAttribute.width)")
       }
       XCTAssertEqual(1, view.constraints.count, "view is expected to have one constraint")
       XCTAssertNil(error, "")
@@ -212,19 +212,19 @@ class ConvenienceTests: XCTestCase {
   }
 
   func testVerticalHairlineOnNonRetina() {
-    let view = UIView(frame: CGRectZero)
-    let expectation = self.expectationWithDescription("constraints installed")
+    let view = UIView(frame: CGRect.zero)
+    let expectation = self.expectation(description: "constraints installed")
 
     Manuscript.layout(view, utils: NonRetinaUtils()) { c in
       c.makeVerticalHairline()
       expectation.fulfill()
     }
 
-    self.waitForExpectationsWithTimeout(0.1) { error in
-      if let constraint = Helper.firstConstraint(view, withAttribute:.Width) {
-        Helper.checkConstraint(constraint, item:view, attribute:.Width, relation:.Equal, constant:1.0)
+    self.waitForExpectations(timeout: 0.1) { error in
+      if let constraint = Helper.firstConstraint(view, withAttribute:.width) {
+        Helper.checkConstraint(constraint, item:view, attribute:.width, relation:.equal, constant:1.0)
       } else {
-        XCTFail("view is expected to have one constraint for \(NSLayoutAttribute.Width)")
+        XCTFail("view is expected to have one constraint for \(NSLayoutAttribute.width)")
       }
       XCTAssertEqual(1, view.constraints.count, "view is expected to have one constraint")
       XCTAssertNil(error, "")

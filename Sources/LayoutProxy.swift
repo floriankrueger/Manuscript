@@ -30,7 +30,7 @@ extension Manuscript {
 
   /// The `LayoutProxy` is responsible for creating all the constraints.
 
-  public class LayoutProxy: NSObject {
+  open class LayoutProxy: NSObject {
     
     let view: UIView
     let utils: ManuscriptUtils
@@ -48,25 +48,25 @@ extension Manuscript {
     
     /// Set the priority for all constraints created *after* this call to `1000`
     
-    public func setPriorityRequired() {
+    open func setPriorityRequired() {
       self.internalPriority = 1000
     }
     
     /// Set the priority for all constraints created *after* this call to `750`
     
-    public func setPriorityDefaultHigh() {
+    open func setPriorityDefaultHigh() {
       self.internalPriority = 750
     }
     
     /// Set the priority for all constraints created *after* this call to `250`
     
-    public func setPriorityDefaultLow() {
+    open func setPriorityDefaultLow() {
       self.internalPriority = 250
     }
     
     /// Set the priority for all constraints created *after* this call to `50`
     
-    public func setPriorityFittingSizeLevel() {
+    open func setPriorityFittingSizeLevel() {
       self.internalPriority = 50
     }
     
@@ -74,7 +74,7 @@ extension Manuscript {
     ///
     /// - parameter priority: A UILayoutPriority a.k.a. int between 0 and 1000
     
-    public func setPriority(priority: UILayoutPriority) {
+    open func setPriority(_ priority: UILayoutPriority) {
       if priority > 1000 {
         self.internalPriority = 1000
         print("UILayoutPriority only supports values between 1 and 1000. Setting to 1000 (while trying to set the priority to \(priority)).")
@@ -98,8 +98,8 @@ extension Manuscript {
     ///
     /// - returns: a layout item whose target item is the view itself
     
-    public func set(attribute: NSLayoutAttribute, to constant: CGFloat, identifier: String? = nil) -> LayoutItem {
-      return self.set(self.view, attribute: attribute, relation: .Equal, constant: constant, priority: self.internalPriority, identifier: identifier)
+    @discardableResult open func set(_ attribute: NSLayoutAttribute, to constant: CGFloat, identifier: String? = nil) -> LayoutItem {
+      return self.set(self.view, attribute: attribute, relation: .equal, constant: constant, priority: self.internalPriority, identifier: identifier)
     }
     
     /// Set a layout attribute to a specific constant using a `greaterThan` relation. This is mostly
@@ -112,8 +112,8 @@ extension Manuscript {
     ///
     /// - returns: a layout item whose target item is the view itself
     
-    public func set(attribute: NSLayoutAttribute, toMoreThan constant: CGFloat, identifier: String? = nil) -> LayoutItem {
-      return self.set(self.view, attribute: attribute, relation: .GreaterThanOrEqual, constant: constant, priority: self.internalPriority, identifier: identifier)
+    @discardableResult open func set(_ attribute: NSLayoutAttribute, toMoreThan constant: CGFloat, identifier: String? = nil) -> LayoutItem {
+      return self.set(self.view, attribute: attribute, relation: .greaterThanOrEqual, constant: constant, priority: self.internalPriority, identifier: identifier)
     }
     
     /// Set a layout attribute to a specific constant using a `lessThan` relation. This is mostly
@@ -126,8 +126,8 @@ extension Manuscript {
     ///
     /// - returns: a layout item whose target item is the view itself
     
-    public func set(attribute: NSLayoutAttribute, toLessThan constant: CGFloat, identifier: String? = nil) -> LayoutItem {
-      return self.set(self.view, attribute: attribute, relation: .LessThanOrEqual, constant: constant, priority: self.internalPriority, identifier: identifier)
+    @discardableResult open func set(_ attribute: NSLayoutAttribute, toLessThan constant: CGFloat, identifier: String? = nil) -> LayoutItem {
+      return self.set(self.view, attribute: attribute, relation: .lessThanOrEqual, constant: constant, priority: self.internalPriority, identifier: identifier)
     }
     
     // MARK: DSL (make)
@@ -149,8 +149,8 @@ extension Manuscript {
     /// - returns: a layout item containing the created constraint as well as the target view on
     ///           which the constraint was installed
     
-    public func make(attribute: NSLayoutAttribute, equalTo relatedItem: AnyObject, s relatedAttribute: NSLayoutAttribute, times multiplier: CGFloat = 1.0, plus constant: CGFloat = 0.0, minus negativeConstant: CGFloat = 0.0, on targetView: UIView? = nil, identifier: String? = nil) -> LayoutItem {
-      return self.make(self.view, attribute: attribute, relation: .Equal, relatedItem: relatedItem, relatedItemAttribute: relatedAttribute, multiplier: multiplier, constant: constant - negativeConstant, target: targetView, priority: self.internalPriority, identifier: identifier)
+    @discardableResult open func make(_ attribute: NSLayoutAttribute, equalTo relatedItem: AnyObject, s relatedAttribute: NSLayoutAttribute, times multiplier: CGFloat = 1.0, plus constant: CGFloat = 0.0, minus negativeConstant: CGFloat = 0.0, on targetView: UIView? = nil, identifier: String? = nil) -> LayoutItem {
+      return self.make(self.view, attribute: attribute, relation: .equal, relatedItem: relatedItem, relatedItemAttribute: relatedAttribute, multiplier: multiplier, constant: constant - negativeConstant, target: targetView, priority: self.internalPriority, identifier: identifier)
     }
     
     /// Align a given attribute to another views attributes using a `greaterThan` relation.
@@ -170,8 +170,8 @@ extension Manuscript {
     /// - returns: a layout item containing the created constraint as well as the target view on
     ///           which the constraint was installed
     
-    public func make(attribute: NSLayoutAttribute, greaterThan relatedItem: AnyObject, s relatedAttribute: NSLayoutAttribute, times multiplier: CGFloat = 1.0, plus constant: CGFloat = 0.0, minus negativeConstant: CGFloat = 0.0, on targetView: UIView? = nil, identifier: String? = nil) -> LayoutItem {
-      return self.make(self.view, attribute: attribute, relation: .GreaterThanOrEqual, relatedItem: relatedItem, relatedItemAttribute: relatedAttribute, multiplier: multiplier, constant: constant - negativeConstant, target: targetView, priority: self.internalPriority, identifier: identifier)
+    @discardableResult open func make(_ attribute: NSLayoutAttribute, greaterThan relatedItem: AnyObject, s relatedAttribute: NSLayoutAttribute, times multiplier: CGFloat = 1.0, plus constant: CGFloat = 0.0, minus negativeConstant: CGFloat = 0.0, on targetView: UIView? = nil, identifier: String? = nil) -> LayoutItem {
+      return self.make(self.view, attribute: attribute, relation: .greaterThanOrEqual, relatedItem: relatedItem, relatedItemAttribute: relatedAttribute, multiplier: multiplier, constant: constant - negativeConstant, target: targetView, priority: self.internalPriority, identifier: identifier)
     }
     
     /// Align a given attribute to another views attributes using a `lessThan` relation.
@@ -191,8 +191,8 @@ extension Manuscript {
     /// - returns: a layout item containing the created constraint as well as the target view on
     ///           which the constraint was installed
     
-    public func make(attribute: NSLayoutAttribute, lessThan relatedItem: AnyObject, s relatedAttribute: NSLayoutAttribute, times multiplier: CGFloat = 1.0, plus constant: CGFloat = 0.0, minus negativeConstant: CGFloat = 0.0, on targetView: UIView? = nil, identifier: String? = nil) -> LayoutItem {
-      return self.make(self.view, attribute: attribute, relation: .LessThanOrEqual, relatedItem: relatedItem, relatedItemAttribute: relatedAttribute, multiplier: multiplier, constant: constant - negativeConstant, target: targetView, priority: self.internalPriority, identifier: identifier)
+    @discardableResult open func make(_ attribute: NSLayoutAttribute, lessThan relatedItem: AnyObject, s relatedAttribute: NSLayoutAttribute, times multiplier: CGFloat = 1.0, plus constant: CGFloat = 0.0, minus negativeConstant: CGFloat = 0.0, on targetView: UIView? = nil, identifier: String? = nil) -> LayoutItem {
+      return self.make(self.view, attribute: attribute, relation: .lessThanOrEqual, relatedItem: relatedItem, relatedItemAttribute: relatedAttribute, multiplier: multiplier, constant: constant - negativeConstant, target: targetView, priority: self.internalPriority, identifier: identifier)
     }
     
     // MARK: DSL (convenience)
@@ -213,12 +213,12 @@ extension Manuscript {
     ///
     /// - returns: an array of layout items in the order mentinoned above (left, top, right, bottom)
     
-    public func alignAllEdges(to relatedItem: UIView, withInsets insets: UIEdgeInsets = UIEdgeInsetsZero, identifier: String? = nil) -> [LayoutItem] {
+    @discardableResult open func alignAllEdges(to relatedItem: UIView, withInsets insets: UIEdgeInsets = UIEdgeInsets.zero, identifier: String? = nil) -> [LayoutItem] {
       var result: [LayoutItem] = []
-      result.append(self.make(.Left,    equalTo: relatedItem, s: .Left,   plus:   insets.left,    identifier: Manuscript.suffixedIdFromId(identifier, suffix: "left")))
-      result.append(self.make(.Top,     equalTo: relatedItem, s: .Top,    plus:   insets.top,     identifier: Manuscript.suffixedIdFromId(identifier, suffix: "top")))
-      result.append(self.make(.Right,   equalTo: relatedItem, s: .Right,  minus:  insets.right,   identifier: Manuscript.suffixedIdFromId(identifier, suffix: "right")))
-      result.append(self.make(.Bottom,  equalTo: relatedItem, s: .Bottom, minus:  insets.bottom,  identifier: Manuscript.suffixedIdFromId(identifier, suffix: "bottom")))
+      result.append(self.make(.left,    equalTo: relatedItem, s: .left,   plus:   insets.left,    identifier: Manuscript.suffixedIdFromId(identifier, suffix: "left")))
+      result.append(self.make(.top,     equalTo: relatedItem, s: .top,    plus:   insets.top,     identifier: Manuscript.suffixedIdFromId(identifier, suffix: "top")))
+      result.append(self.make(.right,   equalTo: relatedItem, s: .right,  minus:  insets.right,   identifier: Manuscript.suffixedIdFromId(identifier, suffix: "right")))
+      result.append(self.make(.bottom,  equalTo: relatedItem, s: .bottom, minus:  insets.bottom,  identifier: Manuscript.suffixedIdFromId(identifier, suffix: "bottom")))
       return result
     }
     
@@ -234,10 +234,10 @@ extension Manuscript {
     ///
     /// - returns: an array of layout items in the order mentinoned above (center x, center y)
     
-    public func centerIn(view: UIView, identifier: String? = nil) -> [LayoutItem] {
+    @discardableResult open func centerIn(_ view: UIView, identifier: String? = nil) -> [LayoutItem] {
       var result: [LayoutItem] = []
-      result.append(self.make(.CenterX, equalTo: view, s: .CenterX, identifier: Manuscript.suffixedIdFromId(identifier, suffix: "center_x")))
-      result.append(self.make(.CenterY, equalTo: view, s: .CenterY, identifier: Manuscript.suffixedIdFromId(identifier, suffix: "center_y")))
+      result.append(self.make(.centerX, equalTo: view, s: .centerX, identifier: Manuscript.suffixedIdFromId(identifier, suffix: "center_x")))
+      result.append(self.make(.centerY, equalTo: view, s: .centerY, identifier: Manuscript.suffixedIdFromId(identifier, suffix: "center_y")))
       return result
     }
     
@@ -252,10 +252,10 @@ extension Manuscript {
     ///
     /// - returns: an array of layout items in the order mentioned above (width, height)
     
-    public func setSize(size: CGSize, identifier: String? = nil) -> [LayoutItem] {
+    @discardableResult open func setSize(_ size: CGSize, identifier: String? = nil) -> [LayoutItem] {
       var result: [LayoutItem] = []
-      result.append(self.set(.Height, to: size.height,  identifier: Manuscript.suffixedIdFromId(identifier, suffix: "height")))
-      result.append(self.set(.Width, to: size.width,    identifier: Manuscript.suffixedIdFromId(identifier, suffix: "width")))
+      result.append(self.set(.height, to: size.height,  identifier: Manuscript.suffixedIdFromId(identifier, suffix: "height")))
+      result.append(self.set(.width, to: size.width,    identifier: Manuscript.suffixedIdFromId(identifier, suffix: "width")))
       return result
     }
     
@@ -268,11 +268,11 @@ extension Manuscript {
     ///
     /// - returns: a single layout item
     
-    public func makeVerticalHairline(identifier identifier: String? = nil) -> LayoutItem {
+    @discardableResult open func makeVerticalHairline(_ identifier: String? = nil) -> LayoutItem {
       if self.utils.isRetina() {
-        return self.set(.Width, to: 0.5, identifier: identifier)
+        return self.set(.width, to: 0.5, identifier: identifier)
       }
-      return self.set(.Width, to: 1.0, identifier: identifier)
+      return self.set(.width, to: 1.0, identifier: identifier)
     }
     
     /// Helper method to create a horizontal (left to right) hairline, resolution independent. This
@@ -284,24 +284,24 @@ extension Manuscript {
     ///
     /// - returns: a single layout item
     
-    public func makeHorizontalHairline(identifier identifier: String? = nil) -> LayoutItem {
+    @discardableResult open func makeHorizontalHairline(_ identifier: String? = nil) -> LayoutItem {
       if self.utils.isRetina() {
-        return self.set(.Height, to: 0.5, identifier: identifier)
+        return self.set(.height, to: 0.5, identifier: identifier)
       }
-      return self.set(.Height, to: 1.0, identifier: identifier)
+      return self.set(.height, to: 1.0, identifier: identifier)
     }
     
     // MARK: Core
     
-    private func set(item: UIView, attribute: NSLayoutAttribute, relation: NSLayoutRelation, constant: CGFloat, priority: UILayoutPriority, identifier: String?) -> LayoutItem {
-      return self.createLayoutConstraint(item, attribute: attribute, relation: relation, relatedItem: nil, relatedItemAttribute: .NotAnAttribute, multiplier: 1.0, constant: constant, target: item, priority: priority, identifier: identifier)
+    fileprivate func set(_ item: UIView, attribute: NSLayoutAttribute, relation: NSLayoutRelation, constant: CGFloat, priority: UILayoutPriority, identifier: String?) -> LayoutItem {
+      return self.createLayoutConstraint(item, attribute: attribute, relation: relation, relatedItem: nil, relatedItemAttribute: .notAnAttribute, multiplier: 1.0, constant: constant, target: item, priority: priority, identifier: identifier)
     }
     
-    private func make(item: UIView, attribute: NSLayoutAttribute, relation: NSLayoutRelation, relatedItem: AnyObject, relatedItemAttribute: NSLayoutAttribute, multiplier: CGFloat, constant: CGFloat, target: UIView?, priority: UILayoutPriority, identifier: String?) -> LayoutItem {
+    fileprivate func make(_ item: UIView, attribute: NSLayoutAttribute, relation: NSLayoutRelation, relatedItem: AnyObject, relatedItemAttribute: NSLayoutAttribute, multiplier: CGFloat, constant: CGFloat, target: UIView?, priority: UILayoutPriority, identifier: String?) -> LayoutItem {
       return self.createLayoutConstraint(item, attribute: attribute, relation: relation, relatedItem: relatedItem, relatedItemAttribute: relatedItemAttribute, multiplier: multiplier, constant: constant, target: target, priority: priority, identifier: identifier)
     }
     
-    private func createLayoutConstraint(item: UIView, attribute: NSLayoutAttribute, relation: NSLayoutRelation, relatedItem: AnyObject?, relatedItemAttribute: NSLayoutAttribute, multiplier: CGFloat, constant: CGFloat, target aTarget: UIView?, priority: UILayoutPriority, identifier: String?) -> LayoutItem {
+    fileprivate func createLayoutConstraint(_ item: UIView, attribute: NSLayoutAttribute, relation: NSLayoutRelation, relatedItem: AnyObject?, relatedItemAttribute: NSLayoutAttribute, multiplier: CGFloat, constant: CGFloat, target aTarget: UIView?, priority: UILayoutPriority, identifier: String?) -> LayoutItem {
       
       let constraint = NSLayoutConstraint(
         item: item,
@@ -320,13 +320,13 @@ extension Manuscript {
       }
       
       if #available(iOS 9.0, *) {
-        return self.iOS9_installConstraint(item: item, relatedItem: relatedItem, constraint: constraint)
+        return self.iOS9_installConstraint(item, relatedItem: relatedItem, constraint: constraint)
       } else {
-        return self.earlier_installConstraint(item: item, relatedItem: relatedItem, constraint: constraint)
+        return self.earlier_installConstraint(item, relatedItem: relatedItem, constraint: constraint)
       }
     }
     
-    private func iOS9_installConstraint(item item: UIView, relatedItem: AnyObject?, constraint: NSLayoutConstraint) -> LayoutItem {
+    fileprivate func iOS9_installConstraint(_ item: UIView, relatedItem: AnyObject?, constraint: NSLayoutConstraint) -> LayoutItem {
       if #available(iOS 9.0, *) {
         switch relatedItem {
         case let relatedView as UIView:
@@ -349,7 +349,7 @@ extension Manuscript {
       }
     }
     
-    private func earlier_installConstraint(item item: UIView, relatedItem: AnyObject?, constraint: NSLayoutConstraint) -> LayoutItem {
+    fileprivate func earlier_installConstraint(_ item: UIView, relatedItem: AnyObject?, constraint: NSLayoutConstraint) -> LayoutItem {
       var relatedView: UIView? = nil
       if let aRelatedView = relatedItem as? UIView {
         relatedView = aRelatedView
@@ -362,7 +362,7 @@ extension Manuscript {
       }
     }
     
-    private func installConstraint(constraint: NSLayoutConstraint, onTarget target: UIView) -> LayoutItem {
+    fileprivate func installConstraint(_ constraint: NSLayoutConstraint, onTarget target: UIView) -> LayoutItem {
       target.addConstraint(constraint)
       return (constraint, target)
     }

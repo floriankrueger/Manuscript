@@ -29,11 +29,11 @@ import Manuscript
 
 class PriorityTests: XCTestCase {
 
-  private var view: UIView = UIView(frame: CGRectZero)
+  fileprivate var view: UIView = UIView(frame: CGRect.zero)
 
   override func setUp() {
     super.setUp()
-    self.view = UIView(frame: CGRectZero)
+    self.view = UIView(frame: CGRect.zero)
   }
 
   override func tearDown() {
@@ -45,7 +45,7 @@ class PriorityTests: XCTestCase {
     var layoutItem: LayoutItem? = nil
 
     Manuscript.layout(self.view) { c in
-      layoutItem = c.set(.Width, to: 100.0)
+      layoutItem = c.set(.width, to: 100.0)
     }
 
     XCTAssertEqual(layoutItem!.constraint.priority, 1000, "Expected Required Priority by Default")
@@ -56,7 +56,7 @@ class PriorityTests: XCTestCase {
 
     Manuscript.layout(self.view) { c in
       c.setPriority(123)
-      layoutItem = c.set(.Width, to: 100.0)
+      layoutItem = c.set(.width, to: 100.0)
     }
 
     XCTAssertEqual(layoutItem!.constraint.priority, 123, "Expected explicit Priority of 123")
@@ -67,7 +67,7 @@ class PriorityTests: XCTestCase {
 
     Manuscript.layout(self.view) { c in
       c.setPriority(0)
-      layoutItem = c.set(.Width, to: 100.0)
+      layoutItem = c.set(.width, to: 100.0)
     }
 
     XCTAssertEqual(layoutItem!.constraint.priority, 1, "Expected a lower cap of 1")
@@ -78,7 +78,7 @@ class PriorityTests: XCTestCase {
 
     Manuscript.layout(self.view) { c in
       c.setPriority(1001)
-      layoutItem = c.set(.Width, to: 100.0)
+      layoutItem = c.set(.width, to: 100.0)
     }
 
     XCTAssertEqual(layoutItem!.constraint.priority, 1000, "Expected a upper cap of 1000")
@@ -89,10 +89,10 @@ class PriorityTests: XCTestCase {
 
     Manuscript.layout(self.view) { c in
       c.setPriority(123)
-      c.set(.Height, to: 100.0)
+      c.set(.height, to: 100.0)
 
       c.setPriorityRequired()
-      layoutItem = c.set(.Width, to: 100.0)
+      layoutItem = c.set(.width, to: 100.0)
     }
 
     XCTAssertEqual(layoutItem!.constraint.priority, 1000, "Expected Required Priority")
@@ -103,7 +103,7 @@ class PriorityTests: XCTestCase {
 
     Manuscript.layout(self.view) { c in
       c.setPriorityRequired()
-      layoutItem = c.set(.Width, to: 100.0)
+      layoutItem = c.set(.width, to: 100.0)
     }
 
     XCTAssertEqual(layoutItem!.constraint.priority, 1000, "Expected Required Priority (1000)")
@@ -114,7 +114,7 @@ class PriorityTests: XCTestCase {
 
     Manuscript.layout(self.view) { c in
       c.setPriorityDefaultHigh()
-      layoutItem = c.set(.Width, to: 100.0)
+      layoutItem = c.set(.width, to: 100.0)
     }
 
     XCTAssertEqual(layoutItem!.constraint.priority, 750, "Expected Default High Priority (750)")
@@ -125,7 +125,7 @@ class PriorityTests: XCTestCase {
 
     Manuscript.layout(self.view) { c in
       c.setPriorityDefaultLow()
-      layoutItem = c.set(.Width, to: 100.0)
+      layoutItem = c.set(.width, to: 100.0)
     }
 
     XCTAssertEqual(layoutItem!.constraint.priority, 250, "Expected Default High Priority (250)")
@@ -136,7 +136,7 @@ class PriorityTests: XCTestCase {
 
     Manuscript.layout(self.view) { c in
       c.setPriorityFittingSizeLevel()
-      layoutItem = c.set(.Width, to: 100.0)
+      layoutItem = c.set(.width, to: 100.0)
     }
 
     XCTAssertEqual(layoutItem!.constraint.priority, 50, "Expected Default High Priority (250)")
