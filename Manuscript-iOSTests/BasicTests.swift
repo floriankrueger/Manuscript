@@ -30,7 +30,7 @@ import Manuscript
 class BasicTests: XCTestCase {
 
   func testStopsTranslatingAutoresizingMasks() {
-    let view = UIView(frame: CGRectZero)
+    let view = UIView(frame: CGRect.zero)
 
     XCTAssertTrue(view.translatesAutoresizingMaskIntoConstraints,
       "Expected `translatesAutoresizingMaskIntoConstraints` to be `true` by default")
