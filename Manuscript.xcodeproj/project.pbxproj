@@ -50,6 +50,13 @@
 			remoteGlobalIDString = DF1CDF641CF093040006B594;
 			remoteInfo = "Manuscript-tvOS";
 		};
+		DFF1EE3B1DC72CC8005ADB25 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DF1CDF4C1CF092C60006B594 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DF1CDF561CF092E70006B594;
+			remoteInfo = "Manuscript-iOS";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -305,6 +312,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				DFF1EE3C1DC72CC8005ADB25 /* PBXTargetDependency */,
 			);
 			name = "Manuscript-Example";
 			productName = "Manuscript-Example";
@@ -504,6 +512,11 @@
 			isa = PBXTargetDependency;
 			target = DF1CDF641CF093040006B594 /* Manuscript-tvOS */;
 			targetProxy = DF1CDFE61CF095FA0006B594 /* PBXContainerItemProxy */;
+		};
+		DFF1EE3C1DC72CC8005ADB25 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DF1CDF561CF092E70006B594 /* Manuscript-iOS */;
+			targetProxy = DFF1EE3B1DC72CC8005ADB25 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

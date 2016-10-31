@@ -1,6 +1,5 @@
 [![GitHub release](https://img.shields.io/github/release/floriankrueger/Manuscript.svg)](https://github.com/floriankrueger/Manuscript)
 [![CircleCI](https://img.shields.io/circleci/project/floriankrueger/Manuscript.svg)](https://circleci.com/gh/floriankrueger/Manuscript)
-[![Coveralls branch](https://img.shields.io/coveralls/floriankrueger/manuscript.svg)](https://coveralls.io/r/floriankrueger/Manuscript)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![CocoaPods](https://img.shields.io/cocoapods/v/Manuscript.svg)](https://github.com/floriankrueger/Manuscript)
 [![Swift](https://img.shields.io/badge/Swift-3.0-orange.svg)](https://swift.org)
@@ -191,6 +190,13 @@ If you need to support Swift 2.3 then please use the last compatible version 2.1
 github "floriankrueger/Manuscript" == 2.1.0
 ```
 
+If your Swift 3 compiler isn't compatible with the framework binary from the github release then 
+please use the following command to build Manuscript yourself:
+ 
+```
+carthage bootstrap Manuscript --no-use-binaries
+```
+ 
 ### CocoaPods
 
 Make sure your `Podfile` contains all of the following lines.
