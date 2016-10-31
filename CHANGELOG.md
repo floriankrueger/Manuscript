@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 3.0.1
+
+- [x] Swift 3.0.1 / Xcode 8.1 compatibility
+
 ## Version 3.0.0
 
 - [x] Swift 3 compatibility
