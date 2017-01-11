@@ -33,6 +33,7 @@
 		DF1CE01A1CF1ACA70006B594 /* LayoutItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1CE0181CF1ACA20006B594 /* LayoutItem.swift */; };
 		DF1CE01B1CF1ACA70006B594 /* LayoutItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1CE0181CF1ACA20006B594 /* LayoutItem.swift */; };
 		DF1CE01E1CF1B1900006B594 /* IdentifierTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF1CE01D1CF1B1900006B594 /* IdentifierTests.swift */; };
+		DF40344C1E265D5500A312BE /* LayoutProxyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF40344B1E265D5500A312BE /* LayoutProxyTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +95,7 @@
 		DF1CE0141CF0B9FA0006B594 /* ManuscriptUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManuscriptUtils.swift; sourceTree = "<group>"; };
 		DF1CE0181CF1ACA20006B594 /* LayoutItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutItem.swift; sourceTree = "<group>"; };
 		DF1CE01D1CF1B1900006B594 /* IdentifierTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IdentifierTests.swift; sourceTree = "<group>"; };
+		DF40344B1E265D5500A312BE /* LayoutProxyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutProxyTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,6 +216,7 @@
 				DF1CDFF51CF096950006B594 /* PriorityTests.swift */,
 				DF1CDFF61CF096950006B594 /* TargetViewTests.swift */,
 				DF1CDFF71CF096950006B594 /* TestHelper.swift */,
+				DF40344B1E265D5500A312BE /* LayoutProxyTests.swift */,
 			);
 			path = "Manuscript-iOSTests";
 			sourceTree = "<group>";
@@ -482,6 +485,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF1CDFFA1CF096950006B594 /* LayoutGuideTests.swift in Sources */,
+				DF40344C1E265D5500A312BE /* LayoutProxyTests.swift in Sources */,
 				DF1CDFF81CF096950006B594 /* BasicTests.swift in Sources */,
 				DF1CDFFD1CF096950006B594 /* TargetViewTests.swift in Sources */,
 				DF1CDFFE1CF096950006B594 /* TestHelper.swift in Sources */,

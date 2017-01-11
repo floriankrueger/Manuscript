@@ -30,11 +30,12 @@ extension Manuscript {
 
   /// The `LayoutProxy` is responsible for creating all the constraints.
 
-  open class LayoutProxy: NSObject {
+  public class LayoutProxy: NSObject {
     
     let view: UIView
     let utils: ManuscriptUtils
     var internalPriority: UILayoutPriority
+    var items: [LayoutItem] = []
     
     init(view: UIView, utils:ManuscriptUtils) {
       self.view = view
@@ -315,15 +316,18 @@ extension Manuscript {
       constraint.priority = priority
       constraint.identifier = identifier ?? Manuscript.defaultIdentifier
       
+      let createdLayoutItem: LayoutItem
+      
       if let target = aTarget {
-        return self.installConstraint(constraint, onTarget: target)
+        createdLayoutItem = self.installConstraint(constraint, onTarget: target)
+      } else if #available(iOS 9.0, *) {
+        createdLayoutItem = self.iOS9_installConstraint(item, relatedItem: relatedItem, constraint: constraint)
+      } else {
+        createdLayoutItem = self.earlier_installConstraint(item, relatedItem: relatedItem, constraint: constraint)
       }
       
-      if #available(iOS 9.0, *) {
-        return self.iOS9_installConstraint(item, relatedItem: relatedItem, constraint: constraint)
-      } else {
-        return self.earlier_installConstraint(item, relatedItem: relatedItem, constraint: constraint)
-      }
+      items.append(createdLayoutItem)
+      return createdLayoutItem
     }
     
     fileprivate func iOS9_installConstraint(_ item: UIView, relatedItem: AnyObject?, constraint: NSLayoutConstraint) -> LayoutItem {
