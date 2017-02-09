@@ -56,13 +56,35 @@ public struct Manuscript {
   /// - returns: the `LayoutProxy` instance that is also handed to the `block`
   
   @discardableResult public static func layout(_ view: UIView,
-                            utils: ManuscriptUtils = Utils(),
-                            block: (LayoutProxy) -> ()
+                                               utils: ManuscriptUtils = Utils(),
+                                               block: (LayoutProxy) -> ()
     ) -> Manuscript.LayoutProxy
   {
     let layoutProxy = LayoutProxy(view: view, utils: utils)
     block(layoutProxy)
     return layoutProxy
+  }
+  
+  /// Use this to define your AutoLayout constraints in your code.
+  ///
+  /// - parameter view: the `UIView` that should be layouted
+  /// - parameter items: an `inout` that is populated with all created `LayoutItem`s. 
+  ///   The array is emptied before the items are added, so store any still needed contents 
+  ///   separately before passing the array in.
+  /// - parameter utils: an instance of `ManuscriptUtils`, you can ignore this parameter.
+  /// - parameter block: a block that is provided with a `LayoutProxy` that is already setup with the
+  ///              given `view`. You can create AutoLayout constraints through this proxy.
+  
+  public static func layout(_ view: UIView,
+                            _ items: inout [LayoutItem],
+                            utils: ManuscriptUtils = Utils(),
+                            block: (LayoutProxy) -> ()
+    )
+  {
+    let layoutProxy = LayoutProxy(view: view, utils: utils)
+    block(layoutProxy)
+    items.removeAll()
+    items.append(contentsOf: layoutProxy.items)
   }
 
   static func findCommonSuperview(_ a: UIView, b: UIView?) -> UIView? {
