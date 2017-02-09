@@ -1,8 +1,8 @@
 //
-//  LayoutProxyTests.swift
+//  Sequence+LayoutItemTests.swift
 //  Manuscript
 //
-//  Created by Florian Krüger on 11/01/2017.
+//  Created by Florian Krüger on 09/02/2017.
 //  Copyright (c) 2015 projectserver.org. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -27,9 +27,9 @@ import UIKit
 import XCTest
 @testable import Manuscript
 
-class LayoutProxyTests: XCTestCase {
+class Sequence_LayoutItemTests: XCTestCase {
     
-  func testGatheringOfCreatedItemsMethod1() {
+  func testUninstall() {
     
     let view = UIView(frame: CGRect.zero)
     let subview = UIView(frame: CGRect.zero)
@@ -46,15 +46,17 @@ class LayoutProxyTests: XCTestCase {
     
     guard let heightItem = optHeightItem, let widthItem = optWidthItem else { XCTFail("items not initialized"); return }
     
-    XCTAssertEqual(proxy.items.count, 2)
+    XCTAssertTrue(heightItem.targetItem.constraints.contains(heightItem.constraint))
+    XCTAssertTrue(widthItem.targetItem.constraints.contains(widthItem.constraint))
     
-    [heightItem, widthItem].forEach { item in
-      XCTAssertTrue(proxy.items.contains(where: { item.constraint === $0.constraint && item.targetItem === $0.targetItem }))
-    }
+    proxy.items.constraints.uninstall()
+    
+    XCTAssertFalse(heightItem.targetItem.constraints.contains(heightItem.constraint))
+    XCTAssertFalse(widthItem.targetItem.constraints.contains(widthItem.constraint))
     
   }
   
-  func testGatheringOfCreatedItemsMethod2() {
+  func testActivationAndDeactivation() {
     
     let view = UIView(frame: CGRect.zero)
     let subview = UIView(frame: CGRect.zero)
@@ -64,24 +66,26 @@ class LayoutProxyTests: XCTestCase {
     var optHeightItem: LayoutItem? = nil
     var optWidthItem: LayoutItem? = nil
     
-    // the items array is pre-populated with a LayoutItem to test the "emptying" behavior of the 
-    // inout parameter (the dummy item must not be part of the result).
-    let dummyConstraint = NSLayoutConstraint(item: subview, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 100.0)
-    var items: [LayoutItem] = [LayoutItem(constraint: dummyConstraint, targetItem: subview)]
-    
-    Manuscript.layout(subview, &items) { c in
+    let proxy = Manuscript.layout(subview) { c in
       optHeightItem = c.set(.height, to: 10.0)
       optWidthItem = c.make(.width, equalTo: view, s: .width)
     }
     
     guard let heightItem = optHeightItem, let widthItem = optWidthItem else { XCTFail("items not initialized"); return }
     
-    XCTAssertEqual(items.count, 2)
+    XCTAssertTrue(heightItem.constraint.isActive)
+    XCTAssertTrue(widthItem.constraint.isActive)
     
-    [heightItem, widthItem].forEach { item in
-      XCTAssertTrue(items.contains(where: { item.constraint === $0.constraint && item.targetItem === $0.targetItem }))
-    }
+    proxy.items.constraints.deactivate()
+    
+    XCTAssertFalse(heightItem.constraint.isActive)
+    XCTAssertFalse(widthItem.constraint.isActive)
+    
+    proxy.items.constraints.activate()
+    
+    XCTAssertTrue(heightItem.constraint.isActive)
+    XCTAssertTrue(widthItem.constraint.isActive)
     
   }
-    
+  
 }

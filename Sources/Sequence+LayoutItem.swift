@@ -1,8 +1,8 @@
 //
-//  LayoutItem.swift
+//  Sequence+LayoutItem.swift
 //  Manuscript
 //
-//  Created by Florian Krüger on 22/05/16.
+//  Created by Florian Krüger on 09/02/2017.
 //  Copyright (c) 2014 projectserver.org. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -25,18 +25,38 @@
 
 import Foundation
 
-public protocol LayoutItemType {
-  var constraint: NSLayoutConstraint { get }
-  var targetItem: UIView { get }
+public struct ConstraintsProxy<S: Sequence> where S.Iterator.Element: LayoutItemType {
+  
+  internal let sequence: S
+  
+  public func uninstall() {
+    for item in sequence {
+      item.targetItem.removeConstraint(item.constraint)
+    }
+  }
+  
+  public func activate() {
+    for item in sequence {
+      item.constraint.isActive = true
+    }
+  }
+  
+  public func deactivate() {
+    for item in sequence {
+      item.constraint.isActive = false
+    }
+  }
+  
+  internal init(sequence: S) {
+    self.sequence = sequence
+  }
+  
 }
 
-/// A Manuscript `LayoutItem` consists of two things:
-///
-/// * the `constraint` that was generated through Manuscript
-/// * the `targetItem` on which the constraint was installed. That is the nearest ancestor view
-///   of the views that are referenced by the constraint.
-
-public struct LayoutItem: LayoutItemType {
-  public var constraint: NSLayoutConstraint
-  public var targetItem: UIView
+extension Sequence where Iterator.Element: LayoutItemType {
+  
+  var constraints: ConstraintsProxy<Self> {
+    return ConstraintsProxy(sequence: self)
+  }
+  
 }

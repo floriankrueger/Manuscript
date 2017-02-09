@@ -368,7 +368,7 @@ extension Manuscript {
     
     fileprivate func installConstraint(_ constraint: NSLayoutConstraint, onTarget target: UIView) -> LayoutItem {
       target.addConstraint(constraint)
-      return (constraint, target)
+      return LayoutItem(constraint: constraint, targetItem: target)
     }
   }
 }
