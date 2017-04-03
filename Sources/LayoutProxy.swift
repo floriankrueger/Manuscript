@@ -358,7 +358,7 @@ extension Manuscript {
       if let target = Manuscript.findCommonSuperview(item, b: relatedView) {
         return self.installConstraint(constraint, onTarget: target)
       } else {
-        fatalError("couldn't find common ancestors for \(item) and \(relatedView) (while trying to install \(constraint))")
+        fatalError("couldn't find common ancestors for \(item) and \(String(describing: relatedView)) (while trying to install \(constraint))")
       }
     }
     
