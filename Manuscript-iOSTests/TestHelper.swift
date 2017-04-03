@@ -50,7 +50,7 @@ struct Helper {
     }
 
     XCTAssertEqual(constraint.secondAttribute, relatedAttribute, "")
-    XCTAssertEqualWithAccuracy(constraint.multiplier, multiplier, accuracy: CGFloat(FLT_EPSILON), "")
+    XCTAssertEqualWithAccuracy(constraint.multiplier, multiplier, accuracy: CGFloat(Float.ulpOfOne), "")
     XCTAssertEqual(constraint.constant, constant, "")
   }
 
