@@ -4,7 +4,8 @@
 [![CocoaPods](https://img.shields.io/cocoapods/v/Manuscript.svg)](https://github.com/floriankrueger/Manuscript)
 [![Swift](https://img.shields.io/badge/Swift-3.0-orange.svg)](https://swift.org)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/floriankrueger/Manuscript/master/LICENSE)
-
+ [![Gitmoji](https://img.shields.io/badge/gitmoji-%20😜%20😍-FFDD67.svg?style=flat-square)](https://gitmoji.carloscuesta.me)
+ 
 ![Manuscript: Dead-Simple AutoLayout](https://raw.githubusercontent.com/floriankrueger/Manuscript/assets/manuscript.png)
 
 It's like [AutoLayoutKit](https://github.com/floriankrueger/AutoLayoutKit) but written in Swift.
@@ -24,7 +25,7 @@ Have a look at the [Changelog](CHANGELOG.md) for more details.
 
 - iOS 8.0+
 - Xcode 8.x
-- Swift 3
+- Swift 3.1
 
 ### Bonus: Support for iOS 7.0+ and/or tvOS
 
@@ -189,8 +190,14 @@ If you need to support Swift 2.3 then please use the last compatible version 2.1
 ```ogdl
 github "floriankrueger/Manuscript" == 2.1.0
 ```
+ 
+If you need to support Swift 3.0 then please use the last compatible version 3.0.1
+ 
+```ogdl
+github "floriankrueger/Manuscript" == 3.0.1
+```
 
-If your Swift 3 compiler isn't compatible with the framework binary from the github release then 
+If your Swift 3.1 compiler isn't compatible with the framework binary from the github release then 
 please use the following command to build Manuscript yourself:
  
 ```

@@ -70,9 +70,12 @@ public struct Manuscript {
     if let b = b {
 
       // Quick-check the most likely possibilities
+      
+      if a === b { return a } // (a) and (b) are actually the same view
+      
       let (aSuper, bSuper) = (a.superview, b.superview)
-      if a == bSuper { return a }
-      if b == aSuper { return b }
+      if a == bSuper { return a } // (a) is the superview of (b)
+      if b == aSuper { return b } // (b) is the superview of (a)
       if aSuper == bSuper { return aSuper }
 
       // None of those; run the general algorithm
