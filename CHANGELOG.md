@@ -1,5 +1,15 @@
 # Changelog
 
+## Version 3.0.3
+
+- [x] Podspec fixed (I missed the last release in Cocoapods)
+- [x] Constraints on a view that relate to the view itself were previously created on the superview.
+This is now fixed, the constraints are created on the view itself which makes the 
+
+## Version 3.0.2
+
+- [x] Swift 3.1 / Xcode 8.3 compatibility
+
 ## Version 3.0.1
 
 - [x] Swift 3.0.1 / Xcode 8.1 compatibility
