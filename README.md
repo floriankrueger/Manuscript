@@ -1,10 +1,10 @@
-[![GitHub release](https://img.shields.io/github/release/floriankrueger/Manuscript.svg)](https://github.com/floriankrueger/Manuscript)
 [![CircleCI](https://img.shields.io/circleci/project/floriankrueger/Manuscript.svg)](https://circleci.com/gh/floriankrueger/Manuscript)
+[![codebeat badge](https://codebeat.co/badges/f0466b34-3549-43df-b8a9-b01c41239ca3)](https://codebeat.co/projects/github-com-floriankrueger-manuscript-master)
+[![GitHub release](https://img.shields.io/github/release/floriankrueger/Manuscript.svg)](https://github.com/floriankrueger/Manuscript)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![CocoaPods](https://img.shields.io/cocoapods/v/Manuscript.svg)](https://github.com/floriankrueger/Manuscript)
 [![Swift](https://img.shields.io/badge/Swift-3.0-orange.svg)](https://swift.org)
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/floriankrueger/Manuscript/master/LICENSE)
- [![Gitmoji](https://img.shields.io/badge/gitmoji-%20😜%20😍-FFDD67.svg?style=flat-square)](https://gitmoji.carloscuesta.me)
+[![Gitmoji](https://img.shields.io/badge/gitmoji-%20😜%20😍-FFDD67.svg?style=flat)](https://gitmoji.carloscuesta.me)
  
 ![Manuscript: Dead-Simple AutoLayout](https://raw.githubusercontent.com/floriankrueger/Manuscript/assets/manuscript.png)
 
